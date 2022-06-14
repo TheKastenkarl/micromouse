@@ -1,4 +1,4 @@
-# Micromouse: Designing an Educational Racing - Robot from Scratch [ TUM IN2106/IN4235]
+# Micromouse: Designing an Educational Racing - Robot from Scratch [TUM IN2106/IN4235]
 
 A practical course at TU Munich to build a micromouse robot from scratch, led by [Dr. Ph.D. Alexander Lenz](https://www.ce.cit.tum.de/air/people/dr-alexander-lenz/). This repository serves as a collection of code and ressources during our group work of SS22. See the official [course description](https://campus.tum.de/tumonline/wbLv.wbShowLVDetail?pStpSpNr=950367380&pSpracheNr=2) for further information.
 

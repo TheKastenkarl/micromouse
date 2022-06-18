@@ -14020,6 +14020,7 @@ routes into the microcontroller</text>
 instead of soldering the chip directly onto the board</text>
 <text x="297.18" y="256.54" size="1.778" layer="91">Alternative: Transistor?</text>
 <text x="360.68" y="281.94" size="1.778" layer="91">20mA @ 0.1 V?</text>
+<text x="157.48" y="58.42" size="1.778" layer="91">f_cutoff = 796Hz, same as on dev board</text>
 </plain>
 <instances>
 <instance part="GND2" gate="1" x="200.66" y="104.14" smashed="yes">

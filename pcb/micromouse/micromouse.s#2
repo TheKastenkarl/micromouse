@@ -14021,6 +14021,10 @@ instead of soldering the chip directly onto the board</text>
 <text x="297.18" y="256.54" size="1.778" layer="91">Alternative: Transistor?</text>
 <text x="360.68" y="281.94" size="1.778" layer="91">20mA @ 0.1 V?</text>
 <text x="157.48" y="58.42" size="1.778" layer="91">f_cutoff = 796Hz, same as on dev board</text>
+<text x="35.56" y="337.82" size="1.778" layer="91">Check if these are correct.
+Just used the once of the datasheet.</text>
+<text x="35.56" y="294.64" size="1.778" layer="91">Check if these are correct.
+Just used the once of the datasheet.</text>
 </plain>
 <instances>
 <instance part="GND2" gate="1" x="200.66" y="104.14" smashed="yes">

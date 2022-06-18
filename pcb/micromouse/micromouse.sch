@@ -13977,7 +13977,6 @@ W = angled&lt;p&gt;
 <part name="SV4" library="con-lstb" library_urn="urn:adsk.eagle:library:162" deviceset="MA07-2" device="" package3d_urn="urn:adsk.eagle:package:8330/1" value="PIN header"/>
 <part name="+3V7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="P+6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
-<part name="P+7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 <part name="ON/OFF" library="smd-special" library_urn="urn:adsk.eagle:library:362" deviceset="SWS001" device="" package3d_urn="urn:adsk.eagle:package:26467/1"/>
 <part name="T1" library="transistor" library_urn="urn:adsk.eagle:library:402" deviceset="2N3904" device="" package3d_urn="urn:adsk.eagle:package:28523/2"/>
 <part name="R1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="???"/>
@@ -13993,6 +13992,7 @@ W = angled&lt;p&gt;
 <part name="+3V8" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="R4" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="10k"/>
 <part name="BTN_2" library="switch-omron" library_urn="urn:adsk.eagle:library:377" deviceset="10-XX" device="" package3d_urn="urn:adsk.eagle:package:27496/1"/>
+<part name="+3V9" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -14297,9 +14297,6 @@ Just used the once of the datasheet.</text>
 <instance part="P+6" gate="1" x="0" y="203.2" smashed="yes">
 <attribute name="VALUE" x="0" y="195.58" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="P+7" gate="1" x="226.06" y="208.28" smashed="yes">
-<attribute name="VALUE" x="226.06" y="200.66" size="1.778" layer="96" rot="R90"/>
-</instance>
 <instance part="ON/OFF" gate="G$1" x="-78.74" y="345.44" smashed="yes" rot="R90">
 <attribute name="NAME" x="-76.2" y="342.9" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="-76.2" y="349.885" size="1.778" layer="96" rot="R180"/>
@@ -14353,6 +14350,9 @@ Just used the once of the datasheet.</text>
 <instance part="BTN_2" gate="1" x="241.3" y="327.66" smashed="yes">
 <attribute name="NAME" x="234.95" y="325.12" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="237.49" y="330.835" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="+3V9" gate="G$1" x="226.06" y="208.28" smashed="yes">
+<attribute name="VALUE" x="226.06" y="198.12" size="1.778" layer="96" rot="R90"/>
 </instance>
 </instances>
 <busses>
@@ -14732,6 +14732,12 @@ Just used the once of the datasheet.</text>
 <pinref part="+3V8" gate="G$1" pin="+3V3"/>
 <wire x1="241.3" y1="332.74" x2="241.3" y2="345.44" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="HC05/06" gate="G$1" pin="5"/>
+<wire x1="226.06" y1="205.74" x2="226.06" y2="195.58" width="0.1524" layer="91"/>
+<wire x1="226.06" y1="195.58" x2="251.46" y2="195.58" width="0.1524" layer="91"/>
+<pinref part="+3V9" gate="G$1" pin="+3V3"/>
+</segment>
 </net>
 <net name="MCLR" class="0">
 <segment>
@@ -14830,12 +14836,6 @@ Just used the once of the datasheet.</text>
 <wire x1="-30.48" y1="193.04" x2="0" y2="193.04" width="0.1524" layer="91"/>
 <pinref part="P+6" gate="1" pin="+5V"/>
 <wire x1="0" y1="193.04" x2="0" y2="200.66" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="HC05/06" gate="G$1" pin="5"/>
-<wire x1="226.06" y1="205.74" x2="226.06" y2="195.58" width="0.1524" layer="91"/>
-<wire x1="226.06" y1="195.58" x2="251.46" y2="195.58" width="0.1524" layer="91"/>
-<pinref part="P+7" gate="1" pin="+5V"/>
 </segment>
 </net>
 <net name="AN1" class="0">

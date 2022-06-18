@@ -13951,7 +13951,7 @@ W = angled&lt;p&gt;
 <part name="P+2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 <part name="C11" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100nF"/>
 <part name="RESET" library="switch-omron" library_urn="urn:adsk.eagle:library:377" deviceset="10-XX" device="" package3d_urn="urn:adsk.eagle:package:27496/1"/>
-<part name="9V/5V" library="national-semiconductor" library_urn="urn:adsk.eagle:library:307" deviceset="LM2596" device="S" package3d_urn="urn:adsk.eagle:package:16438/2"/>
+<part name="LM2575-5.0WU-(TR)" library="national-semiconductor" library_urn="urn:adsk.eagle:library:307" deviceset="LM2596" device="S" package3d_urn="urn:adsk.eagle:package:16438/2"/>
 <part name="C12" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100uF"/>
 <part name="L1" library="Eagle_WE-MK (rev21b)" deviceset="WE-MK_0805" device="_H0.85" package3d_urn="urn:adsk.eagle:package:28411842/3" technology="_7447880015" value="330uH"/>
 <part name="C13" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="330uF"/>
@@ -14202,7 +14202,7 @@ instead of soldering the chip directly onto the board</text>
 <attribute name="NAME" x="-48.26" y="151.13" size="1.778" layer="95"/>
 <attribute name="VALUE" x="-42.545" y="148.59" size="1.778" layer="96"/>
 </instance>
-<instance part="9V/5V" gate="G$1" x="-22.86" y="340.36" smashed="yes">
+<instance part="LM2575-5.0WU-(TR)" gate="G$1" x="-22.86" y="340.36" smashed="yes">
 <attribute name="NAME" x="-33.02" y="349.25" size="1.778" layer="95"/>
 </instance>
 <instance part="C12" gate="G$1" x="-50.8" y="322.58" smashed="yes" rot="R180">
@@ -14520,11 +14520,11 @@ instead of soldering the chip directly onto the board</text>
 <segment>
 <pinref part="C12" gate="G$1" pin="1"/>
 <wire x1="-50.8" y1="320.04" x2="-50.8" y2="317.5" width="0.1524" layer="91"/>
-<pinref part="9V/5V" gate="G$1" pin="GND"/>
+<pinref part="LM2575-5.0WU-(TR)" gate="G$1" pin="GND"/>
 <wire x1="-35.56" y1="335.28" x2="-38.1" y2="335.28" width="0.1524" layer="91"/>
 <wire x1="-38.1" y1="335.28" x2="-38.1" y2="317.5" width="0.1524" layer="91"/>
 <wire x1="-38.1" y1="317.5" x2="-43.18" y2="317.5" width="0.1524" layer="91"/>
-<pinref part="9V/5V" gate="G$1" pin="!ON!/OFF"/>
+<pinref part="LM2575-5.0WU-(TR)" gate="G$1" pin="!ON!/OFF"/>
 <wire x1="-43.18" y1="317.5" x2="-50.8" y2="317.5" width="0.1524" layer="91"/>
 <wire x1="-35.56" y1="340.36" x2="-43.18" y2="340.36" width="0.1524" layer="91"/>
 <wire x1="-43.18" y1="340.36" x2="-43.18" y2="317.5" width="0.1524" layer="91"/>
@@ -14801,7 +14801,7 @@ instead of soldering the chip directly onto the board</text>
 <wire x1="17.78" y1="342.9" x2="25.4" y2="342.9" width="0.1524" layer="91"/>
 <pinref part="C13" gate="G$1" pin="2"/>
 <wire x1="25.4" y1="342.9" x2="25.4" y2="337.82" width="0.1524" layer="91"/>
-<pinref part="9V/5V" gate="G$1" pin="FB"/>
+<pinref part="LM2575-5.0WU-(TR)" gate="G$1" pin="FB"/>
 <wire x1="25.4" y1="337.82" x2="25.4" y2="327.66" width="0.1524" layer="91"/>
 <wire x1="-10.16" y1="337.82" x2="25.4" y2="337.82" width="0.1524" layer="91"/>
 <junction x="25.4" y="337.82"/>
@@ -14979,7 +14979,7 @@ instead of soldering the chip directly onto the board</text>
 </net>
 <net name="N$7" class="0">
 <segment>
-<pinref part="9V/5V" gate="G$1" pin="OUT"/>
+<pinref part="LM2575-5.0WU-(TR)" gate="G$1" pin="OUT"/>
 <pinref part="L1" gate="G$1" pin="1"/>
 <wire x1="-10.16" y1="342.9" x2="-2.54" y2="342.9" width="0.1524" layer="91"/>
 <pinref part="D9" gate="1" pin="C"/>
@@ -15243,7 +15243,7 @@ instead of soldering the chip directly onto the board</text>
 </net>
 <net name="N$3" class="0">
 <segment>
-<pinref part="9V/5V" gate="G$1" pin="VIN"/>
+<pinref part="LM2575-5.0WU-(TR)" gate="G$1" pin="VIN"/>
 <wire x1="-35.56" y1="345.44" x2="-50.8" y2="345.44" width="0.1524" layer="91"/>
 <pinref part="C12" gate="G$1" pin="2"/>
 <wire x1="-50.8" y1="345.44" x2="-63.5" y2="345.44" width="0.1524" layer="91"/>

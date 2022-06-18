@@ -14282,15 +14282,15 @@ instead of soldering the chip directly onto the board</text>
 <instance part="GND19" gate="1" x="111.76" y="190.5" smashed="yes">
 <attribute name="VALUE" x="109.22" y="187.96" size="1.778" layer="96"/>
 </instance>
-<instance part="SV4" gate="G$1" x="-25.4" y="213.36" smashed="yes">
-<attribute name="VALUE" x="-29.21" y="200.66" size="1.778" layer="96"/>
-<attribute name="NAME" x="-29.21" y="224.282" size="1.778" layer="95"/>
+<instance part="SV4" gate="G$1" x="-38.1" y="200.66" smashed="yes">
+<attribute name="VALUE" x="-41.91" y="187.96" size="1.778" layer="96"/>
+<attribute name="NAME" x="-41.91" y="211.582" size="1.778" layer="95"/>
 </instance>
-<instance part="+3V7" gate="G$1" x="2.54" y="223.52" smashed="yes">
-<attribute name="VALUE" x="2.54" y="213.36" size="1.778" layer="96" rot="R90"/>
+<instance part="+3V7" gate="G$1" x="-10.16" y="210.82" smashed="yes">
+<attribute name="VALUE" x="-10.16" y="200.66" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="P+6" gate="1" x="12.7" y="215.9" smashed="yes">
-<attribute name="VALUE" x="12.7" y="208.28" size="1.778" layer="96" rot="R90"/>
+<instance part="P+6" gate="1" x="0" y="203.2" smashed="yes">
+<attribute name="VALUE" x="0" y="195.58" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="P+7" gate="1" x="226.06" y="208.28" smashed="yes">
 <attribute name="VALUE" x="226.06" y="200.66" size="1.778" layer="96" rot="R90"/>
@@ -14321,33 +14321,33 @@ instead of soldering the chip directly onto the board</text>
 <instance part="+3V2" gate="G$1" x="350.52" y="294.64" smashed="yes">
 <attribute name="VALUE" x="350.52" y="287.02" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="GND22" gate="1" x="208.28" y="322.58" smashed="yes">
-<attribute name="VALUE" x="205.74" y="320.04" size="1.778" layer="96"/>
+<instance part="GND22" gate="1" x="228.6" y="299.72" smashed="yes">
+<attribute name="VALUE" x="226.06" y="297.18" size="1.778" layer="96"/>
 </instance>
-<instance part="+3V5" gate="G$1" x="208.28" y="370.84" smashed="yes">
-<attribute name="VALUE" x="208.28" y="360.68" size="1.778" layer="96" rot="R90"/>
+<instance part="+3V5" gate="G$1" x="228.6" y="347.98" smashed="yes">
+<attribute name="VALUE" x="228.6" y="337.82" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="R3" gate="G$1" x="208.28" y="332.74" smashed="yes" rot="R90">
-<attribute name="NAME" x="206.7814" y="328.93" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="211.582" y="328.93" size="1.778" layer="96" rot="R90"/>
+<instance part="R3" gate="G$1" x="228.6" y="309.88" smashed="yes" rot="R90">
+<attribute name="NAME" x="227.1014" y="306.07" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="231.902" y="306.07" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="BTN_1" gate="1" x="208.28" y="350.52" smashed="yes">
-<attribute name="NAME" x="201.93" y="347.98" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="204.47" y="353.695" size="1.778" layer="96" rot="R90"/>
+<instance part="BTN_1" gate="1" x="228.6" y="327.66" smashed="yes">
+<attribute name="NAME" x="222.25" y="325.12" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="224.79" y="330.835" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="GND21" gate="1" x="220.98" y="322.58" smashed="yes">
-<attribute name="VALUE" x="218.44" y="320.04" size="1.778" layer="96"/>
+<instance part="GND21" gate="1" x="241.3" y="299.72" smashed="yes">
+<attribute name="VALUE" x="238.76" y="297.18" size="1.778" layer="96"/>
 </instance>
-<instance part="+3V8" gate="G$1" x="220.98" y="370.84" smashed="yes">
-<attribute name="VALUE" x="220.98" y="360.68" size="1.778" layer="96" rot="R90"/>
+<instance part="+3V8" gate="G$1" x="241.3" y="347.98" smashed="yes">
+<attribute name="VALUE" x="241.3" y="337.82" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="R4" gate="G$1" x="220.98" y="332.74" smashed="yes" rot="R90">
-<attribute name="NAME" x="219.4814" y="328.93" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="224.282" y="328.93" size="1.778" layer="96" rot="R90"/>
+<instance part="R4" gate="G$1" x="241.3" y="309.88" smashed="yes" rot="R90">
+<attribute name="NAME" x="239.8014" y="306.07" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="244.602" y="306.07" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="BTN_2" gate="1" x="220.98" y="350.52" smashed="yes">
-<attribute name="NAME" x="214.63" y="347.98" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="217.17" y="353.695" size="1.778" layer="96" rot="R90"/>
+<instance part="BTN_2" gate="1" x="241.3" y="327.66" smashed="yes">
+<attribute name="NAME" x="234.95" y="325.12" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="237.49" y="330.835" size="1.778" layer="96" rot="R90"/>
 </instance>
 </instances>
 <busses>
@@ -14588,14 +14588,13 @@ instead of soldering the chip directly onto the board</text>
 </segment>
 <segment>
 <pinref part="SV4" gate="G$1" pin="8"/>
-<wire x1="-33.02" y1="213.36" x2="-43.18" y2="213.36" width="0.1524" layer="91"/>
-<label x="-43.18" y="213.36" size="1.778" layer="95"/>
+<wire x1="-45.72" y1="200.66" x2="-55.88" y2="200.66" width="0.1524" layer="91"/>
+<label x="-55.88" y="200.66" size="1.778" layer="95"/>
 </segment>
 <segment>
-<wire x1="-35.56" y1="205.74" x2="-43.18" y2="205.74" width="0.1524" layer="91"/>
+<wire x1="-45.72" y1="193.04" x2="-55.88" y2="193.04" width="0.1524" layer="91"/>
 <pinref part="SV4" gate="G$1" pin="2"/>
-<wire x1="-35.56" y1="205.74" x2="-33.02" y2="205.74" width="0.1524" layer="91"/>
-<label x="-43.18" y="205.74" size="1.778" layer="95"/>
+<label x="-55.88" y="193.04" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="T1" gate="G1" pin="E"/>
@@ -14605,12 +14604,12 @@ instead of soldering the chip directly onto the board</text>
 <segment>
 <pinref part="GND22" gate="1" pin="GND"/>
 <pinref part="R3" gate="G$1" pin="1"/>
-<wire x1="208.28" y1="325.12" x2="208.28" y2="327.66" width="0.1524" layer="91"/>
+<wire x1="228.6" y1="302.26" x2="228.6" y2="304.8" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND21" gate="1" pin="GND"/>
 <pinref part="R4" gate="G$1" pin="1"/>
-<wire x1="220.98" y1="325.12" x2="220.98" y2="327.66" width="0.1524" layer="91"/>
+<wire x1="241.3" y1="302.26" x2="241.3" y2="304.8" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="AVDD" class="0">
@@ -14709,11 +14708,9 @@ instead of soldering the chip directly onto the board</text>
 </segment>
 <segment>
 <pinref part="SV4" gate="G$1" pin="7"/>
-<wire x1="-17.78" y1="213.36" x2="-12.7" y2="213.36" width="0.1524" layer="91"/>
 <pinref part="+3V7" gate="G$1" pin="+3V3"/>
-<wire x1="-12.7" y1="213.36" x2="-7.62" y2="213.36" width="0.1524" layer="91"/>
-<wire x1="2.54" y1="220.98" x2="2.54" y2="213.36" width="0.1524" layer="91"/>
-<wire x1="2.54" y1="213.36" x2="-7.62" y2="213.36" width="0.1524" layer="91"/>
+<wire x1="-10.16" y1="208.28" x2="-10.16" y2="200.66" width="0.1524" layer="91"/>
+<wire x1="-10.16" y1="200.66" x2="-30.48" y2="200.66" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="LED3" gate="G$1" pin="A"/>
@@ -14723,12 +14720,12 @@ instead of soldering the chip directly onto the board</text>
 <segment>
 <pinref part="BTN_1" gate="1" pin="S"/>
 <pinref part="+3V5" gate="G$1" pin="+3V3"/>
-<wire x1="208.28" y1="355.6" x2="208.28" y2="368.3" width="0.1524" layer="91"/>
+<wire x1="228.6" y1="332.74" x2="228.6" y2="345.44" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="BTN_2" gate="1" pin="S"/>
 <pinref part="+3V8" gate="G$1" pin="+3V3"/>
-<wire x1="220.98" y1="355.6" x2="220.98" y2="368.3" width="0.1524" layer="91"/>
+<wire x1="241.3" y1="332.74" x2="241.3" y2="345.44" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="MCLR" class="0">
@@ -14825,9 +14822,9 @@ instead of soldering the chip directly onto the board</text>
 </segment>
 <segment>
 <pinref part="SV4" gate="G$1" pin="1"/>
-<wire x1="-17.78" y1="205.74" x2="12.7" y2="205.74" width="0.1524" layer="91"/>
+<wire x1="-30.48" y1="193.04" x2="0" y2="193.04" width="0.1524" layer="91"/>
 <pinref part="P+6" gate="1" pin="+5V"/>
-<wire x1="12.7" y1="205.74" x2="12.7" y2="213.36" width="0.1524" layer="91"/>
+<wire x1="0" y1="193.04" x2="0" y2="200.66" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="J3" gate="G$1" pin="5"/>
@@ -14934,8 +14931,8 @@ instead of soldering the chip directly onto the board</text>
 </segment>
 <segment>
 <pinref part="SV4" gate="G$1" pin="14"/>
-<wire x1="-33.02" y1="220.98" x2="-43.18" y2="220.98" width="0.1524" layer="91"/>
-<label x="-43.18" y="220.98" size="1.778" layer="95"/>
+<wire x1="-45.72" y1="208.28" x2="-55.88" y2="208.28" width="0.1524" layer="91"/>
+<label x="-55.88" y="208.28" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="LED2" class="0">
@@ -14951,8 +14948,8 @@ instead of soldering the chip directly onto the board</text>
 </segment>
 <segment>
 <pinref part="SV4" gate="G$1" pin="12"/>
-<wire x1="-33.02" y1="218.44" x2="-43.18" y2="218.44" width="0.1524" layer="91"/>
-<label x="-43.18" y="218.44" size="1.778" layer="95"/>
+<wire x1="-45.72" y1="205.74" x2="-55.88" y2="205.74" width="0.1524" layer="91"/>
+<label x="-55.88" y="205.74" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PWM1L1" class="0">
@@ -15147,8 +15144,8 @@ instead of soldering the chip directly onto the board</text>
 </segment>
 <segment>
 <pinref part="SV4" gate="G$1" pin="10"/>
-<wire x1="-33.02" y1="215.9" x2="-43.18" y2="215.9" width="0.1524" layer="91"/>
-<label x="-43.18" y="215.9" size="1.778" layer="95"/>
+<wire x1="-45.72" y1="203.2" x2="-55.88" y2="203.2" width="0.1524" layer="91"/>
+<label x="-55.88" y="203.2" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PWM2H1" class="0">
@@ -15159,8 +15156,8 @@ instead of soldering the chip directly onto the board</text>
 </segment>
 <segment>
 <pinref part="SV4" gate="G$1" pin="6"/>
-<wire x1="-33.02" y1="210.82" x2="-43.18" y2="210.82" width="0.1524" layer="91"/>
-<label x="-43.18" y="210.82" size="1.778" layer="95"/>
+<wire x1="-45.72" y1="198.12" x2="-55.88" y2="198.12" width="0.1524" layer="91"/>
+<label x="-55.88" y="198.12" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PWM2L1" class="0">
@@ -15171,8 +15168,8 @@ instead of soldering the chip directly onto the board</text>
 </segment>
 <segment>
 <pinref part="SV4" gate="G$1" pin="4"/>
-<wire x1="-33.02" y1="208.28" x2="-43.18" y2="208.28" width="0.1524" layer="91"/>
-<label x="-43.18" y="208.28" size="1.778" layer="95"/>
+<wire x1="-45.72" y1="195.58" x2="-55.88" y2="195.58" width="0.1524" layer="91"/>
+<label x="-55.88" y="195.58" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="RP24" class="0">
@@ -15197,8 +15194,8 @@ instead of soldering the chip directly onto the board</text>
 </segment>
 <segment>
 <pinref part="SV4" gate="G$1" pin="3"/>
-<wire x1="-17.78" y1="208.28" x2="-7.62" y2="208.28" width="0.1524" layer="91"/>
-<label x="-12.7" y="208.28" size="1.778" layer="95"/>
+<wire x1="-30.48" y1="195.58" x2="-20.32" y2="195.58" width="0.1524" layer="91"/>
+<label x="-25.4" y="195.58" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="IO6" class="0">
@@ -15209,8 +15206,8 @@ instead of soldering the chip directly onto the board</text>
 </segment>
 <segment>
 <pinref part="SV4" gate="G$1" pin="5"/>
-<wire x1="-17.78" y1="210.82" x2="-7.62" y2="210.82" width="0.1524" layer="91"/>
-<label x="-12.7" y="210.82" size="1.778" layer="95"/>
+<wire x1="-30.48" y1="198.12" x2="-20.32" y2="198.12" width="0.1524" layer="91"/>
+<label x="-25.4" y="198.12" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="IO7" class="0">
@@ -15221,8 +15218,8 @@ instead of soldering the chip directly onto the board</text>
 </segment>
 <segment>
 <pinref part="SV4" gate="G$1" pin="9"/>
-<wire x1="-17.78" y1="215.9" x2="-7.62" y2="215.9" width="0.1524" layer="91"/>
-<label x="-12.7" y="215.9" size="1.778" layer="95"/>
+<wire x1="-30.48" y1="203.2" x2="-20.32" y2="203.2" width="0.1524" layer="91"/>
+<label x="-25.4" y="203.2" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="IO8" class="0">
@@ -15233,14 +15230,14 @@ instead of soldering the chip directly onto the board</text>
 </segment>
 <segment>
 <pinref part="SV4" gate="G$1" pin="11"/>
-<wire x1="-17.78" y1="218.44" x2="-7.62" y2="218.44" width="0.1524" layer="91"/>
-<label x="-12.7" y="218.44" size="1.778" layer="95"/>
+<wire x1="-30.48" y1="205.74" x2="-20.32" y2="205.74" width="0.1524" layer="91"/>
+<label x="-25.4" y="205.74" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$2" class="0">
 <segment>
 <pinref part="SV4" gate="G$1" pin="13"/>
-<wire x1="-17.78" y1="220.98" x2="-7.62" y2="220.98" width="0.1524" layer="91"/>
+<wire x1="-30.48" y1="208.28" x2="-20.32" y2="208.28" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$3" class="0">
@@ -15301,11 +15298,11 @@ instead of soldering the chip directly onto the board</text>
 <segment>
 <pinref part="R3" gate="G$1" pin="2"/>
 <pinref part="BTN_1" gate="1" pin="P"/>
-<wire x1="208.28" y1="337.82" x2="208.28" y2="342.9" width="0.1524" layer="91"/>
-<wire x1="208.28" y1="342.9" x2="208.28" y2="345.44" width="0.1524" layer="91"/>
-<wire x1="208.28" y1="342.9" x2="238.76" y2="342.9" width="0.1524" layer="91"/>
-<junction x="208.28" y="342.9"/>
-<label x="231.14" y="342.9" size="1.778" layer="95"/>
+<wire x1="228.6" y1="314.96" x2="228.6" y2="320.04" width="0.1524" layer="91"/>
+<wire x1="228.6" y1="320.04" x2="228.6" y2="322.58" width="0.1524" layer="91"/>
+<wire x1="228.6" y1="320.04" x2="259.08" y2="320.04" width="0.1524" layer="91"/>
+<junction x="228.6" y="320.04"/>
+<label x="251.46" y="320.04" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="MICROCONTROLLER" gate="G$1" pin="INT0/RP7/CN23/PMD5/RB7"/>
@@ -15317,11 +15314,11 @@ instead of soldering the chip directly onto the board</text>
 <segment>
 <pinref part="R4" gate="G$1" pin="2"/>
 <pinref part="BTN_2" gate="1" pin="P"/>
-<wire x1="220.98" y1="337.82" x2="220.98" y2="340.36" width="0.1524" layer="91"/>
-<wire x1="220.98" y1="340.36" x2="220.98" y2="345.44" width="0.1524" layer="91"/>
-<wire x1="220.98" y1="340.36" x2="238.76" y2="340.36" width="0.1524" layer="91"/>
-<junction x="220.98" y="340.36"/>
-<label x="231.14" y="340.36" size="1.778" layer="95"/>
+<wire x1="241.3" y1="314.96" x2="241.3" y2="317.5" width="0.1524" layer="91"/>
+<wire x1="241.3" y1="317.5" x2="241.3" y2="322.58" width="0.1524" layer="91"/>
+<wire x1="241.3" y1="317.5" x2="259.08" y2="317.5" width="0.1524" layer="91"/>
+<junction x="241.3" y="317.5"/>
+<label x="251.46" y="317.5" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="MICROCONTROLLER" gate="G$1" pin="PGEC3/ASCL1/RP6/CN24/PMD6/RB6"/>

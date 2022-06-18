@@ -14677,16 +14677,6 @@ instead of soldering the chip directly onto the board</text>
 </net>
 <net name="MCLR" class="0">
 <segment>
-<wire x1="71.12" y1="116.84" x2="60.96" y2="116.84" width="0.1524" layer="91"/>
-<label x="60.96" y="116.84" size="1.778" layer="95"/>
-<pinref part="MICROCONTROLLER" gate="G$1" pin="MCLR"/>
-</segment>
-<segment>
-<wire x1="-15.24" y1="144.78" x2="-7.62" y2="144.78" width="0.1524" layer="91"/>
-<label x="-15.24" y="144.78" size="1.778" layer="95"/>
-<pinref part="R9" gate="G$1" pin="1"/>
-</segment>
-<segment>
 <pinref part="J4" gate="1" pin="1"/>
 <wire x1="132.08" y1="210.82" x2="124.46" y2="210.82" width="0.1524" layer="91"/>
 <label x="124.46" y="210.82" size="1.778" layer="95"/>
@@ -15237,6 +15227,18 @@ instead of soldering the chip directly onto the board</text>
 <pinref part="R1" gate="G$1" pin="2"/>
 <pinref part="LED3" gate="G$1" pin="C"/>
 <wire x1="350.52" y1="276.86" x2="350.52" y2="279.4" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N_MCLR" class="0">
+<segment>
+<wire x1="-15.24" y1="144.78" x2="-7.62" y2="144.78" width="0.1524" layer="91"/>
+<label x="-15.24" y="144.78" size="1.778" layer="95"/>
+<pinref part="R9" gate="G$1" pin="1"/>
+</segment>
+<segment>
+<wire x1="71.12" y1="116.84" x2="60.96" y2="116.84" width="0.1524" layer="91"/>
+<label x="60.96" y="116.84" size="1.778" layer="95"/>
+<pinref part="MICROCONTROLLER" gate="G$1" pin="MCLR"/>
 </segment>
 </net>
 </nets>

@@ -13950,7 +13950,7 @@ W = angled&lt;p&gt;
 <part name="SUPPLY2" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="+9V" device=""/>
 <part name="P+2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 <part name="C11" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100nF"/>
-<part name="RESET" library="switch-omron" library_urn="urn:adsk.eagle:library:377" deviceset="10-XX" device="" package3d_urn="urn:adsk.eagle:package:27496/1"/>
+<part name="RESET" library="switch-omron" library_urn="urn:adsk.eagle:library:377" deviceset="10-XX" device="" package3d_urn="urn:adsk.eagle:package:27496/1" value="B3F-1000"/>
 <part name="LM2575-5.0WU-(TR)" library="national-semiconductor" library_urn="urn:adsk.eagle:library:307" deviceset="LM2596" device="S" package3d_urn="urn:adsk.eagle:package:16438/2"/>
 <part name="C12" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100uF"/>
 <part name="L1" library="Eagle_WE-MK (rev21b)" deviceset="WE-MK_0805" device="_H0.85" package3d_urn="urn:adsk.eagle:package:28411842/3" technology="_7447880015" value="330uH"/>
@@ -13969,7 +13969,7 @@ W = angled&lt;p&gt;
 <part name="J2" library="con-ml" library_urn="urn:adsk.eagle:library:164" deviceset="ML6" device="" package3d_urn="urn:adsk.eagle:package:8675/1" value="Connector_M1"/>
 <part name="P+4" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 <part name="P+5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
-<part name="J3" library="con-lsta" library_urn="urn:adsk.eagle:library:161" deviceset="FE06-1" device="" package3d_urn="urn:adsk.eagle:package:8191/1" value="UART"/>
+<part name="HC05/06" library="con-lsta" library_urn="urn:adsk.eagle:library:161" deviceset="FE06-1" device="" package3d_urn="urn:adsk.eagle:package:8191/1" value="UART"/>
 <part name="J4" library="con-lstb" library_urn="urn:adsk.eagle:library:162" deviceset="MA06-1" device="" package3d_urn="urn:adsk.eagle:package:8340/1" value="Programmer"/>
 <part name="+3V6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="GND17" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
@@ -13977,7 +13977,6 @@ W = angled&lt;p&gt;
 <part name="SV4" library="con-lstb" library_urn="urn:adsk.eagle:library:162" deviceset="MA07-2" device="" package3d_urn="urn:adsk.eagle:package:8330/1" value="PIN header"/>
 <part name="+3V7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="P+6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
-<part name="P+7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 <part name="ON/OFF" library="smd-special" library_urn="urn:adsk.eagle:library:362" deviceset="SWS001" device="" package3d_urn="urn:adsk.eagle:package:26467/1"/>
 <part name="T1" library="transistor" library_urn="urn:adsk.eagle:library:402" deviceset="2N3904" device="" package3d_urn="urn:adsk.eagle:package:28523/2"/>
 <part name="R1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="???"/>
@@ -13988,11 +13987,12 @@ W = angled&lt;p&gt;
 <part name="GND22" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="+3V5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="R3" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="10k"/>
-<part name="BTN_1" library="switch-omron" library_urn="urn:adsk.eagle:library:377" deviceset="10-XX" device="" package3d_urn="urn:adsk.eagle:package:27496/1"/>
+<part name="BTN_1" library="switch-omron" library_urn="urn:adsk.eagle:library:377" deviceset="10-XX" device="" package3d_urn="urn:adsk.eagle:package:27496/1" value="B3F-1000"/>
 <part name="GND21" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="+3V8" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="R4" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="10k"/>
-<part name="BTN_2" library="switch-omron" library_urn="urn:adsk.eagle:library:377" deviceset="10-XX" device="" package3d_urn="urn:adsk.eagle:package:27496/1"/>
+<part name="BTN_2" library="switch-omron" library_urn="urn:adsk.eagle:library:377" deviceset="10-XX" device="" package3d_urn="urn:adsk.eagle:package:27496/1" value="B3F-1000"/>
+<part name="+3V9" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -14020,6 +14020,13 @@ routes into the microcontroller</text>
 instead of soldering the chip directly onto the board</text>
 <text x="297.18" y="256.54" size="1.778" layer="91">Alternative: Transistor?</text>
 <text x="360.68" y="281.94" size="1.778" layer="91">20mA @ 0.1 V?</text>
+<text x="157.48" y="58.42" size="1.778" layer="91">f_cutoff = 796Hz, same as on dev board</text>
+<text x="35.56" y="337.82" size="1.778" layer="91">Check if these are correct.
+Just used the once of the datasheet.</text>
+<text x="35.56" y="294.64" size="1.778" layer="91">Check if these are correct.
+Just used the once of the datasheet.</text>
+<text x="-88.9" y="355.6" size="1.778" layer="91">TODO: Find appropriate switch
+that matches excel sheet</text>
 </plain>
 <instances>
 <instance part="GND2" gate="1" x="200.66" y="104.14" smashed="yes">
@@ -14198,8 +14205,8 @@ instead of soldering the chip directly onto the board</text>
 <attribute name="VALUE" x="366.776" y="141.859" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="RESET" gate="1" x="-45.72" y="144.78" smashed="yes" rot="R270">
-<attribute name="NAME" x="-48.26" y="151.13" size="1.778" layer="95"/>
-<attribute name="VALUE" x="-42.545" y="148.59" size="1.778" layer="96"/>
+<attribute name="NAME" x="-50.8" y="151.13" size="1.778" layer="95"/>
+<attribute name="VALUE" x="-50.165" y="138.43" size="1.778" layer="96"/>
 </instance>
 <instance part="LM2575-5.0WU-(TR)" gate="G$1" x="-22.86" y="340.36" smashed="yes">
 <attribute name="NAME" x="-33.02" y="349.25" size="1.778" layer="95"/>
@@ -14265,7 +14272,7 @@ instead of soldering the chip directly onto the board</text>
 <instance part="P+5" gate="1" x="297.18" y="81.28" smashed="yes">
 <attribute name="VALUE" x="297.18" y="73.66" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="J3" gate="G$1" x="259.08" y="200.66" smashed="yes" rot="R180">
+<instance part="HC05/06" gate="G$1" x="259.08" y="200.66" smashed="yes" rot="R180">
 <attribute name="VALUE" x="260.35" y="210.82" size="1.778" layer="96" rot="R180"/>
 <attribute name="NAME" x="260.35" y="189.738" size="1.778" layer="95" rot="R180"/>
 </instance>
@@ -14291,9 +14298,6 @@ instead of soldering the chip directly onto the board</text>
 </instance>
 <instance part="P+6" gate="1" x="0" y="203.2" smashed="yes">
 <attribute name="VALUE" x="0" y="195.58" size="1.778" layer="96" rot="R90"/>
-</instance>
-<instance part="P+7" gate="1" x="226.06" y="208.28" smashed="yes">
-<attribute name="VALUE" x="226.06" y="200.66" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="ON/OFF" gate="G$1" x="-78.74" y="345.44" smashed="yes" rot="R90">
 <attribute name="NAME" x="-76.2" y="342.9" size="1.778" layer="95" rot="R180"/>
@@ -14333,7 +14337,7 @@ instead of soldering the chip directly onto the board</text>
 </instance>
 <instance part="BTN_1" gate="1" x="228.6" y="327.66" smashed="yes">
 <attribute name="NAME" x="222.25" y="325.12" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="224.79" y="330.835" size="1.778" layer="96" rot="R90"/>
+<attribute name="VALUE" x="222.25" y="335.915" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="GND21" gate="1" x="241.3" y="299.72" smashed="yes">
 <attribute name="VALUE" x="238.76" y="297.18" size="1.778" layer="96"/>
@@ -14347,7 +14351,10 @@ instead of soldering the chip directly onto the board</text>
 </instance>
 <instance part="BTN_2" gate="1" x="241.3" y="327.66" smashed="yes">
 <attribute name="NAME" x="234.95" y="325.12" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="237.49" y="330.835" size="1.778" layer="96" rot="R90"/>
+<attribute name="VALUE" x="234.95" y="335.915" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="+3V9" gate="G$1" x="226.06" y="208.28" smashed="yes">
+<attribute name="VALUE" x="226.06" y="198.12" size="1.778" layer="96" rot="R90"/>
 </instance>
 </instances>
 <busses>
@@ -14577,7 +14584,7 @@ instead of soldering the chip directly onto the board</text>
 <segment>
 <pinref part="GND17" gate="1" pin="GND"/>
 <wire x1="233.68" y1="198.12" x2="233.68" y2="187.96" width="0.1524" layer="91"/>
-<pinref part="J3" gate="G$1" pin="4"/>
+<pinref part="HC05/06" gate="G$1" pin="4"/>
 <wire x1="233.68" y1="198.12" x2="251.46" y2="198.12" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -14727,6 +14734,12 @@ instead of soldering the chip directly onto the board</text>
 <pinref part="+3V8" gate="G$1" pin="+3V3"/>
 <wire x1="241.3" y1="332.74" x2="241.3" y2="345.44" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="HC05/06" gate="G$1" pin="5"/>
+<wire x1="226.06" y1="205.74" x2="226.06" y2="195.58" width="0.1524" layer="91"/>
+<wire x1="226.06" y1="195.58" x2="251.46" y2="195.58" width="0.1524" layer="91"/>
+<pinref part="+3V9" gate="G$1" pin="+3V3"/>
+</segment>
 </net>
 <net name="MCLR" class="0">
 <segment>
@@ -14825,12 +14838,6 @@ instead of soldering the chip directly onto the board</text>
 <wire x1="-30.48" y1="193.04" x2="0" y2="193.04" width="0.1524" layer="91"/>
 <pinref part="P+6" gate="1" pin="+5V"/>
 <wire x1="0" y1="193.04" x2="0" y2="200.66" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="J3" gate="G$1" pin="5"/>
-<wire x1="226.06" y1="205.74" x2="226.06" y2="195.58" width="0.1524" layer="91"/>
-<wire x1="226.06" y1="195.58" x2="251.46" y2="195.58" width="0.1524" layer="91"/>
-<pinref part="P+7" gate="1" pin="+5V"/>
 </segment>
 </net>
 <net name="AN1" class="0">
@@ -15119,7 +15126,7 @@ instead of soldering the chip directly onto the board</text>
 <label x="170.18" y="160.02" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="J3" gate="G$1" pin="2"/>
+<pinref part="HC05/06" gate="G$1" pin="2"/>
 <wire x1="251.46" y1="203.2" x2="243.84" y2="203.2" width="0.1524" layer="91"/>
 <label x="243.84" y="203.2" size="1.778" layer="95"/>
 </segment>
@@ -15131,7 +15138,7 @@ instead of soldering the chip directly onto the board</text>
 <label x="60.96" y="160.02" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="J3" gate="G$1" pin="3"/>
+<pinref part="HC05/06" gate="G$1" pin="3"/>
 <wire x1="251.46" y1="200.66" x2="243.84" y2="200.66" width="0.1524" layer="91"/>
 <label x="243.84" y="200.66" size="1.778" layer="95"/>
 </segment>

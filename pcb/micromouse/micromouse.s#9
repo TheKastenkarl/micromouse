@@ -13950,7 +13950,7 @@ W = angled&lt;p&gt;
 <part name="SUPPLY2" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="+9V" device=""/>
 <part name="P+2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 <part name="C11" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100nF"/>
-<part name="RESET" library="switch-omron" library_urn="urn:adsk.eagle:library:377" deviceset="10-XX" device="" package3d_urn="urn:adsk.eagle:package:27496/1"/>
+<part name="RESET" library="switch-omron" library_urn="urn:adsk.eagle:library:377" deviceset="10-XX" device="" package3d_urn="urn:adsk.eagle:package:27496/1" value="B3F-1000"/>
 <part name="LM2575-5.0WU-(TR)" library="national-semiconductor" library_urn="urn:adsk.eagle:library:307" deviceset="LM2596" device="S" package3d_urn="urn:adsk.eagle:package:16438/2"/>
 <part name="C12" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100uF"/>
 <part name="L1" library="Eagle_WE-MK (rev21b)" deviceset="WE-MK_0805" device="_H0.85" package3d_urn="urn:adsk.eagle:package:28411842/3" technology="_7447880015" value="330uH"/>
@@ -13987,11 +13987,11 @@ W = angled&lt;p&gt;
 <part name="GND22" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="+3V5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="R3" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="10k"/>
-<part name="BTN_1" library="switch-omron" library_urn="urn:adsk.eagle:library:377" deviceset="10-XX" device="" package3d_urn="urn:adsk.eagle:package:27496/1"/>
+<part name="BTN_1" library="switch-omron" library_urn="urn:adsk.eagle:library:377" deviceset="10-XX" device="" package3d_urn="urn:adsk.eagle:package:27496/1" value="B3F-1000"/>
 <part name="GND21" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="+3V8" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="R4" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="10k"/>
-<part name="BTN_2" library="switch-omron" library_urn="urn:adsk.eagle:library:377" deviceset="10-XX" device="" package3d_urn="urn:adsk.eagle:package:27496/1"/>
+<part name="BTN_2" library="switch-omron" library_urn="urn:adsk.eagle:library:377" deviceset="10-XX" device="" package3d_urn="urn:adsk.eagle:package:27496/1" value="B3F-1000"/>
 <part name="+3V9" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 </parts>
 <sheets>
@@ -14025,6 +14025,8 @@ instead of soldering the chip directly onto the board</text>
 Just used the once of the datasheet.</text>
 <text x="35.56" y="294.64" size="1.778" layer="91">Check if these are correct.
 Just used the once of the datasheet.</text>
+<text x="-88.9" y="355.6" size="1.778" layer="91">TODO: Find appropriate switch
+see excel sheet</text>
 </plain>
 <instances>
 <instance part="GND2" gate="1" x="200.66" y="104.14" smashed="yes">
@@ -14203,8 +14205,8 @@ Just used the once of the datasheet.</text>
 <attribute name="VALUE" x="366.776" y="141.859" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="RESET" gate="1" x="-45.72" y="144.78" smashed="yes" rot="R270">
-<attribute name="NAME" x="-48.26" y="151.13" size="1.778" layer="95"/>
-<attribute name="VALUE" x="-42.545" y="148.59" size="1.778" layer="96"/>
+<attribute name="NAME" x="-50.8" y="151.13" size="1.778" layer="95"/>
+<attribute name="VALUE" x="-50.165" y="138.43" size="1.778" layer="96"/>
 </instance>
 <instance part="LM2575-5.0WU-(TR)" gate="G$1" x="-22.86" y="340.36" smashed="yes">
 <attribute name="NAME" x="-33.02" y="349.25" size="1.778" layer="95"/>
@@ -14335,7 +14337,7 @@ Just used the once of the datasheet.</text>
 </instance>
 <instance part="BTN_1" gate="1" x="228.6" y="327.66" smashed="yes">
 <attribute name="NAME" x="222.25" y="325.12" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="224.79" y="330.835" size="1.778" layer="96" rot="R90"/>
+<attribute name="VALUE" x="222.25" y="335.915" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="GND21" gate="1" x="241.3" y="299.72" smashed="yes">
 <attribute name="VALUE" x="238.76" y="297.18" size="1.778" layer="96"/>
@@ -14349,7 +14351,7 @@ Just used the once of the datasheet.</text>
 </instance>
 <instance part="BTN_2" gate="1" x="241.3" y="327.66" smashed="yes">
 <attribute name="NAME" x="234.95" y="325.12" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="237.49" y="330.835" size="1.778" layer="96" rot="R90"/>
+<attribute name="VALUE" x="234.95" y="335.915" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="+3V9" gate="G$1" x="226.06" y="208.28" smashed="yes">
 <attribute name="VALUE" x="226.06" y="198.12" size="1.778" layer="96" rot="R90"/>

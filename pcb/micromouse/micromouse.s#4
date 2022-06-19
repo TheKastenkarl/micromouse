@@ -14008,17 +14008,17 @@ See p.8 of microcontroller datasheet:
 0 equals to reset? This is what reset button does.</text>
 <text x="203.2" y="233.68" size="1.778" layer="91">Add jumper to disconnect them from pins on uC in case we need the pins later on?</text>
 <text x="203.2" y="231.14" size="1.778" layer="91">(like on demo board)</text>
-<text x="12.7" y="137.16" size="1.778" layer="91">S. 357 Microcontroller:
+<text x="12.7" y="137.16" size="1.778" layer="91">TODO: S. 357 Microcontroller:
 Anscheinend haben unterschiedliche PINS
 unterschiedliche max. Strombegrenzung.
 Checken dass PINS 20mA liefern können. 
 Zusätzlich 200mA max auf allen PINs.</text>
 <text x="264.16" y="251.46" size="1.778" layer="91">20mA @ 3.2 V?</text>
 <text x="264.16" y="261.62" size="1.778" layer="91">20mA @ 0.1 V?</text>
-<text x="276.86" y="58.42" size="1.778" layer="91">Should we use 3.3V instead since our digital logic is 3.3V as well?
+<text x="276.86" y="58.42" size="1.778" layer="91">IDEA: Should we use 3.3V instead since our digital logic is 3.3V as well?
 Worried that this wiill lead to 5V in the encoder output that then
 routes into the microcontroller</text>
-<text x="294.64" y="154.94" size="1.778" layer="91">Use one of these holders
+<text x="294.64" y="154.94" size="1.778" layer="91">IDEA: Use one of these holders
 instead of soldering the chip directly onto the board</text>
 <text x="297.18" y="256.54" size="1.778" layer="91">Alternative: Transistor?</text>
 <text x="360.68" y="281.94" size="1.778" layer="91">20mA @ 0.1 V?</text>

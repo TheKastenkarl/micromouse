@@ -13082,7 +13082,7 @@ W = angled&lt;p&gt;
 <text x="297.18" y="35.56" size="1.778" layer="91">https://www.mikrocontroller.net/topic/393245
 2.54mm grid</text>
 <text x="248.92" y="182.88" size="1.778" layer="91">PIN6 EN nutzen????
-Sehe jetzt keine Notwendigkeit. Das Setup mit den AT commands können wir ha auf dem Breadboard machen.</text>
+&gt;&gt;&gt;Sehe jetzt keine Notwendigkeit. Das Setup mit den AT commands können wir ha auf dem Breadboard machen.</text>
 <text x="60.96" y="91.44" size="1.778" layer="91">MCLR needs to be negated for the programmer?
 &gt;&gt;&gt;See p.8 of microcontroller datasheet:
 0 equals to reset? This is what reset button does.</text>

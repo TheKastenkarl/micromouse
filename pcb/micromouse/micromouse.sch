@@ -13113,6 +13113,9 @@ that matches excel sheet</text>
 <text x="119.38" y="220.98" size="1.778" layer="91">TOOD: Please check PGD and PGC.
 I think that PGD is on 4 and PGC on 5.</text>
 <text x="172.72" y="187.96" size="1.778" layer="91">TODO: Do we need decoupling capacitor?</text>
+<text x="101.6" y="327.66" size="1.778" layer="91">TODO: Check if these are the correct ones.
+Seems to me that we need 1.5mm pin distances:
+https://www.datasheets.com/en/part-details/11501w00-3p-s-hf-r-shenglan-technology-co---ltd-403414635</text>
 </plain>
 <instances>
 <instance part="GND2" gate="1" x="200.66" y="104.14" smashed="yes">

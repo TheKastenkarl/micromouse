@@ -14026,7 +14026,7 @@ Just used the once of the datasheet.</text>
 <text x="35.56" y="294.64" size="1.778" layer="91">Check if these are correct.
 Just used the once of the datasheet.</text>
 <text x="-88.9" y="355.6" size="1.778" layer="91">TODO: Find appropriate switch
-see excel sheet</text>
+that matches excel sheet</text>
 </plain>
 <instances>
 <instance part="GND2" gate="1" x="200.66" y="104.14" smashed="yes">

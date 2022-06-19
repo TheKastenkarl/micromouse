@@ -14026,12 +14026,13 @@ instead of soldering the chip directly onto the board</text>
 <text x="35.56" y="337.82" size="1.778" layer="91">Check if these are correct.
 Just used the once of the datasheet.</text>
 <text x="35.56" y="294.64" size="1.778" layer="91">Check if these are correct.
-Just used the once of the datasheet.</text>
+Just used the ones of the datasheet.</text>
 <text x="-88.9" y="355.6" size="1.778" layer="91">TODO: Find appropriate switch
 that matches excel sheet</text>
 <text x="-48.26" y="218.44" size="1.778" layer="91">IDEA: Add RX, TX</text>
 <text x="119.38" y="220.98" size="1.778" layer="91">TOOD: Please check PGD and PGC.
 I think that PGD is on 4 and PGC on 5.</text>
+<text x="172.72" y="187.96" size="1.778" layer="91">TODO: Do we need decoupling capacitor?</text>
 </plain>
 <instances>
 <instance part="GND2" gate="1" x="200.66" y="104.14" smashed="yes">

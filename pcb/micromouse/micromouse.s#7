@@ -13044,11 +13044,16 @@ W = angled&lt;p&gt;
 <part name="R1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="62"/>
 <part name="GND12" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="+3V12" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
+<part name="C18" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100nF"/>
+<part name="GND25" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="C19" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100nF"/>
+<part name="GND26" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="C20" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100nF"/>
 </parts>
 <sheets>
 <sheet>
 <plain>
-<text x="297.18" y="33.02" size="1.778" layer="91">2.54mm grid needed according to motor data sheet
+<text x="309.88" y="27.94" size="1.778" layer="91">2.54mm grid needed according to motor data sheet
 (this conector fulfills this: https://www.mikrocontroller.net/topic/393245)</text>
 <text x="248.92" y="180.34" size="1.778" layer="91">PIN6 EN nutzen?
 &gt;&gt;&gt; Sehe jetzt keine Notwendigkeit. Das Setup mit den AT commands können wir ha auf dem Breadboard machen.</text>
@@ -13333,8 +13338,8 @@ Furthermore, female headers and not male headers are needed.</text>
 <attribute name="VALUE" x="140.97" y="215.9" size="1.778" layer="96" rot="R180"/>
 <attribute name="NAME" x="140.97" y="194.818" size="1.778" layer="95" rot="R180"/>
 </instance>
-<instance part="+3V6" gate="G$1" x="111.76" y="220.98" smashed="yes">
-<attribute name="VALUE" x="111.76" y="210.82" size="1.778" layer="96" rot="R90"/>
+<instance part="+3V6" gate="G$1" x="104.14" y="220.98" smashed="yes">
+<attribute name="VALUE" x="104.14" y="210.82" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="GND19" gate="1" x="111.76" y="190.5" smashed="yes">
 <attribute name="VALUE" x="109.22" y="187.96" size="1.778" layer="96"/>
@@ -13402,8 +13407,8 @@ Furthermore, female headers and not male headers are needed.</text>
 <attribute name="NAME" x="-125.984" y="213.868" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="-123.825" y="213.868" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="+3V10" gate="G$1" x="297.18" y="76.2" smashed="yes">
-<attribute name="VALUE" x="297.18" y="66.04" size="1.778" layer="96" rot="R90"/>
+<instance part="+3V10" gate="G$1" x="284.48" y="76.2" smashed="yes">
+<attribute name="VALUE" x="284.48" y="66.04" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="+3V11" gate="G$1" x="297.18" y="55.88" smashed="yes">
 <attribute name="VALUE" x="297.18" y="45.72" size="1.778" layer="96" rot="R90"/>
@@ -13434,6 +13439,24 @@ Furthermore, female headers and not male headers are needed.</text>
 </instance>
 <instance part="+3V12" gate="G$1" x="-129.54" y="248.92" smashed="yes">
 <attribute name="VALUE" x="-129.54" y="241.3" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="C18" gate="G$1" x="104.14" y="200.66" smashed="yes" rot="R180">
+<attribute name="NAME" x="102.616" y="200.279" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="102.616" y="205.359" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="GND25" gate="1" x="350.52" y="40.64" smashed="yes">
+<attribute name="VALUE" x="347.98" y="38.1" size="1.778" layer="96"/>
+</instance>
+<instance part="C19" gate="G$1" x="297.18" y="35.56" smashed="yes" rot="R180">
+<attribute name="NAME" x="303.276" y="35.179" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="305.816" y="40.259" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="GND26" gate="1" x="297.18" y="27.94" smashed="yes">
+<attribute name="VALUE" x="294.64" y="25.4" size="1.778" layer="96"/>
+</instance>
+<instance part="C20" gate="G$1" x="284.48" y="35.56" smashed="yes" rot="R180">
+<attribute name="NAME" x="290.576" y="35.179" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="293.116" y="40.259" size="1.778" layer="96" rot="R180"/>
 </instance>
 </instances>
 <busses>
@@ -13604,19 +13627,26 @@ Furthermore, female headers and not male headers are needed.</text>
 </segment>
 <segment>
 <pinref part="J2" gate="1" pin="3"/>
-<wire x1="330.2" y1="48.26" x2="342.9" y2="48.26" width="0.1524" layer="91"/>
+<wire x1="330.2" y1="48.26" x2="350.52" y2="48.26" width="0.1524" layer="91"/>
 <label x="332.74" y="48.26" size="1.778" layer="95"/>
-</segment>
-<segment>
-<wire x1="330.2" y1="68.58" x2="342.9" y2="68.58" width="0.1524" layer="91"/>
+<pinref part="GND25" gate="1" pin="GND"/>
+<wire x1="350.52" y1="48.26" x2="350.52" y2="45.72" width="0.1524" layer="91"/>
+<wire x1="350.52" y1="45.72" x2="350.52" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="330.2" y1="68.58" x2="350.52" y2="68.58" width="0.1524" layer="91"/>
 <pinref part="J1" gate="1" pin="3"/>
 <label x="332.74" y="68.58" size="1.778" layer="95"/>
+<wire x1="350.52" y1="68.58" x2="350.52" y2="48.26" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="J4" gate="1" pin="3"/>
 <wire x1="132.08" y1="205.74" x2="111.76" y2="205.74" width="0.1524" layer="91"/>
 <pinref part="GND19" gate="1" pin="GND"/>
-<wire x1="111.76" y1="205.74" x2="111.76" y2="193.04" width="0.1524" layer="91"/>
+<wire x1="111.76" y1="205.74" x2="111.76" y2="195.58" width="0.1524" layer="91"/>
+<pinref part="C18" gate="G$1" pin="1"/>
+<wire x1="111.76" y1="195.58" x2="111.76" y2="193.04" width="0.1524" layer="91"/>
+<wire x1="104.14" y1="198.12" x2="104.14" y2="195.58" width="0.1524" layer="91"/>
+<wire x1="104.14" y1="195.58" x2="111.76" y2="195.58" width="0.1524" layer="91"/>
+<junction x="111.76" y="195.58"/>
 </segment>
 <segment>
 <pinref part="GND22" gate="1" pin="GND"/>
@@ -13694,6 +13724,14 @@ Furthermore, female headers and not male headers are needed.</text>
 <pinref part="LED4" gate="G$1" pin="C"/>
 <pinref part="GND12" gate="1" pin="GND"/>
 <wire x1="-129.54" y1="213.36" x2="-129.54" y2="208.28" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="C19" gate="G$1" pin="1"/>
+<wire x1="297.18" y1="33.02" x2="297.18" y2="30.48" width="0.1524" layer="91"/>
+<pinref part="GND26" gate="1" pin="GND"/>
+<pinref part="C20" gate="G$1" pin="1"/>
+<wire x1="284.48" y1="33.02" x2="297.18" y2="33.02" width="0.1524" layer="91"/>
+<junction x="297.18" y="33.02"/>
 </segment>
 </net>
 <net name="AVDD" class="0">
@@ -13787,8 +13825,11 @@ Furthermore, female headers and not male headers are needed.</text>
 <segment>
 <pinref part="J4" gate="1" pin="2"/>
 <pinref part="+3V6" gate="G$1" pin="+3V3"/>
-<wire x1="132.08" y1="208.28" x2="111.76" y2="208.28" width="0.1524" layer="91"/>
-<wire x1="111.76" y1="208.28" x2="111.76" y2="218.44" width="0.1524" layer="91"/>
+<wire x1="132.08" y1="208.28" x2="104.14" y2="208.28" width="0.1524" layer="91"/>
+<wire x1="104.14" y1="208.28" x2="104.14" y2="218.44" width="0.1524" layer="91"/>
+<pinref part="C18" gate="G$1" pin="2"/>
+<wire x1="104.14" y1="205.74" x2="104.14" y2="208.28" width="0.1524" layer="91"/>
+<junction x="104.14" y="208.28"/>
 </segment>
 <segment>
 <pinref part="+3V7" gate="G$1" pin="+3V3"/>
@@ -13816,16 +13857,22 @@ Furthermore, female headers and not male headers are needed.</text>
 <junction x="226.06" y="195.58"/>
 </segment>
 <segment>
-<wire x1="297.18" y1="68.58" x2="314.96" y2="68.58" width="0.1524" layer="91"/>
-<pinref part="J1" gate="1" pin="4"/>
-<wire x1="297.18" y1="73.66" x2="297.18" y2="68.58" width="0.1524" layer="91"/>
-<pinref part="+3V10" gate="G$1" pin="+3V3"/>
-</segment>
-<segment>
 <pinref part="J2" gate="1" pin="4"/>
+<pinref part="+3V11" gate="G$1" pin="+3V3"/>
 <wire x1="297.18" y1="53.34" x2="297.18" y2="48.26" width="0.1524" layer="91"/>
 <wire x1="297.18" y1="48.26" x2="314.96" y2="48.26" width="0.1524" layer="91"/>
-<pinref part="+3V11" gate="G$1" pin="+3V3"/>
+<junction x="297.18" y="48.26"/>
+<pinref part="C19" gate="G$1" pin="2"/>
+<wire x1="297.18" y1="40.64" x2="297.18" y2="48.26" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="J1" gate="1" pin="4"/>
+<wire x1="284.48" y1="68.58" x2="314.96" y2="68.58" width="0.1524" layer="91"/>
+<pinref part="+3V10" gate="G$1" pin="+3V3"/>
+<wire x1="284.48" y1="68.58" x2="284.48" y2="73.66" width="0.1524" layer="91"/>
+<pinref part="C20" gate="G$1" pin="2"/>
+<wire x1="284.48" y1="40.64" x2="284.48" y2="68.58" width="0.1524" layer="91"/>
+<junction x="284.48" y="68.58"/>
 </segment>
 <segment>
 <pinref part="+3V2" gate="G$1" pin="+3V3"/>

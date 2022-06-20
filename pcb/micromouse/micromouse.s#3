@@ -13082,7 +13082,8 @@ PGEC1 and PGED1 used but the outputs of pins 11 &amp; 12?</text>
 Seems to me that we need 1.5mm pin distances:
 https://www.datasheets.com/en/part-details/11501w00-3p-s-hf-r-shenglan-technology-co---ltd-403414635
 Furthermore, female headers and not male headers are needed.</text>
-<text x="-71.12" y="358.14" size="1.778" layer="91">Connects either 2-3 or 2-1</text>
+<text x="-71.12" y="358.14" size="1.778" layer="91">Connects either 2-3 or 2-1,
+depending on switch position.</text>
 </plain>
 <instances>
 <instance part="GND2" gate="1" x="200.66" y="104.14" smashed="yes">

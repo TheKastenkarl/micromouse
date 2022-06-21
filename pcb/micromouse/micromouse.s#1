@@ -13236,6 +13236,7 @@ Are female or male headers needed?</text>
 <text x="-71.12" y="358.14" size="1.778" layer="91">Connects either 2-3 or 2-1,
 depending on switch position.</text>
 <text x="33.02" y="289.56" size="1.778" layer="91">TODO: Ask Lenz if external components are correct</text>
+<text x="276.86" y="106.68" size="1.778" layer="91">IDEA: Coupling capacitor?</text>
 </plain>
 <instances>
 <instance part="GND2" gate="1" x="200.66" y="104.14" smashed="yes">

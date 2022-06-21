@@ -13232,7 +13232,7 @@ PGEC1 and PGED1 used but the outputs of pins 11 &amp; 12?</text>
 <text x="101.6" y="327.66" size="1.778" layer="91">TODO: Check if these are the correct ones.
 Seems to me that we need 1.5mm pin distances:
 https://www.datasheets.com/en/part-details/11501w00-3p-s-hf-r-shenglan-technology-co---ltd-403414635
-Furthermore, female headers and not male headers are needed.</text>
+Are female or male headers needed?</text>
 <text x="-71.12" y="358.14" size="1.778" layer="91">Connects either 2-3 or 2-1,
 depending on switch position.</text>
 <text x="33.02" y="289.56" size="1.778" layer="91">TODO: Ask Lenz if external components are correct</text>
@@ -13764,16 +13764,16 @@ depending on switch position.</text>
 <junction x="-50.8" y="266.7"/>
 </segment>
 <segment>
-<pinref part="J2" gate="1" pin="3"/>
-<wire x1="330.2" y1="48.26" x2="350.52" y2="48.26" width="0.1524" layer="91"/>
 <label x="332.74" y="48.26" size="1.778" layer="95"/>
 <pinref part="GND25" gate="1" pin="GND"/>
-<wire x1="350.52" y1="48.26" x2="350.52" y2="45.72" width="0.1524" layer="91"/>
-<wire x1="350.52" y1="45.72" x2="350.52" y2="43.18" width="0.1524" layer="91"/>
 <wire x1="330.2" y1="68.58" x2="350.52" y2="68.58" width="0.1524" layer="91"/>
 <pinref part="J1" gate="1" pin="3"/>
 <label x="332.74" y="68.58" size="1.778" layer="95"/>
 <wire x1="350.52" y1="68.58" x2="350.52" y2="48.26" width="0.1524" layer="91"/>
+<pinref part="J2" gate="1" pin="3"/>
+<wire x1="350.52" y1="48.26" x2="350.52" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="330.2" y1="48.26" x2="350.52" y2="48.26" width="0.1524" layer="91"/>
+<junction x="350.52" y="48.26"/>
 </segment>
 <segment>
 <pinref part="J4" gate="1" pin="3"/>
@@ -14681,8 +14681,6 @@ depending on switch position.</text>
 </sheet>
 </sheets>
 <errors>
-<approved hash="101,1,-129.54,213.36,LED4,C,,,,"/>
-<approved hash="101,1,-129.54,220.98,LED4,A,,,,"/>
 <approved hash="104,1,71.12,147.32,MICROCONTROLLER,VSS,GND,,,"/>
 <approved hash="104,1,167.64,119.38,MICROCONTROLLER,VDD,+3V3,,,"/>
 <approved hash="104,1,167.64,121.92,MICROCONTROLLER,VSS1,GND,,,"/>

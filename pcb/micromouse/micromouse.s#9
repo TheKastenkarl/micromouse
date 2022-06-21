@@ -13086,14 +13086,13 @@ Just used the once of the datasheet.</text>
 Just used the ones of the datasheet.</text>
 <text x="-88.9" y="355.6" size="1.778" layer="91">TODO: Find appropriate switch
 that matches excel sheet</text>
-<text x="119.38" y="220.98" size="1.778" layer="91">TOOD: Please check PGD and PGC.
+<text x="119.38" y="220.98" size="1.778" layer="91">TODO: Please check PGD and PGC.
 I think that PGD is on 4 and PGC on 5.
 &gt;&gt;&gt; Yes, changed it.
 
 TODO2: Why are on the demo board not the signals
-PGEC1 and PGED1 used but the outputs of pins 11 &amp; 12?
-</text>
-<text x="172.72" y="187.96" size="1.778" layer="91">TODO: Do we need decoupling capacitor?</text>
+PGEC1 and PGED1 used but the outputs of pins 11 &amp; 12?</text>
+<text x="157.48" y="190.5" size="1.778" layer="91">TODO: Where do we need decoupling capacitors?</text>
 <text x="101.6" y="327.66" size="1.778" layer="91">TODO: Check if these are the correct ones.
 Seems to me that we need 1.5mm pin distances:
 https://www.datasheets.com/en/part-details/11501w00-3p-s-hf-r-shenglan-technology-co---ltd-403414635

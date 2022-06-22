@@ -13082,7 +13082,8 @@ PGEC1 and PGED1 used but the outputs of pins 11 &amp; 12?</text>
 Seems to me that we need 1.5mm pin distances:
 https://www.datasheets.com/en/part-details/11501w00-3p-s-hf-r-shenglan-technology-co---ltd-403414635
 Furthermore, female headers and not male headers are needed.</text>
-<text x="-116.84" y="373.38" size="1.778" layer="91">TODO: @Ludwig Please check if the switch is connected as you intended it to be.</text>
+<text x="-71.12" y="358.14" size="1.778" layer="91">Connects either 2-3 or 2-1,
+depending on switch position.</text>
 </plain>
 <instances>
 <instance part="GND2" gate="1" x="200.66" y="104.14" smashed="yes">
@@ -13974,16 +13975,12 @@ Furthermore, female headers and not male headers are needed.</text>
 <segment>
 <pinref part="SUPPLY1" gate="G$1" pin="+9V"/>
 <wire x1="-96.52" y1="345.44" x2="-96.52" y2="347.98" width="0.1524" layer="91"/>
-<wire x1="-78.74" y1="345.44" x2="-81.28" y2="345.44" width="0.1524" layer="91"/>
 <pinref part="+9V" gate="G$1" pin="MOUNT"/>
-<wire x1="-81.28" y1="345.44" x2="-96.52" y2="345.44" width="0.1524" layer="91"/>
 <wire x1="-104.14" y1="345.44" x2="-96.52" y2="345.44" width="0.1524" layer="91"/>
+<wire x1="-96.52" y1="345.44" x2="-78.74" y2="345.44" width="0.1524" layer="91"/>
 <junction x="-96.52" y="345.44"/>
 <pinref part="S1" gate="G$1" pin="2"/>
 <wire x1="-78.74" y1="345.44" x2="-78.74" y2="347.98" width="0.1524" layer="91"/>
-<pinref part="S1" gate="G$1" pin="3"/>
-<wire x1="-81.28" y1="347.98" x2="-81.28" y2="345.44" width="0.1524" layer="91"/>
-<junction x="-81.28" y="345.44"/>
 </segment>
 <segment>
 <pinref part="SUPPLY2" gate="G$1" pin="+9V"/>
@@ -14340,10 +14337,10 @@ Furthermore, female headers and not male headers are needed.</text>
 <wire x1="-50.8" y1="276.86" x2="-50.8" y2="294.64" width="0.1524" layer="91"/>
 <junction x="-50.8" y="294.64"/>
 <wire x1="-63.5" y1="345.44" x2="-63.5" y2="294.64" width="0.1524" layer="91"/>
-<wire x1="-76.2" y1="345.44" x2="-63.5" y2="345.44" width="0.1524" layer="91"/>
-<junction x="-63.5" y="345.44"/>
 <pinref part="S1" gate="G$1" pin="1"/>
 <wire x1="-76.2" y1="347.98" x2="-76.2" y2="345.44" width="0.1524" layer="91"/>
+<wire x1="-76.2" y1="345.44" x2="-63.5" y2="345.44" width="0.1524" layer="91"/>
+<junction x="-63.5" y="345.44"/>
 </segment>
 </net>
 <net name="N_MCLR" class="0">

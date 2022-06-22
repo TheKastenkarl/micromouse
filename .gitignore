@@ -1,7 +1,0 @@
-# mplab project
-src/micromouse-mplab.X/.generated_files
-src/micromouse-mplab.X/build
-src/micromouse-mplab.X/debug
-src/micromouse-mplab.X/dist
-src/micromouse-mplab.X/nbproject
-src/micromouse-mplab.X/Makefile

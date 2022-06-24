@@ -13138,13 +13138,13 @@ Updated  by  Yingchun,Shan 2019-07-25&lt;br&gt;
 <part name="C11" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100nF"/>
 <part name="RESET" library="switch-omron" library_urn="urn:adsk.eagle:library:377" deviceset="10-XX" device="" package3d_urn="urn:adsk.eagle:package:27496/1" value="B3F-1000"/>
 <part name="LM2575-5.0WU-(TR)" library="national-semiconductor" library_urn="urn:adsk.eagle:library:307" deviceset="LM2596" device="S" package3d_urn="urn:adsk.eagle:package:16438/2"/>
-<part name="C12" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100uF"/>
+<part name="C12" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C1210" package3d_urn="urn:adsk.eagle:package:23619/2" value="100uF"/>
 <part name="C13" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="330uF"/>
 <part name="D9" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="BAT19" device="" package3d_urn="urn:adsk.eagle:package:43344/2" value="1N5822"/>
 <part name="GND18" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="P+3" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 <part name="LM2575-3.3WU-(TR)" library="national-semiconductor" library_urn="urn:adsk.eagle:library:307" deviceset="LM2596" device="S" package3d_urn="urn:adsk.eagle:package:16438/2"/>
-<part name="C14" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100uF"/>
+<part name="C14" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C1210" package3d_urn="urn:adsk.eagle:package:23619/2" value="100uF"/>
 <part name="C15" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="330uF"/>
 <part name="D10" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="BAT19" device="" package3d_urn="urn:adsk.eagle:package:43344/2" value="1N5822"/>
 <part name="GND20" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
@@ -13232,7 +13232,7 @@ PGEC1 and PGED1 used but the outputs of pins 11 &amp; 12?</text>
 Seems to me that we need 1.5mm pin distances:
 https://www.datasheets.com/en/part-details/11501w00-3p-s-hf-r-shenglan-technology-co---ltd-403414635
 Are female or male headers needed?</text>
-<text x="-71.12" y="358.14" size="1.778" layer="91">Connects either 2-3 or 2-1,
+<text x="-104.14" y="370.84" size="1.778" layer="91">Connects either 2-3 or 2-1,
 depending on switch position.</text>
 <text x="33.02" y="289.56" size="1.778" layer="91">TODO: Ask Lenz if external components are correct</text>
 <text x="276.86" y="106.68" size="1.778" layer="91">IDEA: Coupling capacitor?</text>
@@ -13287,8 +13287,8 @@ depending on switch position.</text>
 <instance part="P+1" gate="1" x="132.08" y="322.58" smashed="yes">
 <attribute name="VALUE" x="132.08" y="314.96" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="SUPPLY1" gate="G$1" x="-96.52" y="350.52" smashed="yes">
-<attribute name="VALUE" x="-98.425" y="353.695" size="1.778" layer="96"/>
+<instance part="SUPPLY1" gate="G$1" x="-73.66" y="350.52" smashed="yes">
+<attribute name="VALUE" x="-75.565" y="353.695" size="1.778" layer="96"/>
 </instance>
 <instance part="GND11" gate="1" x="-96.52" y="332.74" smashed="yes">
 <attribute name="VALUE" x="-99.06" y="330.2" size="1.778" layer="96"/>
@@ -13575,9 +13575,9 @@ depending on switch position.</text>
 <attribute name="NAME" x="290.576" y="60.579" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="293.116" y="65.659" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="S1" gate="G$1" x="-81.28" y="347.98" smashed="yes" rot="R90">
-<attribute name="NAME" x="-74.93" y="368.3" size="1.778" layer="95" rot="R180" align="center-left"/>
-<attribute name="VALUE" x="-74.93" y="365.76" size="1.778" layer="96" rot="R180" align="center-left"/>
+<instance part="S1" gate="G$1" x="-91.44" y="347.98" smashed="yes" rot="R90">
+<attribute name="NAME" x="-85.09" y="368.3" size="1.778" layer="95" rot="R180" align="center-left"/>
+<attribute name="VALUE" x="-85.09" y="365.76" size="1.778" layer="96" rot="R180" align="center-left"/>
 </instance>
 <instance part="L3" gate="G$1" x="10.16" y="342.9" smashed="yes">
 <attribute name="NAME" x="10.16" y="345.44" size="1.27" layer="95" align="bottom-center"/>
@@ -14113,19 +14113,32 @@ depending on switch position.</text>
 </net>
 <net name="+9V" class="0">
 <segment>
-<pinref part="SUPPLY1" gate="G$1" pin="+9V"/>
-<wire x1="-96.52" y1="345.44" x2="-96.52" y2="347.98" width="0.1524" layer="91"/>
-<pinref part="+9V" gate="G$1" pin="MOUNT"/>
-<wire x1="-104.14" y1="345.44" x2="-96.52" y2="345.44" width="0.1524" layer="91"/>
-<wire x1="-96.52" y1="345.44" x2="-78.74" y2="345.44" width="0.1524" layer="91"/>
-<junction x="-96.52" y="345.44"/>
-<pinref part="S1" gate="G$1" pin="2"/>
-<wire x1="-78.74" y1="345.44" x2="-78.74" y2="347.98" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="SUPPLY2" gate="G$1" pin="+9V"/>
 <pinref part="H-BRIDGE" gate="G$1" pin="VCC2"/>
 <wire x1="284.48" y1="109.22" x2="304.8" y2="109.22" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="LM2575-5.0WU-(TR)" gate="G$1" pin="VIN"/>
+<wire x1="-35.56" y1="345.44" x2="-50.8" y2="345.44" width="0.1524" layer="91"/>
+<pinref part="C12" gate="G$1" pin="2"/>
+<wire x1="-50.8" y1="345.44" x2="-63.5" y2="345.44" width="0.1524" layer="91"/>
+<wire x1="-50.8" y1="327.66" x2="-50.8" y2="345.44" width="0.1524" layer="91"/>
+<junction x="-50.8" y="345.44"/>
+<pinref part="LM2575-3.3WU-(TR)" gate="G$1" pin="VIN"/>
+<wire x1="-35.56" y1="294.64" x2="-50.8" y2="294.64" width="0.1524" layer="91"/>
+<pinref part="C14" gate="G$1" pin="2"/>
+<wire x1="-50.8" y1="294.64" x2="-63.5" y2="294.64" width="0.1524" layer="91"/>
+<wire x1="-50.8" y1="276.86" x2="-50.8" y2="294.64" width="0.1524" layer="91"/>
+<junction x="-50.8" y="294.64"/>
+<wire x1="-63.5" y1="345.44" x2="-63.5" y2="294.64" width="0.1524" layer="91"/>
+<pinref part="S1" gate="G$1" pin="1"/>
+<wire x1="-86.36" y1="347.98" x2="-86.36" y2="345.44" width="0.1524" layer="91"/>
+<wire x1="-86.36" y1="345.44" x2="-73.66" y2="345.44" width="0.1524" layer="91"/>
+<junction x="-63.5" y="345.44"/>
+<pinref part="SUPPLY1" gate="G$1" pin="+9V"/>
+<wire x1="-73.66" y1="345.44" x2="-63.5" y2="345.44" width="0.1524" layer="91"/>
+<wire x1="-73.66" y1="347.98" x2="-73.66" y2="345.44" width="0.1524" layer="91"/>
+<junction x="-73.66" y="345.44"/>
 </segment>
 </net>
 <net name="N$4" class="0">
@@ -14462,27 +14475,6 @@ depending on switch position.</text>
 <label x="-55.88" y="215.9" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="N$3" class="0">
-<segment>
-<pinref part="LM2575-5.0WU-(TR)" gate="G$1" pin="VIN"/>
-<wire x1="-35.56" y1="345.44" x2="-50.8" y2="345.44" width="0.1524" layer="91"/>
-<pinref part="C12" gate="G$1" pin="2"/>
-<wire x1="-50.8" y1="345.44" x2="-63.5" y2="345.44" width="0.1524" layer="91"/>
-<wire x1="-50.8" y1="327.66" x2="-50.8" y2="345.44" width="0.1524" layer="91"/>
-<junction x="-50.8" y="345.44"/>
-<pinref part="LM2575-3.3WU-(TR)" gate="G$1" pin="VIN"/>
-<wire x1="-35.56" y1="294.64" x2="-50.8" y2="294.64" width="0.1524" layer="91"/>
-<pinref part="C14" gate="G$1" pin="2"/>
-<wire x1="-50.8" y1="294.64" x2="-63.5" y2="294.64" width="0.1524" layer="91"/>
-<wire x1="-50.8" y1="276.86" x2="-50.8" y2="294.64" width="0.1524" layer="91"/>
-<junction x="-50.8" y="294.64"/>
-<wire x1="-63.5" y1="345.44" x2="-63.5" y2="294.64" width="0.1524" layer="91"/>
-<pinref part="S1" gate="G$1" pin="1"/>
-<wire x1="-76.2" y1="347.98" x2="-76.2" y2="345.44" width="0.1524" layer="91"/>
-<wire x1="-76.2" y1="345.44" x2="-63.5" y2="345.44" width="0.1524" layer="91"/>
-<junction x="-63.5" y="345.44"/>
-</segment>
-</net>
 <net name="N_MCLR" class="0">
 <segment>
 <wire x1="-15.24" y1="144.78" x2="-7.62" y2="144.78" width="0.1524" layer="91"/>
@@ -14656,6 +14648,14 @@ depending on switch position.</text>
 <wire x1="-30.48" y1="205.74" x2="-20.32" y2="205.74" width="0.1524" layer="91"/>
 <label x="-25.4" y="205.74" size="1.778" layer="95"/>
 <pinref part="SV4" gate="G$1" pin="11"/>
+</segment>
+</net>
+<net name="N$2" class="0">
+<segment>
+<pinref part="+9V" gate="G$1" pin="MOUNT"/>
+<wire x1="-104.14" y1="345.44" x2="-88.9" y2="345.44" width="0.1524" layer="91"/>
+<pinref part="S1" gate="G$1" pin="2"/>
+<wire x1="-88.9" y1="345.44" x2="-88.9" y2="347.98" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>

@@ -13237,6 +13237,7 @@ Are female or male headers needed?</text>
 depending on switch position.</text>
 <text x="33.02" y="289.56" size="1.778" layer="91">TODO: Ask Lenz if external components are correct</text>
 <text x="276.86" y="106.68" size="1.778" layer="91">IDEA: Coupling capacitor?</text>
+<text x="-58.42" y="223.52" size="1.778" layer="91">Remove some IO if unable to draw all PCB lines</text>
 </plain>
 <instances>
 <instance part="GND2" gate="1" x="200.66" y="104.14" smashed="yes">

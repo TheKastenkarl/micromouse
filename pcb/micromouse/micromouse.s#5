@@ -13106,18 +13106,18 @@ Updated  by  Yingchun,Shan 2019-07-25&lt;br&gt;
 <part name="P+1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 <part name="SUPPLY1" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="+9V" device=""/>
 <part name="GND11" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="R8" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="10k"/>
-<part name="R9" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="1k"/>
-<part name="R10" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="121"/>
-<part name="R11" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="121"/>
-<part name="R12" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="121"/>
+<part name="R8" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="10kR"/>
+<part name="R9" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="1kR"/>
+<part name="R10" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="120R"/>
+<part name="R11" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="120R"/>
+<part name="R12" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="120R"/>
 <part name="C3" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100nF"/>
 <part name="C7" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100nF"/>
 <part name="C8" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100nF"/>
 <part name="C9" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="10uF"/>
 <part name="C10" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100nF"/>
-<part name="R13" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="10"/>
-<part name="R14" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="10"/>
+<part name="R13" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="10R"/>
+<part name="R14" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="10R"/>
 <part name="LED0" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="CHIP-LED0805" package3d_urn="urn:adsk.eagle:package:15818/2" value="green"/>
 <part name="LED1" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="CHIP-LED0805" package3d_urn="urn:adsk.eagle:package:15818/2" value="green"/>
 <part name="LED2" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="CHIP-LED0805" package3d_urn="urn:adsk.eagle:package:15818/2" value="green"/>
@@ -13151,7 +13151,7 @@ Updated  by  Yingchun,Shan 2019-07-25&lt;br&gt;
 <part name="+3V4" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="J1" library="con-ml" library_urn="urn:adsk.eagle:library:164" deviceset="ML6" device="" package3d_urn="urn:adsk.eagle:package:8675/1" value="Connector_M1"/>
 <part name="J2" library="con-ml" library_urn="urn:adsk.eagle:library:164" deviceset="ML6" device="" package3d_urn="urn:adsk.eagle:package:8675/1" value="Connector_M2"/>
-<part name="HC05/06" library="con-lsta" library_urn="urn:adsk.eagle:library:161" deviceset="FE06-1" device="" package3d_urn="urn:adsk.eagle:package:8191/1" value="UART"/>
+<part name="HC05" library="con-lsta" library_urn="urn:adsk.eagle:library:161" deviceset="FE06-1" device="" package3d_urn="urn:adsk.eagle:package:8191/1" value="UART"/>
 <part name="J4" library="con-lstb" library_urn="urn:adsk.eagle:library:162" deviceset="MA06-1" device="" package3d_urn="urn:adsk.eagle:package:8340/1" value="Programmer"/>
 <part name="+3V6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="GND19" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
@@ -13159,11 +13159,11 @@ Updated  by  Yingchun,Shan 2019-07-25&lt;br&gt;
 <part name="P+6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 <part name="GND22" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="+3V5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
-<part name="R3" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="10k"/>
+<part name="R3" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="10kR"/>
 <part name="BTN_1" library="switch-omron" library_urn="urn:adsk.eagle:library:377" deviceset="10-XX" device="" package3d_urn="urn:adsk.eagle:package:27496/1" value="B3F-1000"/>
 <part name="GND21" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="+3V8" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
-<part name="R4" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="10k"/>
+<part name="R4" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="10kR"/>
 <part name="BTN_2" library="switch-omron" library_urn="urn:adsk.eagle:library:377" deviceset="10-XX" device="" package3d_urn="urn:adsk.eagle:package:27496/1" value="B3F-1000"/>
 <part name="+3V9" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="C16" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100nF"/>
@@ -13193,49 +13193,16 @@ Updated  by  Yingchun,Shan 2019-07-25&lt;br&gt;
 <sheets>
 <sheet>
 <plain>
-<text x="309.88" y="27.94" size="1.778" layer="91">2.54mm grid needed according to motor data sheet
-(this conector fulfills this: https://www.mikrocontroller.net/topic/393245)</text>
-<text x="248.92" y="180.34" size="1.778" layer="91">PIN6 EN nutzen?
-&gt;&gt;&gt; Sehe jetzt keine Notwendigkeit. Das Setup mit den AT commands können wir ha auf dem Breadboard machen.</text>
-<text x="60.96" y="91.44" size="1.778" layer="91">MCLR needs to be negated for the programmer?
-&gt;&gt;&gt;See p.8 of microcontroller datasheet:
-0 equals to reset? This is what reset button does.</text>
-<text x="215.9" y="228.6" size="1.778" layer="91">Add jumper to disconnect them from pins on uC in case we need
-the pins later on (like on demo board)?
-&gt;&gt;&gt; No, we have enough pins on the board.</text>
 <text x="203.2" y="231.14" size="1.778" layer="91"></text>
-<text x="10.16" y="137.16" size="1.778" layer="91">TODO: S. 357 Microcontroller:
-Anscheinend haben unterschiedliche PINS
-unterschiedliche max. Strombegrenzung.
-Checken dass PINS 20mA liefern können. 
-Zusätzlich 200mA max auf allen PINs.
-&gt;&gt;&gt; Solution: Draw current diretly from
-power source (switching regulator)</text>
+<text x="218.44" y="228.6" size="1.778" layer="91">p. 357 datasheet of uC:
+max. output current of uC = 15mA.</text>
 <text x="264.16" y="251.46" size="1.778" layer="91">10mA @ 2.1 V</text>
 <text x="264.16" y="261.62" size="1.778" layer="91">10mA @ 1.21 V</text>
-<text x="355.6" y="63.5" size="1.778" layer="91">IDEA: Should we use 3.3V instead since our digital logic is 3.3V as well?
-Worried that this wiill lead to 5V in the encoder output that then
-routes into the microcontroller.
-&gt;&gt;&gt; Good point, cannot hurt.</text>
-<text x="294.64" y="154.94" size="1.778" layer="91">IDEA: Use one of these holders
-instead of soldering the chip directly onto the board</text>
-<text x="157.48" y="58.42" size="1.778" layer="91">f_cutoff = 796Hz, same as on dev board</text>
-<text x="35.56" y="337.82" size="1.778" layer="91">TODO: Ask Lenz if external components are correct</text>
-<text x="119.38" y="220.98" size="1.778" layer="91">TODO: Please check PGD and PGC.
-I think that PGD is on 4 and PGC on 5.
-&gt;&gt;&gt; Yes, changed it.
-
-TODO 2: Why are on the demo board not the signals
-PGEC1 and PGED1 used but the outputs of pins 11 &amp; 12?</text>
-<text x="157.48" y="190.5" size="1.778" layer="91">TODO: Where do we need decoupling capacitors?</text>
-<text x="101.6" y="327.66" size="1.778" layer="91">TODO: Check if these are the correct ones.
-Seems to me that we need 1.5mm pin distances:
-https://www.datasheets.com/en/part-details/11501w00-3p-s-hf-r-shenglan-technology-co---ltd-403414635
-Are female or male headers needed?</text>
+<text x="304.8" y="154.94" size="1.778" layer="91">Use socket instead of soldering the
+chip directly onto the board.</text>
+<text x="111.76" y="73.66" size="1.778" layer="91">f_cutoff = 796Hz, same as on dev board</text>
 <text x="-104.14" y="370.84" size="1.778" layer="91">Connects either 2-3 or 2-1,
 depending on switch position.</text>
-<text x="33.02" y="289.56" size="1.778" layer="91">TODO: Ask Lenz if external components are correct</text>
-<text x="276.86" y="106.68" size="1.778" layer="91">IDEA: Coupling capacitor?</text>
 <text x="-58.42" y="223.52" size="1.778" layer="91">Remove some IO if unable to draw all PCB lines</text>
 </plain>
 <instances>
@@ -13461,7 +13428,7 @@ depending on switch position.</text>
 <attribute name="VALUE" x="318.77" y="40.64" size="1.778" layer="96"/>
 <attribute name="NAME" x="318.77" y="54.102" size="1.778" layer="95"/>
 </instance>
-<instance part="HC05/06" gate="G$1" x="259.08" y="200.66" smashed="yes" rot="R180">
+<instance part="HC05" gate="G$1" x="259.08" y="200.66" smashed="yes" rot="R180">
 <attribute name="VALUE" x="260.35" y="210.82" size="1.778" layer="96" rot="R180"/>
 <attribute name="NAME" x="260.35" y="189.738" size="1.778" layer="95" rot="R180"/>
 </instance>
@@ -13822,7 +13789,7 @@ depending on switch position.</text>
 </segment>
 <segment>
 <wire x1="233.68" y1="198.12" x2="233.68" y2="185.42" width="0.1524" layer="91"/>
-<pinref part="HC05/06" gate="G$1" pin="4"/>
+<pinref part="HC05" gate="G$1" pin="4"/>
 <wire x1="233.68" y1="198.12" x2="251.46" y2="198.12" width="0.1524" layer="91"/>
 <pinref part="C16" gate="G$1" pin="1"/>
 <wire x1="226.06" y1="185.42" x2="233.68" y2="185.42" width="0.1524" layer="91"/>
@@ -13977,7 +13944,7 @@ depending on switch position.</text>
 <wire x1="241.3" y1="332.74" x2="241.3" y2="345.44" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="HC05/06" gate="G$1" pin="5"/>
+<pinref part="HC05" gate="G$1" pin="5"/>
 <wire x1="226.06" y1="205.74" x2="226.06" y2="195.58" width="0.1524" layer="91"/>
 <wire x1="226.06" y1="195.58" x2="251.46" y2="195.58" width="0.1524" layer="91"/>
 <pinref part="+3V9" gate="G$1" pin="+3V3"/>
@@ -14376,7 +14343,7 @@ depending on switch position.</text>
 <label x="170.18" y="160.02" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="HC05/06" gate="G$1" pin="2"/>
+<pinref part="HC05" gate="G$1" pin="2"/>
 <wire x1="251.46" y1="203.2" x2="243.84" y2="203.2" width="0.1524" layer="91"/>
 <label x="243.84" y="203.2" size="1.778" layer="95"/>
 </segment>
@@ -14393,7 +14360,7 @@ depending on switch position.</text>
 <label x="60.96" y="160.02" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="HC05/06" gate="G$1" pin="3"/>
+<pinref part="HC05" gate="G$1" pin="3"/>
 <wire x1="251.46" y1="200.66" x2="243.84" y2="200.66" width="0.1524" layer="91"/>
 <label x="243.84" y="200.66" size="1.778" layer="95"/>
 </segment>

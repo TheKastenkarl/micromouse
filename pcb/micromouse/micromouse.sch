@@ -12859,8 +12859,6 @@ chip directly onto the board.</text>
 <text x="-104.14" y="370.84" size="1.778" layer="91">Connects either 2-3 or 2-1,
 depending on switch position.</text>
 <text x="-58.42" y="223.52" size="1.778" layer="91">Remove some IO if unable to draw all PCB lines</text>
-<text x="-182.88" y="340.36" size="1.778" layer="91">On the board, we will use a female and not a male header
-(3 pin female header is not in standard eagle libraries).</text>
 </plain>
 <instances>
 <instance part="GND2" gate="1" x="200.66" y="104.14" smashed="yes">

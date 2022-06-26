@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="mm"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.001" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="16" fill="1" visible="no" active="no"/>
@@ -3908,8 +3908,9 @@ design rules under a new name.</description>
 <contactref element="MICROCONTROLLER" pad="8"/>
 <contactref element="SV4" pad="14"/>
 <via x="36.576" y="64.516" extent="1-16" drill="0.35"/>
-<via x="33.02" y="53.086" extent="1-16" drill="0.35"/>
-<wire x1="33.02" y1="53.086" x2="33.02" y2="58.674" width="0.254" layer="16"/>
+<via x="33" y="52.976" extent="1-16" drill="0.35"/>
+<wire x1="33" y1="58.654" x2="33.02" y2="58.674" width="0.254" layer="16"/>
+<wire x1="33" y1="58.654" x2="33" y2="52.976" width="0.254" layer="16"/>
 <via x="33.02" y="58.674" extent="1-16" drill="0.35"/>
 <wire x1="33.02" y1="58.674" x2="33.02" y2="61.976" width="0.254" layer="1"/>
 <via x="33.02" y="61.976" extent="1-16" drill="0.35"/>
@@ -3922,8 +3923,8 @@ design rules under a new name.</description>
 <wire x1="43.18" y1="73.66" x2="44.45" y2="74.93" width="0.254" layer="1"/>
 <wire x1="44.45" y1="74.93" x2="47.498" y2="77.978" width="0.254" layer="1"/>
 <wire x1="48.48" y1="77.978" x2="47.498" y2="77.978" width="0.254" layer="1"/>
-<wire x1="34.84" y1="53.01" x2="33.096" y2="53.01" width="0.254" layer="1"/>
-<wire x1="33.096" y1="53.01" x2="33.02" y2="53.086" width="0.254" layer="1"/>
+<wire x1="34.84" y1="53.01" x2="33.034" y2="53.01" width="0.254" layer="1"/>
+<wire x1="33.034" y1="53.01" x2="33" y2="52.976" width="0.254" layer="1"/>
 </signal>
 <signal name="PWM1L1">
 <contactref element="MICROCONTROLLER" pad="15"/>
@@ -4340,11 +4341,7 @@ design rules under a new name.</description>
 <contactref element="MICROCONTROLLER" pad="7"/>
 <contactref element="C17" pad="2"/>
 <wire x1="31.43" y1="53.086" x2="32.154" y2="53.81" width="0.508" layer="1"/>
-<wire x1="32.154" y1="53.81" x2="32.63440625" y2="53.81" width="0.508" layer="1"/>
-<wire x1="32.63440625" y1="53.81" x2="32.69500625" y2="53.8706" width="0.508" layer="1"/>
-<wire x1="32.69500625" y1="53.8706" x2="33.34499375" y2="53.8706" width="0.508" layer="1"/>
-<wire x1="33.34499375" y1="53.8706" x2="33.40559375" y2="53.81" width="0.508" layer="1"/>
-<wire x1="33.40559375" y1="53.81" x2="34.84" y2="53.81" width="0.508" layer="1"/>
+<wire x1="32.154" y1="53.81" x2="34.84" y2="53.81" width="0.508" layer="1"/>
 </signal>
 <signal name="N_LED1">
 <contactref element="LED1" pad="C"/>

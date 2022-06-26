@@ -164,12 +164,12 @@
 of the VCAP pin connected to ground."
 (see data sheet of microcontroller, p. 18)</text>
 <text x="-45.72" y="-20.32" size="1.778" layer="1">TODO: Leave enough space around the connector for the programmer!</text>
-<wire x1="81.28" y1="66.04" x2="81.28" y2="0" width="0.1524" layer="20"/>
+<wire x1="81.28" y1="68.58" x2="81.28" y2="0" width="0.1524" layer="20"/>
 <wire x1="81.28" y1="0" x2="0" y2="0" width="0.1524" layer="20"/>
 <wire x1="0" y1="0" x2="0" y2="68.58" width="0.1524" layer="20"/>
 <wire x1="30.48" y1="99.06" x2="50.8" y2="99.06" width="0.1524" layer="20"/>
-<wire x1="0" y1="68.58" x2="30.48" y2="99.06" width="0.3048" layer="20" curve="-100.388858"/>
-<wire x1="50.8" y1="99.06" x2="81.28" y2="66.04" width="0.3048" layer="20" curve="-94.763642"/>
+<wire x1="0" y1="68.58" x2="30.48" y2="99.06" width="0.1524" layer="20" curve="-90"/>
+<wire x1="50.8" y1="99.06" x2="81.28" y2="68.58" width="0.1524" layer="20" curve="-90"/>
 </plain>
 <libraries>
 <library name="rcl" urn="urn:adsk.eagle:library:334">

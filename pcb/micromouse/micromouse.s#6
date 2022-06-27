@@ -15362,11 +15362,6 @@ depending on switch position.</text>
 <wire x1="-53.34" y1="129.54" x2="-35.56" y2="129.54" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<wire x1="71.12" y1="116.84" x2="58.42" y2="116.84" width="0.1524" layer="91"/>
-<pinref part="MICROCONTROLLER" gate="G$1" pin="MCLR"/>
-<pinref part="R1" gate="G$1" pin="1"/>
-</segment>
-<segment>
 <pinref part="J4" gate="1" pin="1"/>
 <wire x1="132.08" y1="210.82" x2="124.46" y2="210.82" width="0.1524" layer="91"/>
 <label x="124.46" y="210.82" size="1.778" layer="95"/>
@@ -15543,6 +15538,13 @@ depending on switch position.</text>
 <pinref part="S1" gate="G$1" pin="2"/>
 <wire x1="-88.9" y1="345.44" x2="-88.9" y2="347.98" width="0.1524" layer="91"/>
 <pinref part="SV5" gate="G$1" pin="3"/>
+</segment>
+</net>
+<net name="N$1" class="0">
+<segment>
+<pinref part="R1" gate="G$1" pin="1"/>
+<pinref part="MICROCONTROLLER" gate="G$1" pin="MCLR"/>
+<wire x1="58.42" y1="116.84" x2="71.12" y2="116.84" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>

@@ -14082,7 +14082,7 @@ Details see: &lt;a href="www.we-online.com/catalog/WE-TIS/?utm_source=eagle_mode
 <text x="218.44" y="228.6" size="1.778" layer="91">p. 357 datasheet of uC:
 max. output current of uC = 15mA.</text>
 <text x="264.16" y="251.46" size="1.778" layer="91">10mA @ 2.1 V</text>
-<text x="264.16" y="261.62" size="1.778" layer="91">10mA @ 1.21 V</text>
+<text x="264.16" y="261.62" size="1.778" layer="91">10mA @ 1.2 V</text>
 <text x="304.8" y="154.94" size="1.778" layer="91">Use socket instead of soldering the
 chip directly onto the board.</text>
 <text x="111.76" y="73.66" size="1.778" layer="91">f_cutoff = 796Hz, same as on dev board</text>

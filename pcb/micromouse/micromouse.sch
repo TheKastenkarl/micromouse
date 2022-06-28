@@ -15551,21 +15551,10 @@ depending on switch position.</text>
 </sheet>
 </sheets>
 <errors>
-<approved hash="101,1,-129.54,213.36,LED4,C,,,,"/>
-<approved hash="101,1,-129.54,220.98,LED4,A,,,,"/>
-<approved hash="101,1,-144.78,213.36,LED3,C,,,,"/>
-<approved hash="101,1,-144.78,220.98,LED3,A,,,,"/>
-<approved hash="104,1,71.12,147.32,MICROCONTROLLER,VSS,GND,,,"/>
-<approved hash="104,1,167.64,119.38,MICROCONTROLLER,VDD,+3V3,,,"/>
-<approved hash="104,1,167.64,121.92,MICROCONTROLLER,VSS1,GND,,,"/>
-<approved hash="104,1,167.64,147.32,MICROCONTROLLER,VSS2,GND,,,"/>
-<approved hash="104,1,167.64,149.86,MICROCONTROLLER,VDD1,+3V3,,,"/>
-<approved hash="104,1,304.8,129.54,H-BRIDGE,GND1,GND,,,"/>
-<approved hash="104,1,304.8,124.46,H-BRIDGE,GND2,GND,,,"/>
-<approved hash="104,1,304.8,109.22,H-BRIDGE,VCC2,+9V,,,"/>
-<approved hash="104,1,335.28,144.78,H-BRIDGE,VCC1,+5V,,,"/>
-<approved hash="104,1,335.28,129.54,H-BRIDGE,GND3,GND,,,"/>
-<approved hash="104,1,335.28,124.46,H-BRIDGE,GND4,GND,,,"/>
+<approved hash="101,1,-129.54,213.36,LED2,C,,,,"/>
+<approved hash="101,1,-129.54,220.98,LED2,A,,,,"/>
+<approved hash="101,1,-144.78,213.36,LED1,C,,,,"/>
+<approved hash="101,1,-144.78,220.98,LED1,A,,,,"/>
 </errors>
 </schematic>
 </drawing>

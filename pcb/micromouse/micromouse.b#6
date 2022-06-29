@@ -158,11 +158,10 @@
 </layers>
 <board>
 <plain>
-<text x="-85.72" y="-13.24" size="1.778" layer="51">TODO: Capacitor C3 for Pin VCAP has the following requirements:
+<text x="-85.72" y="-13.24" size="1.778" layer="51">Capacitor C3 for Pin VCAP has the following requirements:
 "preferably surface mount connected within one-eights inch
 of the VCAP pin connected to ground."
 (see data sheet of microcontroller, p. 18)</text>
-<text x="-85.72" y="-18.32" size="1.778" layer="51">TODO: Leave enough space around the connector for the programmer!</text>
 <text x="12.192" y="16.256" size="0.8128" layer="21">+D1-</text>
 <text x="12.954" y="1.524" size="0.8128" layer="21" rot="R90">IC1 - 5V Regulator</text>
 <text x="18.288" y="1.016" size="0.8128" layer="21" rot="R180">9V</text>
@@ -4001,14 +4000,16 @@ Covered vias can be set in Masks (Limit).
 <signal name="M2-">
 <contactref element="SV9" pad="1"/>
 <contactref element="IC4" pad="14"/>
+<wire x1="61.214" y1="31.496" x2="59.436" y2="29.718" width="1.016" layer="16"/>
+<wire x1="59.436" y1="29.718" x2="57.912" y2="29.718" width="1.016" layer="16"/>
+<wire x1="57.912" y1="29.718" x2="55.626" y2="32.004" width="1.016" layer="16"/>
+<wire x1="55.626" y1="32.004" x2="49.53" y2="32.004" width="1.016" layer="16"/>
 <via x="49.53" y="32.004" extent="1-16" drill="0.35"/>
-<wire x1="49.53" y1="32.004" x2="41.656" y2="32.004" width="0.508" layer="1"/>
-<wire x1="41.656" y1="32.004" x2="38.1" y2="35.56" width="0.508" layer="1"/>
-<wire x1="49.53" y1="32.004" x2="54.61" y2="32.004" width="0.508" layer="16"/>
-<wire x1="54.61" y1="32.004" x2="56.896" y2="29.718" width="0.508" layer="16"/>
-<wire x1="56.896" y1="29.718" x2="59.944" y2="29.718" width="0.508" layer="16"/>
-<wire x1="59.944" y1="29.718" x2="61.214" y2="30.988" width="0.508" layer="16"/>
-<wire x1="61.214" y1="30.988" x2="61.214" y2="31.496" width="0.508" layer="16"/>
+<wire x1="49.53" y1="32.004" x2="44.196" y2="32.004" width="1.016" layer="1"/>
+<wire x1="44.196" y1="32.004" x2="43.18" y2="33.02" width="1.016" layer="1"/>
+<wire x1="43.18" y1="33.02" x2="39.878" y2="33.02" width="1.016" layer="1"/>
+<wire x1="39.878" y1="33.02" x2="38.1" y2="34.798" width="1.016" layer="1"/>
+<wire x1="38.1" y1="34.798" x2="38.1" y2="35.56" width="1.016" layer="1"/>
 </signal>
 <signal name="ENC2_B">
 <contactref element="SV9" pad="5"/>
@@ -4032,13 +4033,12 @@ Covered vias can be set in Masks (Limit).
 <signal name="M2+">
 <contactref element="SV9" pad="2"/>
 <contactref element="IC4" pad="11"/>
-<via x="50.038" y="33.274" extent="1-16" drill="0.35"/>
-<wire x1="50.038" y1="33.274" x2="47.498" y2="33.274" width="0.508" layer="1"/>
-<wire x1="47.498" y1="33.274" x2="45.72" y2="35.052" width="0.508" layer="1"/>
-<wire x1="45.72" y1="35.052" x2="45.72" y2="35.56" width="0.508" layer="1"/>
-<wire x1="50.038" y1="33.274" x2="55.626" y2="33.274" width="0.508" layer="16"/>
-<wire x1="55.626" y1="33.274" x2="57.404" y2="31.496" width="0.508" layer="16"/>
-<wire x1="57.404" y1="31.496" x2="58.674" y2="31.496" width="0.508" layer="16"/>
+<wire x1="58.674" y1="31.496" x2="56.642" y2="33.528" width="1.016" layer="16"/>
+<wire x1="56.642" y1="33.528" x2="49.53" y2="33.528" width="1.016" layer="16"/>
+<via x="49.53" y="33.528" extent="1-16" drill="0.35"/>
+<wire x1="49.53" y1="33.528" x2="46.736" y2="33.528" width="1.016" layer="1"/>
+<wire x1="46.736" y1="33.528" x2="45.72" y2="34.544" width="1.016" layer="1"/>
+<wire x1="45.72" y1="34.544" x2="45.72" y2="35.56" width="1.016" layer="1"/>
 </signal>
 <signal name="ENC2_A">
 <contactref element="SV9" pad="6"/>
@@ -4063,23 +4063,19 @@ Covered vias can be set in Masks (Limit).
 <signal name="M1+">
 <contactref element="SV8" pad="2"/>
 <contactref element="IC4" pad="3"/>
-<wire x1="26.924" y1="27.178" x2="22.5044" y2="31.5976" width="0.508" layer="16"/>
-<wire x1="32.004" y1="25.4" x2="37.084" y2="25.4" width="0.508" layer="16"/>
-<wire x1="32.004" y1="25.4" x2="30.226" y2="27.178" width="0.508" layer="16"/>
-<wire x1="30.226" y1="27.178" x2="26.924" y2="27.178" width="0.508" layer="16"/>
-<via x="37.084" y="25.4" extent="1-16" drill="0.35"/>
-<wire x1="37.084" y1="25.4" x2="38.1" y2="26.416" width="0.508" layer="1"/>
-<wire x1="38.1" y1="26.416" x2="38.1" y2="27.94" width="0.508" layer="1"/>
-<wire x1="22.5044" y1="31.5976" x2="21.7678" y2="31.5976" width="0.508" layer="16"/>
+<wire x1="21.7678" y1="31.5976" x2="27.9654" y2="25.4" width="1.016" layer="16"/>
+<wire x1="27.9654" y1="25.4" x2="36.068" y2="25.4" width="1.016" layer="16"/>
+<wire x1="36.068" y1="25.4" x2="38.1" y2="27.432" width="1.016" layer="16"/>
+<wire x1="38.1" y1="27.432" x2="38.1" y2="27.94" width="1.016" layer="16"/>
 </signal>
 <signal name="M1-">
 <contactref element="SV8" pad="1"/>
 <contactref element="IC4" pad="6"/>
-<via x="42.418" y="31.242" extent="1-16" drill="0.35"/>
-<wire x1="42.418" y1="31.242" x2="45.72" y2="27.94" width="0.508" layer="1"/>
-<wire x1="24.3078" y1="31.5976" x2="25.5524" y2="31.5976" width="0.508" layer="16"/>
-<wire x1="25.5524" y1="31.5976" x2="25.908" y2="31.242" width="0.508" layer="16"/>
-<wire x1="25.908" y1="31.242" x2="42.418" y2="31.242" width="0.508" layer="16"/>
+<wire x1="24.3078" y1="31.5976" x2="25.1714" y2="30.734" width="1.016" layer="16"/>
+<wire x1="25.1714" y1="30.734" x2="43.18" y2="30.734" width="1.016" layer="16"/>
+<via x="43.18" y="30.734" extent="1-16" drill="0.35"/>
+<wire x1="43.18" y1="30.734" x2="45.72" y2="28.194" width="1.016" layer="1"/>
+<wire x1="45.72" y1="28.194" x2="45.72" y2="27.94" width="1.016" layer="1"/>
 </signal>
 <signal name="ENC1_B">
 <contactref element="SV8" pad="5"/>

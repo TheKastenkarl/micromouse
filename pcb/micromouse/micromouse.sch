@@ -15557,6 +15557,17 @@ depending on switch position.</text>
 <approved hash="101,1,-129.54,220.98,LED2,A,,,,"/>
 <approved hash="101,1,-144.78,213.36,LED1,C,,,,"/>
 <approved hash="101,1,-144.78,220.98,LED1,A,,,,"/>
+<approved hash="104,1,71.12,147.32,IC3,VSS,GND,,,"/>
+<approved hash="104,1,167.64,119.38,IC3,VDD,+3V3,,,"/>
+<approved hash="104,1,167.64,121.92,IC3,VSS1,GND,,,"/>
+<approved hash="104,1,167.64,147.32,IC3,VSS2,GND,,,"/>
+<approved hash="104,1,167.64,149.86,IC3,VDD1,+3V3,,,"/>
+<approved hash="104,1,304.8,129.54,IC4,GND1,GND,,,"/>
+<approved hash="104,1,304.8,124.46,IC4,GND2,GND,,,"/>
+<approved hash="104,1,304.8,109.22,IC4,VCC2,+9V,,,"/>
+<approved hash="104,1,335.28,144.78,IC4,VCC1,+5V,,,"/>
+<approved hash="104,1,335.28,129.54,IC4,GND3,GND,,,"/>
+<approved hash="104,1,335.28,124.46,IC4,GND4,GND,,,"/>
 </errors>
 </schematic>
 </drawing>

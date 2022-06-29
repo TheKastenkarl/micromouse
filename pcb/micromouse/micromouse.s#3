@@ -14082,7 +14082,7 @@ Details see: &lt;a href="www.we-online.com/catalog/WE-TIS/?utm_source=eagle_mode
 <text x="218.44" y="228.6" size="1.778" layer="91">p. 357 datasheet of uC:
 max. output current of uC = 15mA.</text>
 <text x="264.16" y="251.46" size="1.778" layer="91">10mA @ 2.1 V</text>
-<text x="264.16" y="261.62" size="1.778" layer="91">10mA @ 1.21 V</text>
+<text x="264.16" y="261.62" size="1.778" layer="91">10mA @ 1.2 V</text>
 <text x="304.8" y="154.94" size="1.778" layer="91">Use socket instead of soldering the
 chip directly onto the board.</text>
 <text x="111.76" y="73.66" size="1.778" layer="91">f_cutoff = 796Hz, same as on dev board</text>
@@ -14318,7 +14318,7 @@ depending on switch position.</text>
 </instance>
 <instance part="S3" gate="1" x="228.6" y="327.66" smashed="yes">
 <attribute name="NAME" x="222.25" y="325.12" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="222.25" y="335.915" size="1.778" layer="96" rot="R90"/>
+<attribute name="VALUE" x="222.25" y="330.835" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="GND21" gate="1" x="241.3" y="299.72" smashed="yes">
 <attribute name="VALUE" x="238.76" y="297.18" size="1.778" layer="96"/>
@@ -14332,7 +14332,7 @@ depending on switch position.</text>
 </instance>
 <instance part="S4" gate="1" x="241.3" y="327.66" smashed="yes">
 <attribute name="NAME" x="234.95" y="325.12" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="234.95" y="335.915" size="1.778" layer="96" rot="R90"/>
+<attribute name="VALUE" x="234.95" y="330.835" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="+3V9" gate="G$1" x="226.06" y="208.28" smashed="yes">
 <attribute name="VALUE" x="226.06" y="198.12" size="1.778" layer="96" rot="R90"/>
@@ -14428,47 +14428,47 @@ depending on switch position.</text>
 <attribute name="VALUE" x="10.16" y="289.56" size="1.778" layer="96" align="bottom-center"/>
 </instance>
 <instance part="PAD2" gate="1" x="-73.66" y="342.9" smashed="yes" rot="R90">
-<attribute name="NAME" x="-75.5142" y="334.137" size="1.778" layer="95" rot="R90"/>
+<attribute name="NAME" x="-72.9742" y="334.137" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="-70.358" y="341.757" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="PAD3" gate="1" x="27.94" y="342.9" smashed="yes" rot="R180">
-<attribute name="NAME" x="36.703" y="341.0458" size="1.778" layer="95" rot="R180"/>
+<attribute name="NAME" x="36.703" y="343.5858" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="29.083" y="346.202" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="PAD4" gate="1" x="27.94" y="292.1" smashed="yes" rot="R180">
-<attribute name="NAME" x="39.243" y="290.2458" size="1.778" layer="95" rot="R180"/>
+<attribute name="NAME" x="36.703" y="292.7858" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="29.083" y="295.402" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="PAD7" gate="1" x="147.32" y="309.88" smashed="yes" rot="R180">
-<attribute name="NAME" x="156.083" y="308.0258" size="1.778" layer="95" rot="R180"/>
+<attribute name="NAME" x="156.083" y="310.5658" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="148.463" y="313.182" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="PAD8" gate="1" x="147.32" y="292.1" smashed="yes" rot="R180">
-<attribute name="NAME" x="156.083" y="290.2458" size="1.778" layer="95" rot="R180"/>
+<attribute name="NAME" x="156.083" y="292.7858" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="148.463" y="295.402" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="PAD9" gate="1" x="147.32" y="274.32" smashed="yes" rot="R180">
-<attribute name="NAME" x="156.083" y="272.4658" size="1.778" layer="95" rot="R180"/>
+<attribute name="NAME" x="156.083" y="275.0058" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="148.463" y="277.622" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="PAD10" gate="1" x="154.94" y="66.04" smashed="yes" rot="R180">
-<attribute name="NAME" x="163.703" y="64.1858" size="1.778" layer="95" rot="R180"/>
+<attribute name="NAME" x="166.243" y="66.7258" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="156.083" y="69.342" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="PAD5" gate="1" x="58.42" y="134.62" smashed="yes">
-<attribute name="NAME" x="42.037" y="136.4742" size="1.778" layer="95"/>
+<attribute name="NAME" x="49.657" y="133.9342" size="1.778" layer="95"/>
 <attribute name="VALUE" x="57.277" y="131.318" size="1.778" layer="96"/>
 </instance>
 <instance part="PAD6" gate="1" x="58.42" y="124.46" smashed="yes">
-<attribute name="NAME" x="42.037" y="126.3142" size="1.778" layer="95"/>
+<attribute name="NAME" x="49.657" y="123.7742" size="1.778" layer="95"/>
 <attribute name="VALUE" x="57.277" y="121.158" size="1.778" layer="96"/>
 </instance>
 <instance part="PAD1" gate="1" x="-86.36" y="340.36" smashed="yes" rot="R180">
-<attribute name="NAME" x="-82.677" y="343.5858" size="1.778" layer="95" rot="R180"/>
+<attribute name="NAME" x="-77.597" y="341.0458" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="-85.217" y="343.662" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="PAD11" gate="1" x="154.94" y="53.34" smashed="yes" rot="R180">
-<attribute name="NAME" x="163.703" y="51.4858" size="1.778" layer="95" rot="R180"/>
+<attribute name="NAME" x="166.243" y="54.0258" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="156.083" y="56.642" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="C5" gate="G$1" x="25.4" y="325.12" smashed="yes" rot="R90">
@@ -15551,21 +15551,10 @@ depending on switch position.</text>
 </sheet>
 </sheets>
 <errors>
-<approved hash="101,1,-129.54,213.36,LED4,C,,,,"/>
-<approved hash="101,1,-129.54,220.98,LED4,A,,,,"/>
-<approved hash="101,1,-144.78,213.36,LED3,C,,,,"/>
-<approved hash="101,1,-144.78,220.98,LED3,A,,,,"/>
-<approved hash="104,1,71.12,147.32,MICROCONTROLLER,VSS,GND,,,"/>
-<approved hash="104,1,167.64,119.38,MICROCONTROLLER,VDD,+3V3,,,"/>
-<approved hash="104,1,167.64,121.92,MICROCONTROLLER,VSS1,GND,,,"/>
-<approved hash="104,1,167.64,147.32,MICROCONTROLLER,VSS2,GND,,,"/>
-<approved hash="104,1,167.64,149.86,MICROCONTROLLER,VDD1,+3V3,,,"/>
-<approved hash="104,1,304.8,129.54,H-BRIDGE,GND1,GND,,,"/>
-<approved hash="104,1,304.8,124.46,H-BRIDGE,GND2,GND,,,"/>
-<approved hash="104,1,304.8,109.22,H-BRIDGE,VCC2,+9V,,,"/>
-<approved hash="104,1,335.28,144.78,H-BRIDGE,VCC1,+5V,,,"/>
-<approved hash="104,1,335.28,129.54,H-BRIDGE,GND3,GND,,,"/>
-<approved hash="104,1,335.28,124.46,H-BRIDGE,GND4,GND,,,"/>
+<approved hash="101,1,-129.54,213.36,LED2,C,,,,"/>
+<approved hash="101,1,-129.54,220.98,LED2,A,,,,"/>
+<approved hash="101,1,-144.78,213.36,LED1,C,,,,"/>
+<approved hash="101,1,-144.78,220.98,LED1,A,,,,"/>
 </errors>
 </schematic>
 </drawing>

@@ -1,24 +1,36 @@
-/* 
- * File:   IOconfig.h
- * Author: adamp
- *
- * Created on 13 December 2019, 09:38
- */
-
 #ifndef IOCONFIG_H
 #define	IOCONFIG_H
 
-#define LED4 LATBbits.LATB15
-#define LED5 LATBbits.LATB14
-#define LED6 LATBbits.LATB13
-#define LED7 LATBbits.LATB12
+/// OUTPUTS 
 
-#define SW1 !PORTBbits.RB5 
+// use latch for writing to outputs, pin numbers from board description
+#define LED0 LATBbits.LATB10
+#define LED1 LATBbits.LATB11
+#define LED2 LATBbits.LATB12
+#define M1_PLUS_EN LATAbits.LATA10
+#define M1_MINUS_EN LATAbits.LATA7
+#define M2_PLUS_EN LATAbits.LATA8
+#define M2_MINUS_EN LATBbits.LATB4
 
+// motors pwm duty cycles
+#define M1_DC P1DC1 // PWM1L1, PWM1H1
+#define M2_DC P1DC2 // PWM1L2, PWM1H2
+
+/// INPUTS
+
+// use port for reading from inputs
+#define BTN1 PORTBbits.RB7 
+#define BTN2 PORTBbits.RB6
+
+/// VALUES
+
+// since active low LED
 #define LEDON 0
 #define LEDOFF 1
 
-// Set up the input and output ports.
+// buttons
+#define BTN_PRESSED 1
+
 void setupIO();
 
 #endif	/* IOCONFIG_H */

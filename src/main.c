@@ -5,8 +5,7 @@
  * Created on 27 Nov 2020, 09:36
  */
 
-
-/// Configuration Bits---------------------------
+/// Configuration Bits
 
 // FBS
 #pragma config BWRP = WRPROTECT_OFF     // Boot Segment Write Protect (Boot Segment may be written)
@@ -43,82 +42,40 @@
 #pragma config ICS = PGD1               // Comm Channel Select (Communicate on PGC1/EMUC1 and PGD1/EMUD1)
 #pragma config JTAGEN = OFF             // JTAG Port Enable (JTAG is Disabled)
 
-
-/// Include headers-------------------------------
+/// Include headers
 #include "xc.h"
 #include "IOconfig.h"
-#include "timer1.h"
-#include "serialComms.h"
-#include "pwm1.h"
-#include "generalDefines.h"
-#include "motorEncoders.h"
-#include "dma.h"
-#include "adc.h"
+#include "osciallator.h"
 
-/// Defines----------------------------
-#define SEVEN_MEG_OSC 1 //set to 1 if we use slow (7.3728 MHz) oscillator and not 16 MHz
-
-int main() 
-{
-#if (SEVEN_MEG_OSC == 0) 
-     /*** oscillator setup --------------------------------------------------
-     * The external oscillator runs at 16MHz
-     * PLL is used to generate 53.3 MHz clock (FOSC)
-     * The relationship between oscillator and cycle frequency: FCY = FOSC/2
-     * Have a look at "PLL Configuration" paragraph in the mcu manual
-    
-     * Result: FCY = 0.5 * (16MHz*20/(3*2)) = 26.666 MIPS, Tcycle=37.5nsec
-    ---------------------------------------------------------------------***/
-    PLLFBDbits.PLLDIV = 18;           //set PPL to M=20 (18+2)
-    CLKDIVbits.PLLPRE = 1;            //N1 = input/3
-    CLKDIVbits.PLLPOST = 0;           //N2 = output/2
-
-#else //Below the 7.3728 Setup 
-     /*** oscillator setup --------------------------------------------------
-     * The external oscillator runs at 7.3728 MHz
-     * PLL is used to generate 53.3 MHz clock (FOSC)
-     * The relationship between oscillator and cycle frequency: FCY = FOSC/2
-     * Have a look at "PLL Configuration" paragraph in the mcu manual
-    
-     * Result: FCY = 0.5 * (7.3728 MHz*29/(2*2)) = 26.73 MIPS, which is 
-     * not exactl Tcycle=37.5nsec, but close enough for our purposes
-    ---------------------------------------------------------------------***/
-    PLLFBDbits.PLLDIV = 27;           //set PPL to M=29 (27+2)
-    CLKDIVbits.PLLPRE = 0;            //N1 = input/2
-    CLKDIVbits.PLLPOST = 0;           //N2 = output/2
-#endif //SEVEN_MEG_OSC == 0
-
-
-    /* Clock switch to incorporate PLL*/
-    __builtin_write_OSCCONH( 0x03 ); // Initiate Clock Switch to Primary
-
-    // Oscillator with PLL (NOSC=0b011)
-    __builtin_write_OSCCONL( OSCCON || 0x01 ); // Start clock switching
-
-    while(OSCCONbits.COSC != 0b011);
-
-    // In reality, give some time to the PLL to lock
-    while (OSCCONbits.LOCK != 1); // Wait for PPL to lock
-
-    // Setup peripherals and GPIO
+void setup() {
+    setupOscillator();
     setupIO(); // configures inputs and outputs
-    initTimer1(10); // creates a timer (time in ms)
-    //initQEI1(0); // initialize motor encoder with start position 0
-    //setupUART1();
-    setupPWM1(250, 0, 1, 0, 0, 0, 0); // only enable PWM1L1 (LED4)
-    setupADC1();
-    initDmaChannel4();
-    
-    LED4 = LEDOFF;
-    LED5 = LEDOFF;
-    LED6 = LEDOFF;
-    LED7 = LEDOFF;
 
-    startTimer1(); // start timer
-    startADC1();
-    
-    while(1);
- 
+    // all LEDs off by default
+    LED0 = LEDOFF;
+    LED1 = LEDOFF;
+    LED2 = LEDOFF;
+
+    // initTimer1(10); // creates a timer (time in ms)
+    // initQEI1(0); // initialize motor encoder with start position 0
+    // setupUART1();
+    // setupPWM1(250, 0, 1, 0, 0, 0, 0); // only enable PWM1L1 (LED4)
+    // setupADC1();
+    // initDmaChannel4();
+
+    // startTimer1(); // start timer
+    // startADC1();
+}
+
+void run() {
+    while (1) {
+
+    }
+}
+
+int main() {
+    setup();
+    run();
     return 0;
 }
 

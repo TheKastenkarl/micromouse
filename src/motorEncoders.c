@@ -1,221 +1,110 @@
+
 #include <xc.h>
-#include <math.h>
 #include "motorEncoders.h"
-#include "generalDefines.h"
 
-// file global variables
-long rotationCount1; // total number of ticks since initialization (QEI1)
-long rotationCount2; // total number of ticks since initialization (QEI2)
+long g_rotationCounts[] = {0, 0};
+//long currentEncoderPosition;
 
-/***************************************************************************
-* Function Name     : initQEI1                                             *
-* Description       : Initialize motor encoder 1.                          *
-* Parameters        : startPos - Initial count value for POSCNT register.  *
-* Return Value      : None                                                 *
-***************************************************************************/
-void initQEI1(const unsigned int startPos)
-{
-    QEI1CONbits.QEISIDL = 1;    // discontinue module operation in idle mode
-    QEI1CONbits.QEIM = 0b111;   // Quadrature Encoder Interface enabled (x4mode) with position counter reset by match (MAX1CNT)
-    QEI1CONbits.SWPAB = 0;      // Phase A and B not swapped
-    QEI1CONbits.PCDOUT = 0;     // disable position counter direction pin
-    QEI1CONbits.TQGATE = 0;     // timer gated time acc disabled
-    QEI1CONbits.POSRES = 0;     // index does not reset position counter
-    QEI1CONbits.TQCS = 0;       // internal clock source (Tcy))
-    QEI1CONbits.UPDN_SRC = 0;   // direction of position counter determined using internal logic
+#include <math.h>
 
-    MAXCNT = 0xFFFF;    // Set max count value (16 bit)
-    POSCNT = startPos;  // Set initial count value
-    rotationCount1 = 0; // Initialize total rotation count
+//****************************************************************INITIALISE QEI************************
 
-    IFS3bits.QEI1IF = 0;  // clear interrupt flag
-    IEC3bits.QEI1IE = 1;  // enable interrupt
-    IPC14bits.QEI1IP = 5; // set the interrupt priority
+void initQEI1(unsigned int startPos) {
+    QEI1CONbits.QEISIDL = 1; // discontinue module operation in idle mode
+    QEI1CONbits.QEIM = 0b111; // Quadrature Encoder Interface enabled (x4mode) with position counter reset by match (MAX1CNT)
+    QEI1CONbits.SWPAB = 0; // Phase A and B not swapped
+    QEI1CONbits.PCDOUT = 0; // disable position counter direction pin
+    QEI1CONbits.TQGATE = 0; // timer gated time acc disabled
+    QEI1CONbits.POSRES = 0; // index does not reset position counter
+    QEI1CONbits.TQCS = 0; // internal clock source (Tcy))
+    QEI1CONbits.UPDN_SRC = 0; // direction of position counter determined using internal logic
+
+    MAX1CNT = 0xffff;
+    POS1CNT = startPos;
+    g_rotationCounts[0] = 0;
+
+    IFS3bits.QEI1IF = 0; // clear interrupt flag
+    IEC3bits.QEI1IE = 1; // enable interrupt
+    IPC14bits.QEI1IP = 5;
 }
 
-/***************************************************************************
-* Function Name     : initQEI2                                             *
-* Description       : Initialize motor encoder 2.                          *
-* Parameters        : startPos - Initial count value for POS2CNT register. *
-* Return Value      : None                                                 *
-***************************************************************************/
-void initQEI2(const unsigned int startPos)
-{
-    QEI2CONbits.QEISIDL = 1;    // discontinue module operation in idle mode
-    QEI2CONbits.QEIM = 0b111;   // Quadrature Encoder Interface enabled (x4mode) with position counter reset by match (MAX1CNT)
-    QEI2CONbits.SWPAB = 1;      // Phase A and B  swapped
-    QEI2CONbits.PCDOUT = 0;     // disable position counter direction pin
-    QEI2CONbits.TQGATE = 0;     // timer gated time acc disabled
-    QEI2CONbits.POSRES = 0;     // index does not reset position counter
-    QEI2CONbits.TQCS = 0;       // internal clock source (Tcy))
-    QEI2CONbits.UPDN_SRC = 0;   // direction of position counter determined using internal logic
+void initQEI2(unsigned int startPos) {
+    QEI2CONbits.QEISIDL = 1; // discontinue module operation in idle mode
+    QEI2CONbits.QEIM = 0b111; // Quadrature Encoder Interface enabled (x4mode) with position counter reset by match (MAX1CNT)
+    QEI2CONbits.SWPAB = 1; // Phase A and B  swapped
+    QEI2CONbits.PCDOUT = 0; // disable position counter direction pin
+    QEI2CONbits.TQGATE = 0; // timer gated time acc disabled
+    QEI2CONbits.POSRES = 0; // index does not reset position counter
+    QEI2CONbits.TQCS = 0; // internal clock source (Tcy))
+    QEI2CONbits.UPDN_SRC = 0; // direction of position counter determined using internal logic
 
-    MAX2CNT = 0xFFFF;   // Set max count value (16 bit)
-    POS2CNT = startPos; // Set initial count value
-    rotationCount2 = 0; // Initialize total rotation count
+    MAX2CNT = 0xffff;
+    POS2CNT = startPos;
+    g_rotationCounts[1] = 0;
 
-    IFS4bits.QEI2IF = 0;  // clear interrupt flag
-    IEC4bits.QEI2IE = 1;  // enable interrupt
-    IPC18bits.QEI2IP = 5; // set the interrupt priority
+    IFS4bits.QEI2IF = 0; // clear interrupt flag
+    IEC4bits.QEI2IE = 1; // enable interrupt
+    IPC18bits.QEI2IP = 5;
 }
 
-/***************************************************************************
-* Function Name     : _QEI1Interrupt                                       *
-* Description       : ISR of QEI1. Updates the global variable             *
-*                     rotationCount1 in case of roll-overs.                *
-* Parameters        : None                                                 *
-* Return Value      : None                                                 *
-***************************************************************************/
-void __attribute__((__interrupt__, auto_psv)) _QEI1Interrupt(void)
-{
+void updateRotationCount(volatile uint16_t posCount, long* globalCount) {
+    long change = 0x10000; // POS1CNT goes until 65535 = 0x1111;
+    if (posCount < 32768) { // was a roll over
+        *globalCount = *globalCount + change; // we had a positive roll-over
+    } else { // was a roll under
+        *globalCount = *globalCount - change; // we had a negative roll-over
+    }
+}
+
+void __attribute__((__interrupt__, auto_psv)) _QEI1Interrupt(void) {
     // Interrupt generated by QEI roll over/under
     IFS3bits.QEI1IF = 0; // clear interrupt
-
-    if (POSCNT < 32768)
-    {
-        rotationCount1 = rotationCount1 + (long) 0x10000; // we had a positive roll-over
-    }
-    else
-    {
-        rotationCount1 = rotationCount1 - (long) 0x10000; // we had a negative roll-over
-    }
+    updateRotationCount(POS1CNT, &(g_rotationCounts[0]));
 }
 
-/***************************************************************************
-* Function Name     : _QEI2Interrupt                                       *
-* Description       : ISR of QEI2. Updates the global variable             *
-*                     rotationCount2 in case of roll-overs.                *
-* Parameters        : None                                                 *
-* Return Value      : None                                                 *
-***************************************************************************/
-void __attribute__((__interrupt__, auto_psv)) _QEI2Interrupt(void)
-{
+void __attribute__((__interrupt__, auto_psv)) _QEI2Interrupt(void) {
     // Interrupt generated by QEI roll over/under
     IFS4bits.QEI2IF = 0; // clear interrupt
-
-    if (POS2CNT < 32768)
-    {
-        rotationCount2 = rotationCount2 + (long) 0x10000; // we had a positive roll-over
-    }
-    else
-    {
-        rotationCount2 = rotationCount2 - (long) 0x10000; // we had a negative roll-over
-    }
+    updateRotationCount(POS2CNT, &(g_rotationCounts[1]));
 }
 
-/***************************************************************************
-* Function Name     : getPositionInRad_1                                   *
-* Description       : Get the position of the motor connected to QEI1 in   *
-*                     radian.                                              *
-* Parameters        : None                                                 *
-* Return Value      : Position in rad.                                                 *
-***************************************************************************/
-float getPositionInRad_1()
-{
+long getPositionInCounts(unsigned char encoderNumber) {
     long currentEncoderPosition;
+
     //disable interrupts to make sure we have consistent data
-    INTCON1bits.NSTDIS = 1;
-    GET_ENCODER_1 (currentEncoderPosition);
-    INTCON1bits.NSTDIS = 0;
-    return 3.141592 * 2 * currentEncoderPosition / TICKS_PER_WHEELROTATION;
+    _NSTDIS = 1;
+    switch (encoderNumber) {
+        case 1:
+            GET_ENCODER_1(currentEncoderPosition);
+            break;
+
+        case 2:
+            GET_ENCODER_2(currentEncoderPosition);
+            break;
+    }
+    _NSTDIS = 0;
+
+    return currentEncoderPosition;
 }
 
-/***************************************************************************
-* Function Name     : getPositionInCounts_1                                *
-* Description       : Get the position of the motor connected to QEI1 in   *
-*                     the total number of counted pulses.                  *
-* Parameters        : None                                                 *
-* Return Value      : Position in counts.                                  *
-***************************************************************************/
-long getPositionInCounts_1()
-{
-    long currentEncoderPosition;
-    GET_ENCODER_1 (currentEncoderPosition);
-    return currentEncoderPosition; 
+float getPositionInRad(unsigned char encoderNumber) {
+    long currentEncoderPosition = getPositionInCounts(encoderNumber);
+    return 3.141592 * 2 * currentEncoderPosition / (16 * 4 * 33);
 }
 
-/***************************************************************************
-* Function Name     : getVelocityInCountsPerSample_1                       *
-* Description       : Get the velocity of the motor connected to QEI1 in   *
-*                     CountsPerSample (number of counted pulses in the     *
-*                     sample interval).                                    *
-* Parameters        : None                                                 *
-* Return Value      : Velocity in CountsPerSample.                         *
-***************************************************************************/
-int getVelocityInCountsPerSample_1()
-{
-    static long oldPosition;
+int getVelocityInCountsPerSample(unsigned char encoderNumber) {
+    static long oldPositions[] = {0, 0};
     long currentPosition;
     int velocity;
 
-    // disable interrupts to make sure we have consistent data
-    INTCON1bits.NSTDIS = 1;
-    GET_ENCODER_1 (currentPosition);
-    INTCON1bits.NSTDIS = 0;
-    velocity = currentPosition - oldPosition;
+    currentPosition = getPositionInCounts(encoderNumber);
+    velocity = (currentPosition - oldPositions[encoderNumber]);
+    oldPositions[encoderNumber] = currentPosition;
 
-    oldPosition = currentPosition;
     return velocity;
 }
 
-/***************************************************************************
-* Function Name     : getPositionInCounts_2                                *
-* Description       : Get the position of the motor connected to QEI2 in   *
-*                     the total number of counted pulses.                  *
-* Parameters        : None                                                 *
-* Return Value      : Position in counts.                                  *
-***************************************************************************/
-long getPositionInCounts_2()
-{
-    long currentEncoderPosition;
-    GET_ENCODER_2 (currentEncoderPosition);
-    return currentEncoderPosition; 
-}
-
-/***************************************************************************
-* Function Name     : getVelocityInCountsPerSample_2                       *
-* Description       : Get the velocity of the motor connected to QEI2 in   *
-*                     CountsPerSample (number of counted pulses in the     *
-*                     sample interval).                                    *
-* Parameters        : None                                                 *
-* Return Value      : Velocity in CountsPerSample.                         *
-***************************************************************************/
-int getVelocityInCountsPerSample_2()
-{
-    static long oldPosition;
-    long currentPosition;
-    int velocity;
-
-    // disable interrupts to make sure we have consistent data
-    INTCON1bits.NSTDIS = 1;
-    GET_ENCODER_2 (currentPosition);
-    INTCON1bits.NSTDIS = 0;
-    velocity = currentPosition - oldPosition;
-
-    oldPosition = currentPosition;
-    return velocity;
-}
-
-/***************************************************************************
-* Function Name     : getVelocityInRadPerSecond_2                          *
-* Description       : Get the velocity of the motor connected to QEI1 in   *
-*                     RadPerSeconds.                                       *
-* Parameters        : None                                                 *
-* Return Value      : Velocity in RadPerSeconds.                           *
-***************************************************************************/
-float getVelocityInRadPerSecond_1()
-{
-    static long oldPosition;
-    float velocity;
-    long currentPosition;
-
-    // disable interrupts to make sure we have consistent data
-    INTCON1bits.NSTDIS = 1;
-    GET_ENCODER_1 (currentPosition);
-    INTCON1bits.NSTDIS = 0;
-    //velocity = 3.141592 * 2 * ((currentPosition - oldPosition) * 0.01) / TICKS_PER_WHEELROTATION; // REALLY CORRECT? I think that 1/10ms would be correct.
-    velocity = 3.141592 * 2 * ((currentPosition - oldPosition)) / (TICKS_PER_WHEELROTATION * CONTROL_FREQUENCY);
-    
-    oldPosition = currentPosition;
-    return velocity;
+float getVelocityInRadPerSample(unsigned char encoderNumber) {
+    int velocityCounts = getVelocityInCountsPerSample(encoderNumber);
+    return 3.141592 * 2 * (float) velocityCounts / (33 * 4 * 16);
 }

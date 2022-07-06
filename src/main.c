@@ -46,6 +46,8 @@
 #include "xc.h"
 #include "IOconfig.h"
 #include "osciallator.h"
+#include "pwm.h"
+#include "timer.h"
 
 void setup() {
     setupOscillator();
@@ -56,18 +58,18 @@ void setup() {
     LED1 = LEDOFF;
     LED2 = LEDOFF;
 
-    // initTimer1(10); // creates a timer (time in ms)
+    initTimer1(10); // creates a timer (time in ms)
     // initQEI1(0); // initialize motor encoder with start position 0
     // setupUART1();
     // setupPWM1(250, 0, 1, 0, 0, 0, 0); // only enable PWM1L1 (LED4)
     // setupADC1();
     // initDmaChannel4();
 
-    // startTimer1(); // start timer
+    startTimer1(); // start timer
     // startADC1();
 }
 
-void run() {
+void loop() {
     while (1) {
 
     }
@@ -75,7 +77,7 @@ void run() {
 
 int main() {
     setup();
-    run();
+    loop();
     return 0;
 }
 

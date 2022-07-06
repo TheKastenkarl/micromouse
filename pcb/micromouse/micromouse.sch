@@ -14078,6 +14078,12 @@ Details see: &lt;a href="www.we-online.com/catalog/WE-TIS/?utm_source=eagle_mode
 <part name="C21" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100nF"/>
 <part name="C22" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100nF"/>
 <part name="C23" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100nF"/>
+<part name="R10" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="16R"/>
+<part name="R11" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="16R"/>
+<part name="R12" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="16R"/>
+<part name="C24" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="10uF"/>
+<part name="C25" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="10uF"/>
+<part name="C26" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="10uF"/>
 </parts>
 <sheets>
 <sheet>
@@ -14095,6 +14101,8 @@ depending on switch position.</text>
 <text x="-58.42" y="223.52" size="1.778" layer="91">Remove some IO if unable to draw all PCB lines</text>
 <text x="8.89" y="115.062" size="1.778" layer="91">+</text>
 <text x="9.144" y="109.982" size="1.778" layer="91">Tantulum</text>
+<text x="144.78" y="317.5" size="1.778" layer="91">Low Pass with Cutoff ~1kHz -&gt; 6 ms until signal is reached
+when step input (tested with Simulink)</text>
 </plain>
 <instances>
 <instance part="GND2" gate="1" x="200.66" y="104.14" smashed="yes">
@@ -14445,17 +14453,17 @@ depending on switch position.</text>
 <attribute name="NAME" x="49.403" y="292.7858" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="49.403" y="290.322" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="PAD7" gate="1" x="147.32" y="309.88" smashed="yes" rot="R180">
-<attribute name="NAME" x="156.083" y="310.5658" size="1.778" layer="95" rot="R180"/>
-<attribute name="VALUE" x="161.163" y="308.102" size="1.778" layer="96" rot="R180"/>
+<instance part="PAD7" gate="1" x="190.5" y="309.88" smashed="yes" rot="R180">
+<attribute name="NAME" x="199.263" y="310.5658" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="204.343" y="308.102" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="PAD8" gate="1" x="147.32" y="292.1" smashed="yes" rot="R180">
-<attribute name="NAME" x="156.083" y="292.7858" size="1.778" layer="95" rot="R180"/>
-<attribute name="VALUE" x="161.163" y="290.322" size="1.778" layer="96" rot="R180"/>
+<instance part="PAD8" gate="1" x="190.5" y="292.1" smashed="yes" rot="R180">
+<attribute name="NAME" x="199.263" y="292.7858" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="204.343" y="290.322" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="PAD9" gate="1" x="147.32" y="274.32" smashed="yes" rot="R180">
-<attribute name="NAME" x="156.083" y="275.0058" size="1.778" layer="95" rot="R180"/>
-<attribute name="VALUE" x="161.163" y="272.542" size="1.778" layer="96" rot="R180"/>
+<instance part="PAD9" gate="1" x="190.5" y="274.32" smashed="yes" rot="R180">
+<attribute name="NAME" x="199.263" y="275.0058" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="204.343" y="272.542" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="PAD10" gate="1" x="154.94" y="66.04" smashed="yes" rot="R180">
 <attribute name="NAME" x="166.243" y="66.7258" size="1.778" layer="95" rot="R180"/>
@@ -14500,6 +14508,30 @@ depending on switch position.</text>
 <instance part="C23" gate="G$1" x="-48.26" y="276.86" smashed="yes" rot="R180">
 <attribute name="NAME" x="-49.784" y="276.479" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="-49.784" y="281.559" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="R10" gate="G$1" x="160.02" y="309.88" smashed="yes" rot="R180">
+<attribute name="NAME" x="163.83" y="308.3814" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="163.83" y="313.182" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="R11" gate="G$1" x="160.02" y="292.1" smashed="yes" rot="R180">
+<attribute name="NAME" x="163.83" y="290.6014" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="163.83" y="295.402" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="R12" gate="G$1" x="160.02" y="274.32" smashed="yes" rot="R180">
+<attribute name="NAME" x="163.83" y="272.8214" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="163.83" y="277.622" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="C24" gate="G$1" x="170.18" y="299.72" smashed="yes" rot="R180">
+<attribute name="NAME" x="168.656" y="299.339" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="168.656" y="304.419" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="C25" gate="G$1" x="170.18" y="281.94" smashed="yes" rot="R180">
+<attribute name="NAME" x="168.656" y="281.559" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="168.656" y="286.639" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="C26" gate="G$1" x="170.18" y="264.16" smashed="yes" rot="R180">
+<attribute name="NAME" x="168.656" y="263.779" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="168.656" y="268.859" size="1.778" layer="96" rot="R180"/>
 </instance>
 </instances>
 <busses>
@@ -14734,6 +14766,12 @@ depending on switch position.</text>
 <pinref part="C11" gate="G$1" pin="1"/>
 <wire x1="124.46" y1="279.4" x2="137.16" y2="279.4" width="0.1524" layer="91"/>
 <junction x="137.16" y="279.4"/>
+<pinref part="C24" gate="G$1" pin="1"/>
+<wire x1="137.16" y1="297.18" x2="170.18" y2="297.18" width="0.1524" layer="91"/>
+<pinref part="C25" gate="G$1" pin="1"/>
+<wire x1="137.16" y1="279.4" x2="170.18" y2="279.4" width="0.1524" layer="91"/>
+<pinref part="C26" gate="G$1" pin="1"/>
+<wire x1="137.16" y1="261.62" x2="170.18" y2="261.62" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <wire x1="233.68" y1="198.12" x2="233.68" y2="185.42" width="0.1524" layer="91"/>
@@ -15020,10 +15058,14 @@ depending on switch position.</text>
 <pinref part="IC3" gate="G$1" pin="AN4/C1IN-/RP2/CN6/RB2"/>
 </segment>
 <segment>
-<pinref part="SV5" gate="G$1" pin="3"/>
-<wire x1="111.76" y1="274.32" x2="144.78" y2="274.32" width="0.1524" layer="91"/>
-<label x="139.7" y="274.32" size="1.778" layer="95"/>
+<pinref part="R12" gate="G$1" pin="1"/>
+<pinref part="C26" gate="G$1" pin="2"/>
+<wire x1="165.1" y1="274.32" x2="170.18" y2="274.32" width="0.1524" layer="91"/>
+<wire x1="170.18" y1="274.32" x2="170.18" y2="269.24" width="0.1524" layer="91"/>
 <pinref part="PAD9" gate="1" pin="P"/>
+<wire x1="170.18" y1="274.32" x2="187.96" y2="274.32" width="0.1524" layer="91"/>
+<junction x="170.18" y="274.32"/>
+<label x="177.8" y="274.32" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="+9V" class="0">
@@ -15503,10 +15545,14 @@ depending on switch position.</text>
 <pinref part="IC3" gate="G$1" pin="AN0/VREF+/CN2/RA0"/>
 </segment>
 <segment>
-<pinref part="SV3" gate="G$1" pin="3"/>
-<wire x1="111.76" y1="309.88" x2="144.78" y2="309.88" width="0.1524" layer="91"/>
-<label x="139.7" y="309.88" size="1.778" layer="95"/>
+<pinref part="R10" gate="G$1" pin="1"/>
 <pinref part="PAD7" gate="1" pin="P"/>
+<wire x1="165.1" y1="309.88" x2="170.18" y2="309.88" width="0.1524" layer="91"/>
+<pinref part="C24" gate="G$1" pin="2"/>
+<wire x1="170.18" y1="309.88" x2="187.96" y2="309.88" width="0.1524" layer="91"/>
+<wire x1="170.18" y1="304.8" x2="170.18" y2="309.88" width="0.1524" layer="91"/>
+<junction x="170.18" y="309.88"/>
+<label x="177.8" y="309.88" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="IR1" class="0">
@@ -15516,10 +15562,14 @@ depending on switch position.</text>
 <pinref part="IC3" gate="G$1" pin="AN1/VREF-/CN3/RA1"/>
 </segment>
 <segment>
-<pinref part="SV4" gate="G$1" pin="3"/>
-<wire x1="111.76" y1="292.1" x2="144.78" y2="292.1" width="0.1524" layer="91"/>
-<label x="139.7" y="292.1" size="1.778" layer="95"/>
+<pinref part="R11" gate="G$1" pin="1"/>
 <pinref part="PAD8" gate="1" pin="P"/>
+<wire x1="165.1" y1="292.1" x2="170.18" y2="292.1" width="0.1524" layer="91"/>
+<pinref part="C25" gate="G$1" pin="2"/>
+<wire x1="170.18" y1="292.1" x2="187.96" y2="292.1" width="0.1524" layer="91"/>
+<wire x1="170.18" y1="287.02" x2="170.18" y2="292.1" width="0.1524" layer="91"/>
+<junction x="170.18" y="292.1"/>
+<label x="177.8" y="292.1" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="IO0" class="0">
@@ -15595,6 +15645,30 @@ depending on switch position.</text>
 <pinref part="R2" gate="G$1" pin="1"/>
 <pinref part="IC3" gate="G$1" pin="MCLR"/>
 <wire x1="58.42" y1="116.84" x2="71.12" y2="116.84" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="IR0_RAW" class="0">
+<segment>
+<pinref part="SV3" gate="G$1" pin="3"/>
+<pinref part="R10" gate="G$1" pin="2"/>
+<wire x1="111.76" y1="309.88" x2="154.94" y2="309.88" width="0.1524" layer="91"/>
+<label x="139.7" y="309.88" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="IR1_RAW" class="0">
+<segment>
+<pinref part="SV4" gate="G$1" pin="3"/>
+<pinref part="R11" gate="G$1" pin="2"/>
+<wire x1="111.76" y1="292.1" x2="154.94" y2="292.1" width="0.1524" layer="91"/>
+<label x="139.7" y="292.1" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="IR2_RAW" class="0">
+<segment>
+<pinref part="SV5" gate="G$1" pin="3"/>
+<pinref part="R12" gate="G$1" pin="2"/>
+<wire x1="111.76" y1="274.32" x2="154.94" y2="274.32" width="0.1524" layer="91"/>
+<label x="139.7" y="274.32" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>

@@ -14061,17 +14061,17 @@ Details see: &lt;a href="www.we-online.com/catalog/WE-TIS/?utm_source=eagle_mode
 <part name="C2" library="Eagle_WCAP-ATG5 (rev21a)" deviceset="WCAP-ATG5_5X11" device="" package3d_urn="urn:adsk.eagle:package:18308011/3" technology="_860020272005" value="100  uF "/>
 <part name="L1" library="Eagle_WE-TIS (rev22a)" deviceset="WE-TIS_1111" device="" package3d_urn="urn:adsk.eagle:package:12988462/4" technology="_7447471331" value="330uH"/>
 <part name="L2" library="Eagle_WE-TIS (rev22a)" deviceset="WE-TIS_1111" device="" package3d_urn="urn:adsk.eagle:package:12988462/4" technology="_7447471331" value="330uH"/>
-<part name="PAD2" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="3,17/1,3" device="" package3d_urn="urn:adsk.eagle:package:30833/1"/>
-<part name="PAD3" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="3,17/1,3" device="" package3d_urn="urn:adsk.eagle:package:30833/1"/>
-<part name="PAD4" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="3,17/1,3" device="" package3d_urn="urn:adsk.eagle:package:30833/1"/>
-<part name="PAD7" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="3,17/1,3" device="" package3d_urn="urn:adsk.eagle:package:30833/1"/>
-<part name="PAD8" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="3,17/1,3" device="" package3d_urn="urn:adsk.eagle:package:30833/1"/>
-<part name="PAD9" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="3,17/1,3" device="" package3d_urn="urn:adsk.eagle:package:30833/1"/>
-<part name="PAD10" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="3,17/1,3" device="" package3d_urn="urn:adsk.eagle:package:30833/1"/>
-<part name="PAD5" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="3,17/1,3" device="" package3d_urn="urn:adsk.eagle:package:30833/1"/>
-<part name="PAD6" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="3,17/1,3" device="" package3d_urn="urn:adsk.eagle:package:30833/1"/>
-<part name="PAD1" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="3,17/1,3" device="" package3d_urn="urn:adsk.eagle:package:30833/1"/>
-<part name="PAD11" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="3,17/1,3" device="" package3d_urn="urn:adsk.eagle:package:30833/1"/>
+<part name="PAD2" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="3,17/1,3" device="" package3d_urn="urn:adsk.eagle:package:30833/1" value="TEST_9V"/>
+<part name="PAD3" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="3,17/1,3" device="" package3d_urn="urn:adsk.eagle:package:30833/1" value="TEST_5V"/>
+<part name="PAD4" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="3,17/1,3" device="" package3d_urn="urn:adsk.eagle:package:30833/1" value="TEST_3V3"/>
+<part name="PAD7" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="3,17/1,3" device="" package3d_urn="urn:adsk.eagle:package:30833/1" value="TEST_IR0"/>
+<part name="PAD8" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="3,17/1,3" device="" package3d_urn="urn:adsk.eagle:package:30833/1" value="TEST_IR1"/>
+<part name="PAD9" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="3,17/1,3" device="" package3d_urn="urn:adsk.eagle:package:30833/1" value="TEST_IR2"/>
+<part name="PAD10" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="3,17/1,3" device="" package3d_urn="urn:adsk.eagle:package:30833/1" value="TEST_AVDD"/>
+<part name="PAD5" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="3,17/1,3" device="" package3d_urn="urn:adsk.eagle:package:30833/1" value="TEST_PWM1L2"/>
+<part name="PAD6" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="3,17/1,3" device="" package3d_urn="urn:adsk.eagle:package:30833/1" value="TEST_PWM1L1"/>
+<part name="PAD1" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="3,17/1,3" device="" package3d_urn="urn:adsk.eagle:package:30833/1" value="TEST_GND"/>
+<part name="PAD11" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="3,17/1,3" device="" package3d_urn="urn:adsk.eagle:package:30833/1" value="TEST_AVSS"/>
 <part name="C5" library="Eagle_WCAP-ATG5 (rev21a)" deviceset="WCAP-ATG5_6.3X11" device="" package3d_urn="urn:adsk.eagle:package:18308010/2" technology="_860020273010" value="330  uF "/>
 <part name="C6" library="Eagle_WCAP-ATG5 (rev21a)" deviceset="WCAP-ATG5_6.3X11" device="" package3d_urn="urn:adsk.eagle:package:18308010/2" technology="_860020273010" value="330  uF "/>
 </parts>
@@ -14429,47 +14429,47 @@ depending on switch position.</text>
 </instance>
 <instance part="PAD2" gate="1" x="-73.66" y="342.9" smashed="yes" rot="R90">
 <attribute name="NAME" x="-72.9742" y="334.137" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="-70.358" y="341.757" size="1.778" layer="96" rot="R90"/>
+<attribute name="VALUE" x="-70.358" y="334.137" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="PAD3" gate="1" x="27.94" y="342.9" smashed="yes" rot="R180">
 <attribute name="NAME" x="36.703" y="343.5858" size="1.778" layer="95" rot="R180"/>
-<attribute name="VALUE" x="29.083" y="346.202" size="1.778" layer="96" rot="R180"/>
+<attribute name="VALUE" x="36.703" y="341.122" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="PAD4" gate="1" x="27.94" y="292.1" smashed="yes" rot="R180">
 <attribute name="NAME" x="36.703" y="292.7858" size="1.778" layer="95" rot="R180"/>
-<attribute name="VALUE" x="29.083" y="295.402" size="1.778" layer="96" rot="R180"/>
+<attribute name="VALUE" x="36.703" y="290.322" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="PAD7" gate="1" x="147.32" y="309.88" smashed="yes" rot="R180">
 <attribute name="NAME" x="156.083" y="310.5658" size="1.778" layer="95" rot="R180"/>
-<attribute name="VALUE" x="148.463" y="313.182" size="1.778" layer="96" rot="R180"/>
+<attribute name="VALUE" x="161.163" y="308.102" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="PAD8" gate="1" x="147.32" y="292.1" smashed="yes" rot="R180">
 <attribute name="NAME" x="156.083" y="292.7858" size="1.778" layer="95" rot="R180"/>
-<attribute name="VALUE" x="148.463" y="295.402" size="1.778" layer="96" rot="R180"/>
+<attribute name="VALUE" x="161.163" y="290.322" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="PAD9" gate="1" x="147.32" y="274.32" smashed="yes" rot="R180">
 <attribute name="NAME" x="156.083" y="275.0058" size="1.778" layer="95" rot="R180"/>
-<attribute name="VALUE" x="148.463" y="277.622" size="1.778" layer="96" rot="R180"/>
+<attribute name="VALUE" x="161.163" y="272.542" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="PAD10" gate="1" x="154.94" y="66.04" smashed="yes" rot="R180">
 <attribute name="NAME" x="166.243" y="66.7258" size="1.778" layer="95" rot="R180"/>
-<attribute name="VALUE" x="156.083" y="69.342" size="1.778" layer="96" rot="R180"/>
+<attribute name="VALUE" x="166.243" y="64.262" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="PAD5" gate="1" x="58.42" y="134.62" smashed="yes">
 <attribute name="NAME" x="49.657" y="133.9342" size="1.778" layer="95"/>
-<attribute name="VALUE" x="57.277" y="131.318" size="1.778" layer="96"/>
+<attribute name="VALUE" x="42.037" y="131.318" size="1.778" layer="96"/>
 </instance>
 <instance part="PAD6" gate="1" x="58.42" y="124.46" smashed="yes">
 <attribute name="NAME" x="49.657" y="123.7742" size="1.778" layer="95"/>
-<attribute name="VALUE" x="57.277" y="121.158" size="1.778" layer="96"/>
+<attribute name="VALUE" x="42.037" y="121.158" size="1.778" layer="96"/>
 </instance>
 <instance part="PAD1" gate="1" x="-86.36" y="340.36" smashed="yes" rot="R180">
 <attribute name="NAME" x="-77.597" y="341.0458" size="1.778" layer="95" rot="R180"/>
-<attribute name="VALUE" x="-85.217" y="343.662" size="1.778" layer="96" rot="R180"/>
+<attribute name="VALUE" x="-77.597" y="338.582" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="PAD11" gate="1" x="154.94" y="53.34" smashed="yes" rot="R180">
 <attribute name="NAME" x="166.243" y="54.0258" size="1.778" layer="95" rot="R180"/>
-<attribute name="VALUE" x="156.083" y="56.642" size="1.778" layer="96" rot="R180"/>
+<attribute name="VALUE" x="166.243" y="51.562" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="C5" gate="G$1" x="25.4" y="325.12" smashed="yes" rot="R90">
 <attribute name="NAME" x="22.02" y="326.295" size="1.4224" layer="95" rot="R90" align="bottom-center"/>

@@ -3703,6 +3703,9 @@ Covered vias can be set in Masks (Limit).
 <wire x1="3.2164" y1="16.5768" x2="3.2258" y2="16.5862" width="0.508" layer="1"/>
 <wire x1="73.152" y1="14.224" x2="73.1012" y2="14.1732" width="0.508" layer="1"/>
 <wire x1="73.152" y1="17.1356" x2="73.152" y2="14.224" width="0.508" layer="1"/>
+<via x="28.194" y="80.264" extent="1-16" drill="0.35"/>
+<via x="23.876" y="92.964" extent="1-16" drill="0.35"/>
+<via x="44.45" y="84.074" extent="1-16" drill="0.35"/>
 </signal>
 <signal name="AVDD">
 <contactref element="C7" pad="2"/>

@@ -191,7 +191,7 @@ of the VCAP pin connected to ground."
 <text x="45.466" y="76.962" size="0.8128" layer="21" rot="R180">!LD2 !LD1 !LD0</text>
 <text x="38.1" y="76.962" size="0.8128" layer="21" rot="R180">GND P2L P2H GND</text>
 <text x="45.974" y="76.2" size="0.8128" layer="21">IO4  IO6  IO8</text>
-<text x="38.608" y="69.596" size="0.8128" layer="21">IO0  IO1 IO2  IO3 IO5  IO7</text>
+<text x="38.608" y="69.596" size="0.8128" layer="21">IO0  IO1  IO2   IO3  IO5  IO7</text>
 <text x="28.702" y="69.596" size="0.8128" layer="21">5V   Rx   Tx   3V3</text>
 <text x="23.2918" y="90.1192" size="0.8128" layer="21">R6</text>
 <text x="28.4828" y="89.256" size="0.8128" layer="21">S3 - BTN1</text>

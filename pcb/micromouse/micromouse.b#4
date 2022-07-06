@@ -3,7 +3,7 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="yes"/>
+<setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="10" unitdist="mil" unit="mm" style="lines" multiple="1" display="yes" altdistance="1" altunitdist="mil" altunit="mm"/>
@@ -3951,10 +3951,10 @@ Covered vias can be set in Masks (Limit).
 <wire x1="33.02" y1="35.56" x2="31.496" y2="35.56" width="1.016" layer="1"/>
 <wire x1="31.496" y1="35.56" x2="30.988" y2="35.052" width="1.016" layer="1"/>
 <wire x1="41.7068" y1="89.9668" x2="53.7972" y2="89.9668" width="1.016" layer="1"/>
-<wire x1="53.7972" y1="89.9668" x2="55.372" y2="88.392" width="1.016" layer="1"/>
+<wire x1="53.7972" y1="89.9668" x2="55.88" y2="87.884" width="1.016" layer="1"/>
 <wire x1="57.404" y1="78.74" x2="58.42" y2="78.74" width="1.016" layer="1"/>
-<wire x1="57.404" y1="78.74" x2="55.372" y2="80.772" width="1.016" layer="1"/>
-<wire x1="55.372" y1="88.392" x2="55.372" y2="80.772" width="1.016" layer="1"/>
+<wire x1="57.404" y1="78.74" x2="55.88" y2="80.264" width="1.016" layer="1"/>
+<wire x1="55.88" y1="87.884" x2="55.88" y2="80.264" width="1.016" layer="1"/>
 <wire x1="38.3794" y1="86.6394" x2="38.3794" y2="92.5068" width="1.016" layer="1"/>
 <wire x1="25.4" y1="73.66" x2="25.4" y2="81.788" width="1.016" layer="1"/>
 <wire x1="18.542" y1="77.15" x2="17.714" y2="77.15" width="1.016" layer="1"/>
@@ -4744,24 +4744,25 @@ Covered vias can be set in Masks (Limit).
 <signal name="IR2_RAW">
 <contactref element="SV5" pad="3"/>
 <contactref element="R12" pad="2"/>
-<wire x1="52.324" y1="88.9" x2="46.736" y2="88.9" width="0.254" layer="1"/>
+<wire x1="52.324" y1="88.9" x2="45.212" y2="88.9" width="0.254" layer="1"/>
 <wire x1="52.324" y1="88.9" x2="54.356" y2="86.868" width="0.254" layer="1"/>
 <wire x1="54.356" y1="86.868" x2="54.356" y2="70.866" width="0.254" layer="1"/>
 <wire x1="54.356" y1="70.866" x2="55.88" y2="69.342" width="0.254" layer="1"/>
 <wire x1="55.88" y1="69.342" x2="56.642" y2="69.342" width="0.254" layer="1"/>
 <via x="56.642" y="69.342" extent="1-16" drill="0.35"/>
-<wire x1="56.642" y1="69.342" x2="66.9798" y2="59.0042" width="0.254" layer="16"/>
-<wire x1="66.9798" y1="59.0042" x2="66.9798" y2="46.482" width="0.254" layer="16"/>
+<wire x1="68.2498" y1="57.9882" x2="56.896" y2="69.342" width="0.254" layer="16"/>
+<wire x1="56.642" y1="69.342" x2="56.896" y2="69.342" width="0.254" layer="16"/>
+<wire x1="68.2498" y1="57.9882" x2="68.2498" y2="47.752" width="0.254" layer="16"/>
+<wire x1="68.2498" y1="47.752" x2="66.9798" y2="46.482" width="0.254" layer="16"/>
 <via x="66.9798" y="46.482" extent="1-16" drill="0.35"/>
 <wire x1="66.9798" y1="46.482" x2="65.151" y2="44.6532" width="0.254" layer="1"/>
 <wire x1="65.151" y1="44.6532" x2="60.8076" y2="44.6532" width="0.254" layer="1"/>
 <via x="60.8076" y="44.6532" extent="1-16" drill="0.35"/>
 <wire x1="60.8076" y1="44.6532" x2="59.6748" y2="45.786" width="0.254" layer="16"/>
 <wire x1="58.928" y1="45.786" x2="59.6748" y2="45.786" width="0.254" layer="16"/>
-<wire x1="46.736" y1="88.9" x2="46.228" y2="88.392" width="0.254" layer="1"/>
-<via x="46.228" y="88.392" extent="1-16" drill="0.35"/>
-<wire x1="46.228" y1="88.392" x2="43.4594" y2="91.1606" width="0.254" layer="16"/>
-<wire x1="43.4594" y1="91.1606" x2="43.4594" y2="92.5068" width="0.254" layer="16"/>
+<via x="45.212" y="88.9" extent="1-16" drill="0.35"/>
+<wire x1="45.212" y1="88.9" x2="43.4594" y2="90.6526" width="0.254" layer="16"/>
+<wire x1="43.4594" y1="90.6526" x2="43.4594" y2="92.5068" width="0.254" layer="16"/>
 </signal>
 </signals>
 <mfgpreviewcolors>

@@ -46,6 +46,7 @@
 #include "motorEncoders.h"
 #include "adc.h"
 #include "dma.h"
+#include "motors.h"
 
 void setup() {
     setupOscillator();
@@ -56,20 +57,31 @@ void setup() {
     LED1 = LEDOFF;
     LED2 = LEDOFF;
 
-    initTimer1(10); // creates a timer (time in ms)
-    initQEI1(0); // initialize motor encoder with start position 0
+    initTimer1(100); // 100 ms timer
+    initQEI1(0); // left motor encoder
+    initQEI2(0); // right motor encoder
     setupUART1();
     setupPWM(0.2); // 0.2 ms = 5 kHz
     setupADC1();
     initDmaChannel4();
 
-    startTimer1(); // start timer
-    startADC1();
+    // 1.
+    // check bluetooth
+    char greeting[] = "Hello, how are you?";
+    sendUART1(greeting, 1);
+    
+    // 3.
+    // adjust motor
+    // runMotor(0.5, 1, 0);
+    
+    // 2.
+    // startTimer1(); // start timer
+    // startADC1();
 }
 
 void loop() {
     while (1) {
-
+        
     }
 }
 

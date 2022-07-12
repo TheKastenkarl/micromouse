@@ -3,6 +3,7 @@
 #include "utils.h"
 #include <math.h>
 #include "IOconfig.h"
+#include "motors.h"
 
 int setupPWM(float PWMPeriodMs) {    
     // determine best prescale value, the smaller, the better
@@ -50,7 +51,15 @@ int setupPWM(float PWMPeriodMs) {
 
 void setPWMDutyCycle(float perc, unsigned char numDutyCycleGenerator) {
     volatile uint16_t* P1DCs[3] = {&P1DC1, &P1DC2, &P1DC3};
-    *(P1DCs[numDutyCycleGenerator]) = perc * 2 * P1TPER;
+    
+    // safety checks to prevent motor from burning
+    if (perc > MAX_DC) {
+        perc = MAX_DC;
+    } else if (perc < 0) {
+        perc = 0;
+    }
+    
+    *(P1DCs[numDutyCycleGenerator]) = (uint16_t) (perc * 2 * P1TPER);
 }
 
 void periodicDutyCycleSwitching() {

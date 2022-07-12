@@ -1,6 +1,27 @@
 #include "xc.h"
 #include "utils.h"
 
+/**
+ * Converts a value proportionally between ranges.
+ * 
+ * @param aMin: minimum value of range A
+ * @param aMax: maximum value of range A 
+ * @param bMin: minimum value of range B
+ * @param bMax: maximum value of range B
+ * @param aVal: input value in range A
+ * @return: corresponding value in range B
+ */
+float convertRanges(float aMin, float aMax, float bMin, float bMax, float aVal) {
+    float temp, bVal;
+    // 1. [aMin, aMax] -> [0, aMax - aMin]
+    temp = aVal - aMin;
+    // 2. [0, aMax - aMin] -> [0, bMax - bMin]
+    temp = temp * (bMax - bMin) / (aMax - aMin);
+    // 3. [0, bMax - bMin] -> [bMin, bMax]
+    bVal = temp + bMin;
+
+    return bVal;
+}
 
 /**
  * Calculates the smallest possible prescaler value for timer applications.

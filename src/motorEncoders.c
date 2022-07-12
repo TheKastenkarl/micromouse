@@ -89,7 +89,7 @@ long getPositionInCounts(unsigned char encoderNumber) {
 
 float getPositionInRad(unsigned char encoderNumber) {
     long currentEncoderPosition = getPositionInCounts(encoderNumber);
-    return 3.141592 * 2 * currentEncoderPosition / (16 * 4 * 33);
+    return 3.141592 * 2 * currentEncoderPosition / COUNTS_PER_WHEELROTATION;
 }
 
 int getVelocityInCountsPerSample(unsigned char encoderNumber) {
@@ -105,6 +105,6 @@ int getVelocityInCountsPerSample(unsigned char encoderNumber) {
 }
 
 float getVelocityInRadPerSample(unsigned char encoderNumber) {
-    int velocityCounts = getVelocityInCountsPerSample(encoderNumber);
-    return 3.141592 * 2 * (float) velocityCounts / (33 * 4 * 16);
+    int velocityCountsPerSample = getVelocityInCountsPerSample(encoderNumber);
+    return 3.141592 * 2 * (float) velocityCountsPerSample / COUNTS_PER_WHEELROTATION;
 }

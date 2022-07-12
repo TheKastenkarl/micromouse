@@ -1,5 +1,5 @@
-#ifndef TIMER1_H
-#define	TIMER1_H
+#ifndef TIMER_H
+#define	TIMER_H
 
 #define TIMER1_MAX_COUNT 65535
 
@@ -8,4 +8,4 @@ void startTimer1(void);
 void stopTimer1(void);
 void virtualTimer(int actionEveryXCalls);
 
-#endif	/* TIMER1_H */
+#endif	/* TIMER_H */

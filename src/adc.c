@@ -59,8 +59,8 @@ void setupADC1()
     // ADCON4
     AD1CON4bits.DMABL = 0b000; // <2:0>: Selects Number of DMA Buffer Locations per Analog Input bits
 
-    // AD1CSSL (input scan select register)
-    AD1CSSL = 0b0000000000100001; // select the analog channel 0 and 5 !!!CHANGE HERE!!! (franz: here the analog pins AN0 (Vref+) and AN5 (potentiometer) selected, set in register AD1PCFGL that the pins are analogue (see IOconfig.c))
+    // AD1CSSL (input scan select register), 1 for scanning
+    AD1CSSL = ~AD1PCFGL; // select the analog channels according to analog inputs defined in IOconfig.c
 
     AD1CHS123bits.CH123NA = 0b00; // negative input for S/H 123 is Vref -
     AD1CHS123bits.CH123SA = 0b1 ; // sample channel 4 and 5 on S/h 2 and 3

@@ -1,10 +1,3 @@
-/* 
- * File:   main.c
- * Author: Alexander Lenz
- *
- * Created on 27 Nov 2020, 09:36
- */
-
 /// Configuration Bits
 
 // FBS
@@ -43,6 +36,7 @@
 #pragma config JTAGEN = OFF             // JTAG Port Enable (JTAG is Disabled)
 
 /// Include headers
+
 #include "xc.h"
 #include "IOconfig.h"
 #include "osciallator.h"

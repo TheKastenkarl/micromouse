@@ -12,28 +12,29 @@
 // 8: 19.66 ms
 // 64: 157.28 ms
 // 256: 629.14 ms
+
 int initTimer1(float periodMs) {
     T1CONbits.TON = 0; // initially off
     T1CONbits.TCS = 0; // use internal clock for counting
     T1CONbits.TGATE = 0; // use internal clock for counting
-    
+
     // determine prescale value, the lower the better
     unsigned int prescaleValues[4] = {1, 8, 64, 256};
     unsigned char T1CONbits_TCKPSs[4] = {0b00, 0b01, 0b10, 0b11};
-    unsigned char len = sizeof(prescaleValues) / sizeof(unsigned int);
-    
+    unsigned char len = sizeof (prescaleValues) / sizeof (unsigned int);
+
     int positionIndex;
     int reqCount;
-    
+
     getPositionSmallestPossiblePrescaler(
-        periodMs, 
-        TIMER1_MAX_COUNT, 
-        INTERNAL_OSC_PERIOD_MICROSECS, 
-        prescaleValues, 
-        len, 
-        &positionIndex, 
-        &reqCount);
-    
+            periodMs,
+            TIMER1_MAX_COUNT,
+            INTERNAL_OSC_PERIOD_MICROSECS,
+            prescaleValues,
+            len,
+            &positionIndex,
+            &reqCount);
+
     if (positionIndex == -1) {
         return -1; // Error handling
     }
@@ -64,25 +65,25 @@ void stopTimer1(void) {
     T1CONbits.TON = 0; // turn off
 }
 
-void virtualTimer(int actionEveryXCalls){
+void virtualTimer(int actionEveryXCalls) {
     static int i = 0;
-    
+
     i++;
-    if (i == actionEveryXCalls){
+    if (i == actionEveryXCalls) {
         i = 0;
-        
+
         // read motor encoder values and send via UART
         long positionInCounts1 = getPositionInCounts(1);
-        float getPositionInRad1 = getPositionInRad(1);
+        float getPositionInWheelRots1 = getPositionInWheelRots(1);
         int velocityInCountsPerSample1 = getVelocityInCountsPerSample(1);
-        float velocityInRadPerSample1 = getVelocityInRadPerSample(1);
-        
+        float velocityInWheelRotsPerSample1 = getVelocityInWheelRotsPerSample(1);
+
         char sendData[4][100];
         sprintf(sendData[0], "pos count: %ld", (long) positionInCounts1);
-        sprintf(sendData[1], "pos rad: %.2f", (double) getPositionInRad1);
+        sprintf(sendData[1], "pos rad: %.2f", (double) getPositionInWheelRots1);
         sprintf(sendData[2], "vel count/s: %d", (int) velocityInCountsPerSample1);
-        sprintf(sendData[3], "vel rad/s: %.2f", (double) velocityInRadPerSample1);
-        
+        sprintf(sendData[3], "vel rad/s: %.2f", (double) velocityInWheelRotsPerSample1);
+
         int i;
         for (i = 0; i < 4; i++) {
             sendUART1(sendData[i], 1);
@@ -91,8 +92,9 @@ void virtualTimer(int actionEveryXCalls){
 }
 
 // Timer 1 interrupt
-void __attribute__((__interrupt__, auto_psv)) _T1Interrupt(void){
+
+void __attribute__((__interrupt__, auto_psv)) _T1Interrupt(void) {
     IFS0bits.T1IF = 0; // reset Timer 1 interrupt flag 
-    
+
     virtualTimer(10); // 10 * T_Interrupt = 1 s
 }

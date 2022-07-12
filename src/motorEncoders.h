@@ -14,8 +14,10 @@ void initQEI1(unsigned int startPos);
 void initQEI2(unsigned int startPos);
 void updateRotationCount(volatile uint16_t posCount, long* globalCount);
 long getPositionInCounts(unsigned char encoderNumber);
+float getPositionInWheelRots(unsigned char encoderNumber);
 float getPositionInRad(unsigned char encoderNumber);
 int getVelocityInCountsPerSample(unsigned char encoderNumber);
+float getVelocityInWheelRotsPerSample(unsigned char encoderNumber);
 float getVelocityInRadPerSample(unsigned char encoderNumber);
 
 extern long g_rotationCounts[2];

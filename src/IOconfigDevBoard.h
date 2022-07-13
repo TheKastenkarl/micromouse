@@ -9,8 +9,8 @@
 
 #define M1_PLUS_EN LATAbits.LATA0 
 #define M1_MINUS_EN LATAbits.LATA1
-// #define M2_PLUS_EN;
-// #define M2_MINUS_EN;
+#define M2_PLUS_EN LATAbits.LATA0
+#define M2_MINUS_EN LATAbits.LATA1
 
 // use port for reading from inputs
 #define SW1 !PORTBbits.RB5 

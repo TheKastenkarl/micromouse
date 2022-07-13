@@ -2,7 +2,8 @@
 #include <xc.h>
 #include "utils.h"
 #include <math.h>
-#include "IOconfig.h"
+// #include "IOconfig.h"
+#include "IOconfigDevBoard.h"
 #include "motors.h"
 
 int setupPWM(float PWMPeriodMs) {    

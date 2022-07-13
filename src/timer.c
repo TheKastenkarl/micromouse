@@ -1,7 +1,6 @@
 #include "xc.h"
 #include "timer.h"
 #include "utils.h"
-#include "IOconfig.h"
 #include "pwm.h"
 #include "motorEncoders.h"
 #include <stdio.h>
@@ -83,8 +82,8 @@ void __attribute__((__interrupt__, auto_psv)) _T1Interrupt(void) {
 
     updatePositionCount(0);
     updateDeltaCountsSinceLastCall(0);
-    updatePositionCount(1);
-    updateDeltaCountsSinceLastCall(1);
+    // updatePositionCount(1);
+    // updateDeltaCountsSinceLastCall(1);
 
     virtualTimer(10); // 10 * T_Interrupt = 1 s
 }

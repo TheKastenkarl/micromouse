@@ -12,6 +12,15 @@
 #define M2_PLUS_EN LATAbits.LATA8
 #define M2_MINUS_EN LATBbits.LATB4
 
+// directly define constants for tristate to not forget them
+#define LED0_TRIS TRISBbits.TRISB10
+#define LED1_TRIS TRISBbits.TRISB11
+#define LED2_TRIS TRISBbits.TRISB12
+#define M1_PLUS_EN_TRIS TRISAbits.TRISA10
+#define M1_MINUS_EN_TRIS TRISAbits.TRISA7
+#define M2_PLUS_EN_TRIS TRISAbits.TRISA8
+#define M2_MINUS_EN_TRIS TRISBbits.TRISB4
+
 // motors pwm duty cycles
 #define M1_DC P1DC1 // PWM1L1, PWM1H1
 #define M2_DC P1DC2 // PWM1L2, PWM1H2

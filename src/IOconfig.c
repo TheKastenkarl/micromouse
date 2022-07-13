@@ -29,15 +29,15 @@ void setupAnalog() {
 
 void setupDigital() {
     // LEDs
-    TRISBbits.TRISB10 = 0; // LED0
-    TRISBbits.TRISB11 = 0; // LED1
-    TRISBbits.TRISB12 = 0; // LED2
+    LED0_TRIS = 0;
+    LED1_TRIS = 0;
+    LED2_TRIS = 0;
     
     // H-Bridge logic
-    TRISAbits.TRISA7 = 0; // M1+_EN
-    TRISAbits.TRISA10 = 0; // M1-_EN
-    TRISAbits.TRISA8 = 0; // M2+_EN
-    TRISBbits.TRISB4 = 0; // M2-_EN
+    M1_PLUS_EN_TRIS = 0;
+    M1_MINUS_EN_TRIS = 0;
+    M2_PLUS_EN_TRIS = 0;
+    M2_MINUS_EN_TRIS = 0;
 
     // UART1 TX 
     TRISBbits.TRISB8 = 0;

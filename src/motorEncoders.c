@@ -2,9 +2,9 @@
 #include <xc.h>
 #include "motorEncoders.h"
 
-long g_rotationCounts[] = {0, 0}; // full rotation counts
 long g_counts[] = {0, 0}; // absolute position
-int g_deltaCountsSinceLastCall[] = {0, 0}; // velocity 
+int g_deltaCountsSinceLastCall[] = {0, 0}; // velocity
+long g_rotationCounts[] = {0, 0}; // full rotation counts, helper variable
 
 #include <math.h>
 

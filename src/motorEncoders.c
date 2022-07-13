@@ -2,8 +2,9 @@
 #include <xc.h>
 #include "motorEncoders.h"
 
-long g_rotationCounts[] = {0, 0};
-//long currentEncoderPosition;
+long g_rotationCounts[] = {0, 0}; // full rotation counts
+long g_counts[] = {0, 0}; // absolute position
+int g_deltaCountsSinceLastCall[] = {0, 0}; // velocity 
 
 #include <math.h>
 
@@ -68,54 +69,38 @@ void __attribute__((__interrupt__, auto_psv)) _QEI2Interrupt(void) {
     updateRotationCount(POS2CNT, &(g_rotationCounts[1]));
 }
 
-long getPositionInCounts(unsigned char encoderNumber) {
-    long currentEncoderPosition;
-
+void updatePositionCount(unsigned char encoderNumber) {
     //disable interrupts to make sure we have consistent data
     _NSTDIS = 1;
     switch (encoderNumber) {
         case 1:
-            GET_ENCODER_1(currentEncoderPosition);
+            GET_ENCODER_1(g_counts[encoderNumber]);
             break;
 
         case 2:
-            GET_ENCODER_2(currentEncoderPosition);
+            GET_ENCODER_2(g_counts[encoderNumber]);
             break;
     }
     _NSTDIS = 0;
-
-    return currentEncoderPosition;
 }
 
-float getPositionInRad(unsigned char encoderNumber) {
-    long currentEncoderPosition = getPositionInCounts(encoderNumber);
-    return 3.141592 * 2 * currentEncoderPosition / COUNTS_PER_WHEELROTATION;
-}
-
-float getPositionInWheelRots(unsigned char encoderNumber) {
-    long currentEncoderPosition = getPositionInCounts(encoderNumber);
-    return currentEncoderPosition / COUNTS_PER_WHEELROTATION;
-}
-
-int getVelocityInCountsPerSample(unsigned char encoderNumber) {
+// Caution: requires absolute counts to be up to date
+// Call directly before in order to achieve that
+void updateDeltaCountsSinceLastCall(unsigned char encoderNumber) {
     static long oldPositions[] = {0, 0};
     long currentPosition;
-    int velocity;
 
-    currentPosition = getPositionInCounts(encoderNumber);
-    velocity = (currentPosition - oldPositions[encoderNumber]);
+    currentPosition = g_counts[encoderNumber];
+    g_deltaCountsSinceLastCall[encoderNumber] = (currentPosition - oldPositions[encoderNumber]);
     oldPositions[encoderNumber] = currentPosition;
-
-    return velocity;
 }
 
-float getVelocityInWheelRotsPerSample(unsigned char encoderNumber) {
-    int velocityCountsPerSample = getVelocityInCountsPerSample(encoderNumber);
-    return (float) velocityCountsPerSample / COUNTS_PER_WHEELROTATION;
+// TODO move to utils?
+float convertCountsToRad(long counts) {
+    return 3.141592 * 2 * counts / COUNTS_PER_WHEELROTATION;
 }
 
-
-float getVelocityInRadPerSample(unsigned char encoderNumber) {
-    int velocityCountsPerSample = getVelocityInCountsPerSample(encoderNumber);
-    return 3.141592 * 2 * (float) velocityCountsPerSample / COUNTS_PER_WHEELROTATION;
+// TODO move to utils?
+float convertCountsToWheelRots(long counts) {
+    return (float) counts / COUNTS_PER_WHEELROTATION;
 }

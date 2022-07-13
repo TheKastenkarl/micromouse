@@ -2,6 +2,8 @@
 #include "tests.h"
 #include "serialComms.h"
 #include "motors.h"
+#include <stdio.h>
+#include "motorEncoders.h"
 
 void sleep(long operations) {
     long i = 0;
@@ -33,4 +35,28 @@ void testMotors() {
 void testBluetoothUART() {
     char greeting[] = "Test Test";
     sendUART1(greeting, 1);
+}
+
+void testEncoder(unsigned char motorID) {
+    // read motor encoder values and send via UART
+    long positionInCounts = g_counts[motorID];
+    float positionInRad = convertCountsToRad(positionInCounts);
+    float positionInWheelRots = convertCountsToWheelRots(positionInCounts);
+    int velocityInCountsPerSample = g_deltaCountsSinceLastCall[motorID];
+    float velocityInRadPerSample = convertCountsToRad(velocityInCountsPerSample);
+    float velocityInWheelRotsPerSample = convertCountsToWheelRots(velocityInCountsPerSample);
+
+    char sendData[7][100];
+    sprintf(sendData[0], "motorID: %d", (int) motorID);
+    sprintf(sendData[1], "pos count: %ld", (long) positionInCounts);
+    sprintf(sendData[2], "pos rad: %.2f", (double) positionInRad);
+    sprintf(sendData[3], "pos rots: %.2f", (double) positionInWheelRots);
+    sprintf(sendData[4], "vel count/samp: %d", (int) velocityInCountsPerSample);
+    sprintf(sendData[5], "vel rad/samp: %.2f", (double) velocityInRadPerSample);
+    sprintf(sendData[6], "vel rots/samp: %.2f", (double) velocityInWheelRotsPerSample);
+
+    int i;
+    for (i = 0; i < 7; i++) {
+        sendUART1(sendData[i], 1);
+    }
 }

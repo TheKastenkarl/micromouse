@@ -13,14 +13,13 @@
 void initQEI1(unsigned int startPos);
 void initQEI2(unsigned int startPos);
 void updateRotationCount(volatile uint16_t posCount, long* globalCount);
-long getPositionInCounts(unsigned char encoderNumber);
-float getPositionInWheelRots(unsigned char encoderNumber);
-float getPositionInRad(unsigned char encoderNumber);
-int getVelocityInCountsPerSample(unsigned char encoderNumber);
-float getVelocityInWheelRotsPerSample(unsigned char encoderNumber);
-float getVelocityInRadPerSample(unsigned char encoderNumber);
+void updatePositionCount(unsigned char encoderNumber);
+void updateDeltaCountsSinceLastCall(unsigned char encoderNumber);
+float convertCountsToRad(long counts);
+float convertCountsToWheelRots(long counts);
 
-extern long g_rotationCounts[2];
+extern long g_counts[2];
+extern int g_deltaCountsSinceLastCall[2];
 
 #define GET_ENCODER_1(RIGHT_ENCODER_POSITION_VALUE) (RIGHT_ENCODER_POSITION_VALUE = g_rotationCounts[0] + POS1CNT)
 #define GET_ENCODER_2(LEFT_ENCODER_POSITION_VALUE) (LEFT_ENCODER_POSITION_VALUE = g_rotationCounts[1] + POS2CNT)

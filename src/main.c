@@ -51,7 +51,8 @@
 
 void setup() {
     setupOscillator();
-    setupIO(); // configures inputs and outputs
+    // setupIO();
+    setupIODev(); // configures inputs and outputs
 
     // all LEDs off by default
     // LED0 = LEDOFF;

@@ -1,7 +1,7 @@
 #include "xc.h"
 #include "IOconfigDevBoard.h"
 
-void setupIO() {
+void setupIODev() {
     // ---- PIN MAPPING ---- //
     // before we map, we need to unlock
     __builtin_write_OSCCONL(OSCCON & 0xbf); // clear bit 6 (unlock, they are usually write protected)

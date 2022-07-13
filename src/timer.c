@@ -6,6 +6,7 @@
 #include "motorEncoders.h"
 #include <stdio.h>
 #include "serialComms.h"
+#include "tests.h"
 
 // max durations for a given prescale value:
 // 1: 2.45 ms
@@ -72,29 +73,18 @@ void virtualTimer(int actionEveryXCalls) {
     if (i == actionEveryXCalls) {
         i = 0;
 
-        // read motor encoder values and send via UART
-        long positionInCounts1 = getPositionInCounts(1);
-        float getPositionInWheelRots1 = getPositionInWheelRots(1);
-        int velocityInCountsPerSample1 = getVelocityInCountsPerSample(1);
-        float velocityInWheelRotsPerSample1 = getVelocityInWheelRotsPerSample(1);
-
-        char sendData[4][100];
-        sprintf(sendData[0], "pos count: %ld", (long) positionInCounts1);
-        sprintf(sendData[1], "pos rad: %.2f", (double) getPositionInWheelRots1);
-        sprintf(sendData[2], "vel count/s: %d", (int) velocityInCountsPerSample1);
-        sprintf(sendData[3], "vel rad/s: %.2f", (double) velocityInWheelRotsPerSample1);
-
-        int i;
-        for (i = 0; i < 4; i++) {
-            sendUART1(sendData[i], 1);
-        }
+        testEncoder(0);
     }
 }
 
 // Timer 1 interrupt
-
 void __attribute__((__interrupt__, auto_psv)) _T1Interrupt(void) {
     IFS0bits.T1IF = 0; // reset Timer 1 interrupt flag 
+
+    updatePositionCount(0);
+    updateDeltaCountsSinceLastCall(0);
+    updatePositionCount(1);
+    updateDeltaCountsSinceLastCall(1);
 
     virtualTimer(10); // 10 * T_Interrupt = 1 s
 }

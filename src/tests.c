@@ -38,6 +38,9 @@ void testBluetoothUART() {
 }
 
 void testEncoder(unsigned char motorID) {
+    updatePositionCount(motorID);
+    updateDeltaCountsSinceLastCall(motorID);
+    
     // read motor encoder values and send via UART
     long positionInCounts = g_counts[motorID];
     float positionInRad = convertCountsToRad(positionInCounts);

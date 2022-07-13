@@ -80,8 +80,8 @@ void virtualTimer(int actionEveryXCalls) {
 void __attribute__((__interrupt__, auto_psv)) _T1Interrupt(void) {
     IFS0bits.T1IF = 0; // reset Timer 1 interrupt flag 
 
-    updatePositionCount(0);
-    updateDeltaCountsSinceLastCall(0);
+    // updatePositionCount(0);
+    // updateDeltaCountsSinceLastCall(0);
     // updatePositionCount(1);
     // updateDeltaCountsSinceLastCall(1);
 

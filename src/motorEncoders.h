@@ -12,9 +12,7 @@
 
 void initQEI1(unsigned int startPos);
 void initQEI2(unsigned int startPos);
-void updateRotationCount(volatile uint16_t posCount, long* globalCount);
-void updatePositionCount(unsigned char encoderNumber);
-void updateDeltaCountsSinceLastCall(unsigned char encoderNumber);
+void updateEncoderStates(unsigned char encoderNumber);
 float convertCountsToRad(long counts);
 float convertCountsToWheelRots(long counts);
 

@@ -80,10 +80,9 @@ void virtualTimer(int actionEveryXCalls) {
 void __attribute__((__interrupt__, auto_psv)) _T1Interrupt(void) {
     IFS0bits.T1IF = 0; // reset Timer 1 interrupt flag 
 
-    // updatePositionCount(0);
-    // updateDeltaCountsSinceLastCall(0);
-    // updatePositionCount(1);
-    // updateDeltaCountsSinceLastCall(1);
+    // updateEncoderStates(0);
+    // updateEncoderStates(1);
+    // controlStep();
 
     virtualTimer(10); // 10 * T_Interrupt = 1 s
 }

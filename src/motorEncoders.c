@@ -95,6 +95,22 @@ void updateDeltaCountsSinceLastCall(unsigned char encoderNumber) {
     oldPositions[encoderNumber] = currentPosition;
 }
 
+/**
+ * Update both the absolute encoder position as well as the velocity.
+ * 
+ * Both values are based on discrete encoder count steps.
+ * 
+ * After the update, the values can be read from:
+ * - g_counts[2]: Absolute counts
+ * - g_deltaCountsSinceLastCall[2]: Velocity as delta counts per last call
+ * 
+ * @param encoderNumber: 0 for left, 1 for right motor encoder
+ */
+void updateEncoderStates(unsigned char encoderNumber) {
+    updatePositionCount(encoderNumber);
+    updateDeltaCountsSinceLastCall(encoderNumber);
+}
+
 // TODO move to utils?
 float convertCountsToRad(long counts) {
     return 3.141592 * 2 * counts / COUNTS_PER_WHEELROTATION;

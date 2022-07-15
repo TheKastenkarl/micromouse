@@ -48,6 +48,7 @@
 #include "adc.h"
 #include "dma.h"
 #include "motors.h"
+#include "tests.h"
 
 void setup() {
     setupOscillator();
@@ -67,12 +68,15 @@ void setup() {
     setupADC1();
     initDmaChannel4();
     startADC1();
-    startTimer1();
+    // startTimer1();
 }
 
 void loop() {
     while (1) {
-        
+        testBluetoothUART();
+        // testMotor(0);
+        // runMotor(1.0, 0, 0);
+        // testEncoder(0);
     }
 }
 

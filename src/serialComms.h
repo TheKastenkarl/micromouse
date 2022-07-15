@@ -3,7 +3,7 @@
 
 #include <xc.h>
 
-#define DELIMITER '\n'
+#define DELIMITER "\r\n"
 
 void setupUART1(void);
 void sendUART1(char* buffer, int waitIfBusy);

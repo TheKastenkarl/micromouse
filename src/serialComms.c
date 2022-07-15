@@ -53,6 +53,7 @@ void setupUART1(void) {
 
 
 // Receive interrupt as soon as one character has arrived
+
 void __attribute__((interrupt, no_auto_psv)) _U1RXInterrupt(void) {
     unsigned int rxData; // a local buffer to copy the data into
 
@@ -81,7 +82,11 @@ void __attribute__((interrupt, no_auto_psv)) _U1RXInterrupt(void) {
 }
 
 // Transmit Interrupt
+
 void __attribute__((interrupt, no_auto_psv)) _U1TXInterrupt(void) {
+    static char del[] = DELIMITER;
+    static int delIndex = 0;
+    
     IFS0bits.U1TXIF = 0; // reset the transmitted interrupt flag
 
     // after final char has been sent
@@ -95,9 +100,13 @@ void __attribute__((interrupt, no_auto_psv)) _U1TXInterrupt(void) {
         // transfer next character
         U1TXREG = *g_sendBuffer;
         g_sendBuffer++;
+    } else if (del[delIndex] != '\0') {
+        // at end of string: send delimiters next
+        U1TXREG = del[delIndex];
+        delIndex++;
     } else {
-        // at end of string: send delimiter as last character
-        U1TXREG = DELIMITER;
+        // at end of delimiters
+        delIndex = 0; // reset for next run
         g_isBusy = false;
     }
 }

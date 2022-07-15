@@ -73,11 +73,11 @@ void updatePositionCount(unsigned char encoderNumber) {
     //disable interrupts to make sure we have consistent data
     _NSTDIS = 1;
     switch (encoderNumber) {
-        case 1:
+        case 0:
             GET_ENCODER_1(g_counts[encoderNumber]);
             break;
 
-        case 2:
+        case 1:
             GET_ENCODER_2(g_counts[encoderNumber]);
             break;
     }

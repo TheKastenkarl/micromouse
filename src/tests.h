@@ -2,7 +2,7 @@
 #define	TESTS_H
 
 void sleep(long operations);
-void testMotors();
+void testMotor(unsigned char motorID);
 void testBluetoothUART();
 void testEncoder(unsigned char motorID);
 

@@ -225,6 +225,8 @@ int get_cell_id_in_orientation(const int cell_id, Cell maze[MAZE_SIZE][MAZE_SIZE
         } else {
             return cell_id - 1; 
         }
+    } else { // should never be required for correct inputs
+        return -1;
     }
 }
 
@@ -262,6 +264,8 @@ int get_cell_id_in_direction(const int current_orientation, const int cell_id, C
         ((current_orientation == SOUTH) && (direction == RIGHT)) ||
         ((current_orientation == NORTH) && (direction == LEFT))) {
         return get_cell_id_in_orientation(cell_id, maze, WEST);
+    } else { // // should never be required for correct inputs as all cases are covered
+        return -1;
     }
 }
 

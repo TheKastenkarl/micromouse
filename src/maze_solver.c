@@ -140,6 +140,8 @@ int shortest_path_bfs(const int start_cell_id, Cell maze[MAZE_SIZE][MAZE_SIZE], 
  * Explores the map in a first step and then uses the stored map to take the shortest path from
  * start to goal.
  * Assumption: Mouse starts in the bottom left corner (cell id = 0) facing north.
+ * Important: With the microchip compiler you have to allocate heap memory in the project properties
+ *            (https://microchipdeveloper.com/mplabx:creating-a-heap)
  */
 void explore_and_exploit() {
     Robot robot;

@@ -2,11 +2,8 @@
 #include "maze_solver.h"
 #include "wall_follow.h"
 
-int main(int argc, char* argv[]) {
+int main_maze_solver(int argc, char* argv[]) {
     explore_and_exploit();
     //wall_follow();
+    return 0;
 }
-
-/* TODO:
-- Check if compiling with microchip compiler works
-*/

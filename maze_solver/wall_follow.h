@@ -1,4 +1,6 @@
-#pragma once
+#ifndef WALL_FOLLOW_H
+#define	WALL_FOLLOW_H
 
 void wall_follow();
-void wall_follow_2();
+
+#endif /* WALL_FOLLOW_H */

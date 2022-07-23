@@ -1,5 +1,8 @@
-#pragma once
+#ifndef ROBOT_H
+#define	ROBOT_H
 
+// Positions (= cell ids) are described with numbers from 0 to MAZE_SIZE * MAZE_SIZE
+// Example: cell in third row, fourth column -> cell id = (3 - 1) * MAZE_SIZE + (4 - 1)
 typedef struct Robot {
     int position;
     int orientation;
@@ -21,9 +24,9 @@ enum Orientation {
 
 void init_robot(Robot* robot);
 
-int wall_front();
-int wall_right();
-int wall_left();
+int is_wall_front();
+int is_wall_right();
+int is_wall_left();
 
 int no_wall_west(Robot* const robot);
 int no_wall_north(Robot* const robot);
@@ -33,10 +36,12 @@ int no_wall_south(Robot* const robot);
 void move_forward(Robot* robot, const int distance);
 
 // spin at current position by -90°
-void turn_right(Robot* robot);
+void spin_right(Robot* robot);
 
 // spin at current position by +90°
-void turn_left(Robot* robot);
+void spin_left(Robot* robot);
 
 // turn the robot such that it has the given orientation
-void turn_to_orientation(Robot* robot, const int orientation);
+void spin_to_orientation(Robot* robot, const int orientation);
+
+#endif /* ROBOT_H */

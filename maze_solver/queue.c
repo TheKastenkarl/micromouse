@@ -4,8 +4,8 @@
 
 // Source: https://gist.github.com/kroggen/5fc7380d30615b2e70fcf9c7b69997b6
 
-void enqueue(node_t **head, int val) {
-    node_t *new_node = malloc(sizeof(node_t));
+void enqueue(node_t** head, int val) {
+    node_t* new_node = malloc(sizeof(node_t));
     if (!new_node) return;
 
     new_node->val = val;
@@ -14,8 +14,9 @@ void enqueue(node_t **head, int val) {
     *head = new_node;
 }
 
-int dequeue(node_t **head) {
-    node_t *current, *prev = NULL;
+int dequeue(node_t** head) {
+    node_t* current = NULL;
+    node_t* prev = NULL;
     int retval = -1;
 
     if (*head == NULL) return -1;
@@ -37,8 +38,8 @@ int dequeue(node_t **head) {
     return retval;
 }
 
-void print_list(node_t *head) {
-    node_t *current = head;
+void print_list(node_t* head) {
+    node_t* current = head;
 
     while (current != NULL) {
         printf("%d\n", current->val);

@@ -1,4 +1,9 @@
-#pragma once
+#ifndef API_H
+#define	API_H
+
+#include "maze.h"
+
+#if SIMULATION
 
 int API_mazeWidth();
 int API_mazeHeight();
@@ -25,4 +30,8 @@ void API_clearAllText();
 int API_wasReset();
 void API_ackReset();
 
-void logging(char* text);
+void API_log(char* text);
+void API_logNumber(int number);
+
+#endif
+#endif /* API_H */

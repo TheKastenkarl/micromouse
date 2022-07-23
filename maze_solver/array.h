@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ARRAY_H
+#define	ARRAY_H
 
 typedef struct {
     int *array;
@@ -6,8 +7,12 @@ typedef struct {
     unsigned int size;
 } Array;
 
-void initArray(Array *a, unsigned int initialSize);
+void init_array(Array* a, unsigned int initial_size);
 
-void insertArray(Array *a, int element);
+void insert_array(Array* a, int element);
 
-void freeArray(Array *a);
+void free_array(Array* a);
+
+void reverse_array(Array* a);
+
+#endif /* ARRAY_H */

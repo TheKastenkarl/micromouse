@@ -4,11 +4,10 @@
 
 int main(int argc, char* argv[]) {
     explore_and_exploit();
-    //wall_follow_2();
+    //wall_follow();
 }
 
 /* TODO:
-Remove logging or add preprocessor check
-Check if compiling with microchip compiler works
-Add comments to functions
+- Check if compiling with microchip compiler works
+- move_to_cell function
 */

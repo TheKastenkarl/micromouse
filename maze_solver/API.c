@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "API.h"
+
+#if SIMULATION
 
 #define BUFFER_SIZE 32
 
@@ -111,7 +114,15 @@ void API_ackReset() {
     getAck("ackReset");
 }
 
-void logging(char* text) {
+void API_log(char* text) {
     fprintf(stderr, "%s\n", text);
     fflush(stderr);
 }
+
+void API_logNumber(int number) {
+    char text[10];
+    sprintf(text, "%d", number);
+    API_log(text);
+}
+
+#endif

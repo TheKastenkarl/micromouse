@@ -1,96 +1,151 @@
 #include <stdio.h>
-
-#include "API.h"
 #include "maze.h"
-#include "array.h"
-#include "mouse.h"
-#include "utils_high_level.h"
 
+/**
+ * Initializes the maze:
+ * - every cell has all 4 walls
+ * - every cell is unvisited
+ * - every cell has the no predecessor cell (equal to -1)
+ * 
+ * @param maze: Pointer to the uninitialized maze.
+ */
 void init_maze(Cell maze[MAZE_SIZE][MAZE_SIZE]) {
     int i, j;
     for (i = 0; i < MAZE_SIZE; ++i) {
         for (j = 0; j < MAZE_SIZE; ++j) {
             maze[i][j].walls = 0b1111;
             maze[i][j].visited = 0;
-            maze[i][j].cost = MAZE_SIZE * MAZE_SIZE;
             maze[i][j].predecessor_cell_id = -1;
         }
     }
 }
 
-Cell* get_cell(Cell maze[MAZE_SIZE][MAZE_SIZE], const int position) {
+/**
+ * Get the pointer of the cell with the given cell_id.
+ * 
+ * @param maze: Pointer to the maze.
+ * @param cell_id: Cell id of the cell.
+ * @return: Pointer to cell with "cell_id".
+ */
+Cell* get_cell(Cell maze[MAZE_SIZE][MAZE_SIZE], const int cell_id) {
     int row, col;
-    row = position / MAZE_SIZE;
-    col = position % MAZE_SIZE;
+    row = cell_id / MAZE_SIZE;
+    col = cell_id % MAZE_SIZE;
     return &maze[row][col];
 }
 
-// Returns orientation (= positive values) if there is a wall in that orientation, else zero
-// Uses stored map to determine answer
+/**
+ * Returns positive value if the cell with "cell_id" has a wall in the given
+ * orientation, else zero.
+ * Uses stored maze and not the current sensor readings to determine answer.
+ * 
+ * @param maze: Pointer to the maze.
+ * @param cell_id: Cell id of the cell.
+ * @param orientation: Orientation (e.g. NORTH) of interest.
+ * @return: Positive value if there is a wall in that orientation, else zero.
+ */
 int is_wall_in_orientation(Cell maze[MAZE_SIZE][MAZE_SIZE], const int cell_id, const int orientation) {
     Cell* cell = get_cell(maze, cell_id);
     return (cell->walls & orientation);
 }
 
+/**
+ * Updates the walls of the stored maze based on sensor readings of robot.
+ * Updates walls for the cell where the robot is currently in and also the walls
+ * of the neighboring cells.
+ * 
+ * @param robot: Pointer to the robot.
+ * @param maze: Pointer to the maze.
+ */
 void update_walls(Robot* const robot, Cell maze[MAZE_SIZE][MAZE_SIZE]) {
     // WEST
     Cell* current_cell = get_cell(maze, robot->position);
     if (no_wall_west(robot)) {
+        int cell_id_west;
+        Cell* cell_west;
+
         current_cell->walls = current_cell->walls & 0b1110; // (~WEST & 0b1111)
-        int cell_id_west = get_cell_id_in_orientation(robot->position, maze, WEST);
-        Cell* cell_west = get_cell(maze, cell_id_west);
+        cell_id_west = get_cell_id_in_orientation(robot->position, maze, WEST);
+        cell_west = get_cell(maze, cell_id_west);
         cell_west->walls = cell_west->walls & 0b1011; // cell in WEST has no wall in EAST
     }
     // NORTH
     if (no_wall_north(robot)) {
+        int cell_id_north;
+        Cell* cell_north;
+
         current_cell->walls = current_cell->walls & 0b1101;
-        int cell_id_north = get_cell_id_in_orientation(robot->position, maze, NORTH);
-        Cell* cell_north = get_cell(maze, cell_id_north);
+        cell_id_north = get_cell_id_in_orientation(robot->position, maze, NORTH);
+        cell_north = get_cell(maze, cell_id_north);
         cell_north->walls = cell_north->walls & 0b0111; // cell in NORTH has no wall in SOUTH
     }
     // EAST
     if (no_wall_east(robot)) {
+        int cell_id_east;
+        Cell* cell_east;
+
         current_cell->walls = current_cell->walls & 0b1011;
-        int cell_id_east = get_cell_id_in_orientation(robot->position, maze, EAST);
-        Cell* cell_east = get_cell(maze, cell_id_east);
+        cell_id_east = get_cell_id_in_orientation(robot->position, maze, EAST);
+        cell_east = get_cell(maze, cell_id_east);
         cell_east->walls = cell_east->walls & 0b1110; // cell in EAST has no wall in WEST
     }
     // SOUTH
     if (no_wall_south(robot)) {
+        int cell_id_south;
+        Cell* cell_south;
+
         current_cell->walls = current_cell->walls & 0b0111;
-        int cell_id_south = get_cell_id_in_orientation(robot->position, maze, SOUTH);
-        Cell* cell_south = get_cell(maze, cell_id_south);
+        cell_id_south = get_cell_id_in_orientation(robot->position, maze, SOUTH);
+        cell_south = get_cell(maze, cell_id_south);
         cell_south->walls = cell_south->walls & 0b1101; // cell in SOUTH has no wall in NORTH
     }
-
-    // Update walls of neighboring cells
 }
 
-void update_cell(Robot* const robot, Cell maze[MAZE_SIZE][MAZE_SIZE], const float cost, const int predecessor_cell_id) {
-    update_walls(robot, maze);
+/**
+ * Updates stored maze based on sensor readings of robot and the position of the robot:
+ * - Updates wall
+ * - Updates visited status of cell where the robot is currently in
+ * - Updates predecessor cell id of cell where the robot is currently in if the value has not been set already
+ * 
+ * @param robot: Pointer to the robot.
+ * @param maze: Pointer to the maze.
+ * @param predecessor_cell_id: Cell id of predecessor cell of current cell.
+ */
+void update_cell(Robot* const robot, Cell maze[MAZE_SIZE][MAZE_SIZE], const int predecessor_cell_id) {
     Cell* cell = get_cell(maze, robot->position);
     cell->visited = 1;
-    cell->cost = cost;
+    update_walls(robot, maze);
     // Set predecessor only if the cell not already has a predecessor
     if (cell->predecessor_cell_id == -1) {
         cell->predecessor_cell_id = predecessor_cell_id;
     }
 }
 
+/**
+ * Unvisits all cells of the maze:
+ * - Set visited status of all cells to 0
+ * - Set predecessor cell id for all cells to -1
+ * 
+ * @param maze: Pointer to the maze.
+ */
 void unvisit_all_cells(Cell maze[MAZE_SIZE][MAZE_SIZE]){
     int i, j;
     for (i = 0; i < MAZE_SIZE; ++i) {
         for (j = 0; j < MAZE_SIZE; ++j) {
             maze[i][j].visited = 0;
-            maze[i][j].cost = MAZE_SIZE * MAZE_SIZE;
             maze[i][j].predecessor_cell_id = -1;
         }
     }
 }
 
-// Calculates the goal positions of a maze
-// Case 1: uneven number of cells -> 1 center cell
-// Case 2: even number of cells -> 4 center cells
+/**
+ * Calculates the cell id(s) of the goal position(s) of a maze.
+ * The goal position(s) is/are always in the center of the maze.
+ * - Case 1: uneven number of rows/columns -> 1 center cell (remaining array is filled with -1)
+ * - Case 2: even number of rows/columns -> 4 center cells
+ * 
+ * @param goal_cells_ids: Empty array where the cell id(s) of the goal(s) are written back to.
+ */
 void calc_goal_cells_ids(int goal_cells_ids[4]) {
     int i;
     // Case 1: uneven number of cells -> 1 center cell
@@ -107,9 +162,18 @@ void calc_goal_cells_ids(int goal_cells_ids[4]) {
     }
 }
 
-// Returns direction from cell with cell_id to neighboring cell with neighboring_cell_id.
-// Only works for adjecent cells. If that is not fulfilled, return -1.
-// Does not check for borders
+/**
+ * Returns orientation from cell with cell_id to neighboring cell with neighboring_cell_id.
+ * Example: Neighboring cell with cell_id=25 is north of cell with cell_id=9.
+ *          Then NORTH is returned.
+ * Only works for adjecent cells. If that is not fulfilled, return -1.
+ * Does not check for borders, e.g. cell ids 9 and 10 might not be neighbors
+ * if the size of the maze is 10. That is not detected.
+ * 
+ * @param cell_id: Cell id.
+ * @param neighboring_cell_id: Cell id of neighboring cell.
+ * @return: Orientation of neighboring cell w.r.t cell.
+ */
 int get_orientation_to_neighbor_cell(const int cell_id, const int neighboring_cell_id) {
     if (neighboring_cell_id == cell_id + MAZE_SIZE) {
         return NORTH;
@@ -123,7 +187,15 @@ int get_orientation_to_neighbor_cell(const int cell_id, const int neighboring_ce
     return -1;
 }
 
-// It is not detected if the requested cell would lie outside the maze. Then the return value makes no sense.
+/**
+ * Gets cell which is in the provided orientation (e.g. NORTH) of the provided cell with "cell_id".
+ * If the cell has no neighboring cell in that direction (due to the borders of the maze), -1 is returned.
+ * 
+ * @param cell_id: Cell id.
+ * @param maze: Pointer to the maze.
+ * @param orientation: Orientation of interest (e.g. NORTH)
+ * @return: Cell id of neighboring cell in provided orientation if that cell exists.
+ */
 int get_cell_id_in_orientation(const int cell_id, Cell maze[MAZE_SIZE][MAZE_SIZE], const int orientation) {
     int row = cell_id / MAZE_SIZE;
     int col = cell_id % MAZE_SIZE;
@@ -155,7 +227,19 @@ int get_cell_id_in_orientation(const int cell_id, Cell maze[MAZE_SIZE][MAZE_SIZE
     }
 }
 
-// It is not detected if the requested cell would lie outside the maze. Then the return value makes no sense.
+/**
+ * Gets cell which is in the provided direction (e.g. LEFT) of the provided cell with "cell_id".
+ * To be able to convert the direction into a orientation (e.g. NORTH), the orientation in the cell with
+ * "cell_id" has to be provided.
+ * It is not detected if the cell has no neighboring cell in that direction (due to the borders of the maze).
+ * In that case, the returned value makes no sense.
+ * 
+ * @param current_orientation: Orientation in cell with "cell_id" (e.g. NORTH)
+ * @param cell_id: Cell id.
+ * @param maze: Pointer to the maze.
+ * @param direction: Direction of interest (e.g. FRONT)
+ * @return: Cell id of neighboring cell in provided direction
+ */
 int get_cell_id_in_direction(const int current_orientation, const int cell_id, Cell maze[MAZE_SIZE][MAZE_SIZE], const int direction) {
     // Cell in NORTH
     if (((current_orientation == NORTH) && (direction == FRONT)) ||

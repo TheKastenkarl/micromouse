@@ -1,33 +1,34 @@
-#pragma once
+#ifndef MAZE_SOLVER_H
+#define	MAZE_SOLVER_H
 
-#include "mouse.h"
+#include "robot.h"
 #include "maze.h"
 #include "array.h"
 
-void log_position_walls_predecessor(Robot* robot, Cell maze[MAZE_SIZE][MAZE_SIZE]);
+#if SIMULATION
+void log_position_walls_predecessor(Robot* const robot, Cell maze[MAZE_SIZE][MAZE_SIZE]);
+#endif
 
-/*
-- drive forward, if there is no wall and the cell has not been visited yet
-- drive left, if there is no wall and the cell has not been visited yet
-- drive right, if there is no wall and the cell has not been visited yet
-- drive backward (= turn around and drive forward), if there is no wall and the cell has not been visited yet -> not required as this cell has always been visited before
-- if none of the upper actions is possible, go back to the predecessor cell of the current cell -> use stack for that with indices / pointers to cells
-- We visited all cells if the robot is back again at the starting position.
-*/
 void exploration_dfs(Robot* robot, Cell maze[MAZE_SIZE][MAZE_SIZE]);
 
-int exploit_bfs(Robot* robot, Cell maze[MAZE_SIZE][MAZE_SIZE], int goals_cell_ids[4]);
+int shortest_path_bfs(const int start_cell_id, Cell maze[MAZE_SIZE][MAZE_SIZE], int goals_cell_ids[4], Array* cell_sequence);
 
 void explore_and_exploit();
 
-// returns updated cell_sequence
-// cell_sequence needs size MAZE_SIZE * MAZE_SIZE and must be initialization with zeros: "int cell_sequence[MAZE_SIZE * MAZE_SIZE];"
-// return number of elements in path (remaining array remains filled with zeros)
-int reconstruct_path_to_goal(const int goal_cell_id, Cell maze[MAZE_SIZE][MAZE_SIZE], int cell_sequence[MAZE_SIZE * MAZE_SIZE]);
+void reconstruct_cell_sequence_to_goal(const int goal_cell_id, Cell maze[MAZE_SIZE][MAZE_SIZE], Array* cell_sequence);
 
-// returns updated cell_sequence
-// cell_sequence needs size MAZE_SIZE * MAZE_SIZE and must be initialization with zeros: "int cell_sequence[MAZE_SIZE * MAZE_SIZE];"
-// Array action sequence is modified in-place and it must have size "num_path_elements - 1"
-void reconstruct_orientation_sequence_from_cell_sequence(Cell maze[MAZE_SIZE][MAZE_SIZE], int cell_sequence[MAZE_SIZE * MAZE_SIZE], const int num_path_elements, Array* orientation_sequence);
+void reconstruct_orientation_sequence_from_cell_sequence(Cell maze[MAZE_SIZE][MAZE_SIZE], Array* cell_sequence, Array* orientation_sequence);
 
-void generate_actions_from_orientation_sequence(Robot* robot, Array orientation_sequence);
+void generate_actions_from_orientation_sequence(Robot* robot, Array* const orientation_sequence);
+
+int is_present(const int element, int* arr, const int arr_length);
+
+#if SIMULATION
+void visualize_cell_sequence(Array* cell_sequence);
+#endif
+
+#if SIMULATION
+void mark_cell(const int cell_id);
+#endif
+
+#endif /* MAZE_SOLVER_H */

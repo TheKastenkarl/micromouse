@@ -22,7 +22,7 @@ enum Orientation {
     SOUTH = 0b1000
 };
 
-void init_robot(Robot* robot);
+void init_robot(Robot* robot, const int initial_position, const int initial_orientation);
 
 int is_wall_front();
 int is_wall_right();
@@ -36,12 +36,12 @@ int no_wall_south(Robot* const robot);
 void move_forward(Robot* robot, const int distance);
 
 // spin at current position by -90°
-void spin_right(Robot* robot);
+void turn_right(Robot* robot);
 
 // spin at current position by +90°
-void spin_left(Robot* robot);
+void turn_left(Robot* robot);
 
 // turn the robot such that it has the given orientation
-void spin_to_orientation(Robot* robot, const int orientation);
+void turn_to_orientation(Robot* robot, const int orientation);
 
 #endif /* ROBOT_H */

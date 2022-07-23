@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "maze.h"
+#include "API.h"
 
 /**
  * Initializes the maze:
@@ -263,3 +264,45 @@ int get_cell_id_in_direction(const int current_orientation, const int cell_id, C
         return get_cell_id_in_orientation(cell_id, maze, WEST);
     }
 }
+
+/**
+ * Visualizes the specified cell sequence in the simulation in blue.
+ * In each cell, the distance to the last cell of the cell sequence is written.
+ * It removes all old texts and colors.
+ * 
+ * @param cell_sequence: Cell sequence which should be visualized.
+ */
+#if SIMULATION && VISUALIZATION
+void visualize_cell_sequence(Array* cell_sequence) {
+    int i, row, col, remaining_distance;
+    API_clearAllText();
+    API_clearAllColor();
+
+    for (i = 0; i < cell_sequence->used; ++i) {
+        row = cell_sequence->array[i] / MAZE_SIZE;
+        col = cell_sequence->array[i] % MAZE_SIZE;
+        remaining_distance = cell_sequence->used - 1 - i;
+        char str[5];
+        sprintf(str, "%d", remaining_distance);
+        API_setText(col, row, str);
+        API_setColor(col, row, 'B');
+    }
+}
+#endif
+
+/**
+ * Marks the specified cell in the simulation in green and writes
+ * the cell id on it.
+ * 
+ * @param cell_id: Cell id which should be marked.
+ */
+#if SIMULATION && VISUALIZATION
+void mark_cell(const int cell_id) {
+    int row = cell_id / MAZE_SIZE;
+    int col = cell_id % MAZE_SIZE;
+    char str[5];
+    sprintf(str, "%d", cell_id);
+    API_setText(col, row, str);
+    API_setColor(col, row, 'G');
+}
+#endif

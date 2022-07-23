@@ -7,13 +7,13 @@
  */
 void wall_follow() {
     Robot robot;
-    init_robot(&robot);
+    init_robot(&robot, 0, NORTH);
     while (1) {
         if (!is_wall_left()) {
-            spin_left(&robot);
+            turn_left(&robot);
         }
         while (is_wall_front()) {
-            spin_right(&robot);
+            turn_right(&robot);
         }
         move_forward(&robot,1);
     }

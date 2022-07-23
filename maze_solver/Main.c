@@ -9,5 +9,4 @@ int main(int argc, char* argv[]) {
 
 /* TODO:
 - Check if compiling with microchip compiler works
-- move_to_cell function
 */

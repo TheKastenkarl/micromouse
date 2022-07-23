@@ -5,14 +5,15 @@
 
 /**
  * Initilizes the position and orientation of the robot.
- * 
  * Assumption: Robot starts in the bottom left corner facing north.
  * 
  * @param robot: Pointer to the robot.
+ * @param initial_position: Initial position (= initial cell id) of the robot.
+ * @param initial_orientation: Initial orientation (e.g. NORTH) of the robot.
  */
-void init_robot(Robot* robot) {
-    robot->position = 0;
-    robot->orientation = NORTH;
+void init_robot(Robot* robot, const int initial_position, const int initial_orientation) {
+    robot->position = initial_position;
+    robot->orientation = initial_orientation;
 }
 
 /**
@@ -137,12 +138,12 @@ void move_forward(Robot* robot, const int distance) {
 }
 
 /**
- * Spins the robot by 90° to the right at the current position.
+ * Turns the robot by 90° to the right at the current position (in-place).
  * Additionally, the stored orientation of the robot is updated.
  * 
  * @param robot: Pointer to the robot.
  */
-void spin_right(Robot* robot) {
+void turn_right(Robot* robot) {
     if (robot->orientation != SOUTH) {
         robot->orientation = robot->orientation << 1;
     } else {
@@ -156,12 +157,12 @@ void spin_right(Robot* robot) {
 }
 
 /**
- * Spins the robot by 90° to the left at the current position.
+ * Turns the robot by 90° to the left at the current position (in-place).
  * Additionally, the stored orientation of the robot is updated.
  * 
  * @param robot: Pointer to the robot.
  */
-void spin_left(Robot* robot) {
+void turn_left(Robot* robot) {
     if (robot->orientation != WEST) {
         robot->orientation = robot->orientation >> 1;
     } else {
@@ -175,22 +176,22 @@ void spin_left(Robot* robot) {
 }
 
 /**
- * Spins the robot such that it has the given orientation.
+ * Turns the robot in-place such that it has the given orientation.
  * Additionally, the stored orientation of the robot is updated.
  * 
  * @param robot: Pointer to the robot.
  * @param orientation: Orientation which the robot should have after spinning.
  */
-void spin_to_orientation(Robot* robot, const int orientation) {
+void turn_to_orientation(Robot* robot, const int orientation) {
     if ((robot->orientation << 1 == orientation) || (robot->orientation >> 3 == orientation)) {
-        spin_right(robot);
+        turn_right(robot);
         return;
     } else if ((robot->orientation >> 1 == orientation) || (robot->orientation << 3 == orientation)) {
-        spin_left(robot);
+        turn_left(robot);
         return;
     } else if ((robot->orientation >> 2 == orientation) || (robot->orientation << 2 == orientation)) {
-        spin_left(robot);
-        spin_left(robot);
+        turn_left(robot);
+        turn_left(robot);
         return;
     }
 }

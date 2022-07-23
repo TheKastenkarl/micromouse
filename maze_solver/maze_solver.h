@@ -11,11 +11,11 @@ void log_position_walls_predecessor(Robot* const robot, Cell maze[MAZE_SIZE][MAZ
 
 void exploration_dfs(Robot* robot, Cell maze[MAZE_SIZE][MAZE_SIZE]);
 
-int shortest_path_bfs(const int start_cell_id, Cell maze[MAZE_SIZE][MAZE_SIZE], int goals_cell_ids[4], Array* cell_sequence);
+int shortest_path_bfs(const int start_cell_id, Cell maze[MAZE_SIZE][MAZE_SIZE], int goal_cells_ids[4], Array* cell_sequence);
 
 void explore_and_exploit();
 
-void reconstruct_cell_sequence_to_goal(const int goal_cell_id, Cell maze[MAZE_SIZE][MAZE_SIZE], Array* cell_sequence);
+void reconstruct_cell_sequence_to_goal(const int start_cell_id, const int goal_cell_id, Cell maze[MAZE_SIZE][MAZE_SIZE], Array* cell_sequence);
 
 void reconstruct_orientation_sequence_from_cell_sequence(Cell maze[MAZE_SIZE][MAZE_SIZE], Array* cell_sequence, Array* orientation_sequence);
 
@@ -23,12 +23,8 @@ void generate_actions_from_orientation_sequence(Robot* robot, Array* const orien
 
 int is_present(const int element, int* arr, const int arr_length);
 
-#if SIMULATION
-void visualize_cell_sequence(Array* cell_sequence);
-#endif
+int move_to_cells(Robot* robot, Cell maze[MAZE_SIZE][MAZE_SIZE], int goal_cells_ids[4], const int goal_cell_orientation);
 
-#if SIMULATION
-void mark_cell(const int cell_id);
-#endif
+int move_to_cell(Robot* robot, Cell maze[MAZE_SIZE][MAZE_SIZE], const int goal_cell_id, const int goal_cell_orientation);
 
 #endif /* MAZE_SOLVER_H */

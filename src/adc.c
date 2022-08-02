@@ -1,21 +1,10 @@
-/*! \file   adc.c
- * Author: Alexander Lenz
- *
- * Created on 10 Oct 2018, 16:53
- */
-
 #include "adc.h"
 #include <xc.h>
 
-/***************************************************************************
-* Function Name     : setupADC1                                            *
-* Description       : Configure ADC1 in 12 bit mode for usage of ADC CH0   *
-*                     in channel scan mode.                                * 
-* Parameters        : None                                                 * 
-* Return Value      : None                                                 *
-***************************************************************************/
-void setupADC1()
-{
+/**
+ * Setup the ADC1 in scan mode to read all IR sensor values.
+ */
+void setupADC1() {
     AD1CON1bits.ADON = 0; // disable ADC1 module
 
     AD1CON1bits.ADSIDL = 0;     // no sampling in idle mode
@@ -71,14 +60,10 @@ void setupADC1()
     IPC3bits.AD1IP = 5; // set ADC1 interrupt priority level to 4
 }
 
-/***************************************************************************
-* Function Name     : startADC1                                            *
-* Description       : Start ADC1.                                          *
-* Parameters        : None                                                 *
-* Return Value      : None                                                 *
-***************************************************************************/
-void startADC1()
-{
+/**
+ * Start ADC1.
+ */
+void startADC1() {
     AD1CON1bits.ADON = 1; // set on-bit
     AD1CON1bits.ASAM = 1; // Sampling begins immediately after last conversion. SAMP bit is auto-set
 }

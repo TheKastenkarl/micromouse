@@ -1,17 +1,14 @@
 #include "dma.h"
 #include "IOconfig.h"
 
-unsigned int adcData[32]__attribute__((space(dma)));
+// See dma.h for named specifiers to access the ADC data.
 
-/***************************************************************************
-* Function Name     : initDmaChannel4                                      *
-* Description       : Configure channel 4 of the DMA for usage with the    *
-*                     ADC1 peripheral.                                          * 
-* Parameters        : None                                                 * 
-* Return Value      : None                                                 *
-***************************************************************************/
-void initDmaChannel4()
-{
+unsigned int adcData[32]__attribute__((space(dma))); // TODO 3 enough?
+
+/**
+ * Configure channel 4 of the DMA for usage with the ADC1 peripheral. 
+ */
+void initDmaChannel4() {
 	//DMA4CON = 0x;
 	DMA4CONbits.CHEN = 0;       // Disable channel
 	DMA4CONbits.SIZE = 0;       // Data transfer size (1=byte,0=word)
@@ -26,7 +23,7 @@ void initDmaChannel4()
 
 	DMA4STA = (__builtin_dmaoffset(&(adcData[0]))); // start address of DMA RAM
 	DMA4PAD = (volatile unsigned int) &ADC1BUF0;	// address of peripheral sfr (0x0300)
-	DMA4CNT = 1; // we have 2 a2d  s/h channels for  measurement !!!CHANGE HERE!!! (franz: set "number of selected channels in AD1CSSL - 1")
+	DMA4CNT = 2; // we have 3 a2d  s/h channels for  measurement !!!CHANGE HERE!!! number of selected channels in AD1CSSL - 1
 
     // Interrupt settings
 	IFS2bits.DMA4IF	= 0;	// Clear DMA interrupt
@@ -36,28 +33,12 @@ void initDmaChannel4()
 	DMA4CONbits.CHEN = 1;	// enable channel
 }
 
-/***************************************************************************
-* Function Name     : _DMA4Interrupt                                       *
-* Description       : ISR of DMA4. Gets triggered by ADC1 interrupt bit.   *
-*                     Interrupt is sent after each channel is sampled,     *
-*                     not after all channels were sampled. (really true?   *
-*                     see page 281 of datasheet: "If more than one conver- *
-*                     sion result needs to be buffered before triggering   *
-*                     an interrupt, DMA data transfers can be used." ???   *
-* Parameters        : None                                                 *
-* Return Value      : None                                                 *
-***************************************************************************/
-void __attribute__((interrupt, auto_psv)) _DMA4Interrupt()
-{
+/**
+ * ISR of DMA4. Gets triggered by ADC1 interrupt bit. Interrupt is sent after
+ * each channel is sampled, not after all channels were sampled. (really true?
+ * see page 281 of datasheet: "If more than one conversion result needs to be
+ * buffered before triggering an interrupt, DMA data transfers can be used." ???
+ */
+void __attribute__((interrupt, auto_psv)) _DMA4Interrupt() {
 	IFS2bits.DMA4IF = 0; // Clear DMA interrupt
 }
-
-
-/*
- Questions:
- * - How often does the DMA send an interrupt?
- * -> Can be configured (after every conversion or after conversions of all channels), but we do not use the interrupts
- * - What is the advantage of using DMA over using the ADC buffers (as described in the tutorial pdf)? 
- * -> our uC has only a one word buffer which would mean that we would need to store the values manually somewhere else via the ISR
- * -> Difference to microcontroller in "dsPICForMicromouseOverview.pdf": There no DMA exists but more ADC buffers exist.
- */

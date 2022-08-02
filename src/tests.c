@@ -4,12 +4,21 @@
 #include "motors.h"
 #include <stdio.h>
 #include "motorEncoders.h"
+#include "dma.h"
 
 void sleep(long operations) {
     long i = 0;
     while (i < operations) {
         i++;
     }
+}
+
+void testIR(unsigned char irID) {
+    char *irNames[] = {"left", "right", "front"};
+    unsigned int irValues[] = {IR_LEFT, IR_RIGHT, IR_FRONT};
+    char msg[20];
+    sprintf(msg, "IR %s : %u", irNames[irID], irValues[irID]);
+    sendUART1(msg, 1);
 }
 
 void testMotor(unsigned char motorID) {

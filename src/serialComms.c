@@ -1,31 +1,37 @@
 #include <xc.h>
-// #include "IOconfig.h"
 #include "IOconfigDevBoard.h"
 #include <stdbool.h>
 #include "serialComms.h"
+#include <math.h>
+#include "utils.h"
 
 
 char* g_sendBuffer; // global variable that points to message to be sent
 bool g_isBusy = false; // global variable to indicate that we are waiting to send
 
-/*
- *	set-up the serial port
- *   here we aim to achieve a data transfer rate of 57.6 kbit/s,
- *   based on Fcycle=26.6666Mhz 
- *   BaudRate=Fcycle/(16*(BRG+1))
- *   ==> BRG=Fcy/(16*BaudRate) - 1 = 26.666Mhz/(16*57600) - 1 = 28.23
- *   ==> choose 28 ==> BaudRate= 57.474  kbit/s, which is ~ 1% off.
+/**
+ * Calculate value for BRG given the desired baudrate and the cycle frequency
  * 
- * for standard communication speed of 9600 kbit/s
- * choose 173 (factor 6)
+ * @param baudrate: desired baudrate, typical values: 9600, 28800, 57600 bit/s
+ * @param fCycle: cycle frequency of board
+ * @return value for BRG register
  */
-void setupUART1(void) {
+unsigned char getBRG(unsigned short baudrate, float fCycle) {
+    return round(fCycle / (16 * baudrate) - 1);
+}
+
+/**
+ * Setup UART1 to send and receive serial messages.
+ * 
+ * @param baudrate: Desired baudrate, typical values: 9600, 28800, 57600 bit/s
+ */
+void setupUART1(unsigned short baudrate) {
     // switch off
     U1MODEbits.UARTEN = 0; // switch the uart off during set-up
 
     // baudrate related
     U1MODEbits.ABAUD = 0; // no auto baud rate detection
-    U1BRG = 173; // baud rate register, 9600 bits/s, 10 bits -> 1ms
+    U1BRG = getBRG(baudrate, INTERNAL_OSC_FREQ_HZ); // 173 for 9600
     U1MODEbits.BRGH = 0; // No High Speed Mode
 
     // others
@@ -86,7 +92,7 @@ void __attribute__((interrupt, no_auto_psv)) _U1RXInterrupt(void) {
 void __attribute__((interrupt, no_auto_psv)) _U1TXInterrupt(void) {
     static char del[] = DELIMITER;
     static int delIndex = 0;
-    
+
     IFS0bits.U1TXIF = 0; // reset the transmitted interrupt flag
 
     // after final char has been sent

@@ -49,6 +49,7 @@
 #include "dma.h"
 #include "motors.h"
 #include "tests.h"
+#include "utils.h"
 
 void setup() {
     setupOscillator();
@@ -63,7 +64,7 @@ void setup() {
     initTimer1(100); // 100 ms timer
     initQEI1(0); // left motor encoder
     initQEI2(0); // right motor encoder
-    setupUART1();
+    setupUART1(BAUDRATE);
     setupPWM(0.05); // 0.05 ms = 20 kHz
     setupADC1();
     initDmaChannel4();

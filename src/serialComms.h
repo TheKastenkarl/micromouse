@@ -5,7 +5,7 @@
 
 #define DELIMITER "\r\n"
 
-void setupUART1(void);
+void setupUART1(unsigned short baudrate);
 void sendUART1(char* buffer, int waitIfBusy);
 
 #endif	/* SERIALCOMMS_H */

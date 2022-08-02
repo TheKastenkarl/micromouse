@@ -2,8 +2,9 @@
 #define	UTILS_H
 
 #define INTERNAL_OSC_PERIOD_MICROSECS 0.0375
-#define INTERNAL_OSC_FREQ_HZ 26.667e3f
+#define INTERNAL_OSC_FREQ_HZ 26.667e6f
 
+#define BAUDRATE 9600
 #define CONTROL_FREQUENCY 0.01
 
 float convertRanges(float aMin, float aMax, float bMin, float bMax, float aVal);

@@ -5,11 +5,26 @@
 #include <stdio.h>
 #include "motorEncoders.h"
 #include "dma.h"
+#include "IOconfig.h" // "IOconfigDevBoard.h"
 
 void sleep(long operations) {
     long i = 0;
     while (i < operations) {
         i++;
+    }
+}
+
+void testButtonAndLed(unsigned char buttonID, unsigned char ledID) {
+    volatile uint16_t buttons[2] = {BTN1, BTN2};
+    volatile uint16_t leds[3] = {LED0, LED1, LED2};
+
+    volatile uint16_t button = buttons[buttonID];
+    volatile uint16_t led = leds[ledID];
+
+    if (button == BTN_PRESSED) {
+        led = LEDON;
+    } else {
+        led = LEDOFF;
     }
 }
 
@@ -45,7 +60,7 @@ void testBluetoothUART() {
 
 void testEncoder(unsigned char motorID) {
     updateEncoderStates(motorID);
-    
+
     // read motor encoder values and send via UART
     long positionInCounts = g_counts[motorID];
     float positionInRad = convertCountsToRad(positionInCounts);

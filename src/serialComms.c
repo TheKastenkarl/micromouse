@@ -6,6 +6,19 @@
 #include <math.h>
 #include "utils.h"
 
+// Serial Communication Module
+//  
+// Module to send and receive messages via UART
+// See serialComms.h for the set Delimiter to send at the end of a message
+//
+// Main usage:
+// 
+// Sending:
+// - char greeting[] = "Test Test \n I am a test.";
+// - sendUART1(greeting, 1);
+// 
+// Receiving:
+// - define action in the receive interrupt
 
 char* g_sendBuffer; // global variable that points to message to be sent
 bool g_isBusy = false; // global variable to indicate that we are waiting to send
@@ -33,7 +46,7 @@ void setupUART1(unsigned short baudrate) {
 
     // baudrate related
     U1MODEbits.ABAUD = 0; // no auto baud rate detection
-    U1BRG = getBRG(9600, INTERNAL_OSC_FREQ_HZ); // 173 for 9600
+    U1BRG = getBRG(baudrate, INTERNAL_OSC_FREQ_HZ); // 173 for 9600
     U1MODEbits.BRGH = 0; // No High Speed Mode
 
     // others
@@ -59,9 +72,9 @@ void setupUART1(unsigned short baudrate) {
     U1STAbits.UTXEN = 1; // enable transmission
 }
 
-
-// Receive interrupt as soon as one character has arrived
-
+/**
+ * Receive interrupt as soon as one character has arrived
+ */
 void __attribute__((interrupt, no_auto_psv)) _U1RXInterrupt(void) {
     unsigned int rxData; // a local buffer to copy the data into
 
@@ -89,8 +102,9 @@ void __attribute__((interrupt, no_auto_psv)) _U1RXInterrupt(void) {
      */
 }
 
-// Transmit Interrupt
-
+/**
+ * Transmit interrupt as soon as one character has been sent
+ */
 void __attribute__((interrupt, no_auto_psv)) _U1TXInterrupt(void) {
     static char del[] = DELIMITER;
     static int delIndex = 0;
@@ -119,6 +133,12 @@ void __attribute__((interrupt, no_auto_psv)) _U1TXInterrupt(void) {
     }
 }
 
+/**
+ * Send a string via UART
+ * 
+ * @param buffer: Pointer to the string to be sent.
+ * @param waitIfBusy: 1 if explicitely waiting if UART is busy.
+ */
 void sendUART1(char* buffer, int waitIfBusy) {
     if (waitIfBusy) {
         while (g_isBusy);

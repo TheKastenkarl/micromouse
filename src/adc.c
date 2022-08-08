@@ -1,6 +1,8 @@
 #include "adc.h"
 #include <xc.h>
 
+// ADC module.
+
 /**
  * Setup the ADC1 in scan mode to read all IR sensor values.
  */

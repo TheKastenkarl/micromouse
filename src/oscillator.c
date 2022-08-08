@@ -1,14 +1,11 @@
-/*
- * File:   oscillator.c
- * Author: ludwi
- *
- * Created on 5. Juli 2022, 18:03
- */
-
-
 #include "xc.h"
 #include "osciallator.h"
 
+// Oscialltor module.
+
+/**
+ * Setup the osciallator.
+ */
 void setupOscillator() {
 #if (SEVEN_MEG_OSC == 0) 
     /*** oscillator setup --------------------------------------------------

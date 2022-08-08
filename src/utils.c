@@ -1,6 +1,10 @@
 #include "xc.h"
 #include "utils.h"
 
+// Utility module
+//
+// mainly for helper functions.
+
 /**
  * Converts a value proportionally between ranges.
  * 
@@ -39,31 +43,31 @@ float convertRanges(float aMin, float aMax, float bMin, float bMax, float aVal) 
  */
 void getPositionSmallestPossiblePrescaler(
         float periodMsDesired,
-        float timerMaxCount, 
+        float timerMaxCount,
         float internalTimeBaseUs,
-        unsigned int prescaleValues[], 
-        unsigned char len, 
-        int* positionIndex, 
+        unsigned int prescaleValues[],
+        unsigned char len,
+        int* positionIndex,
         int* reqCount) {
-    
+
     // calculate by which factor our required counting value is too high
     float timeOnePeriodMs = timerMaxCount / 1000 * internalTimeBaseUs; // swapping division by 1000 to front to not have overflow
     float fractionCountPossible = periodMsDesired / timeOnePeriodMs; // 
-    
+
     // return error if not possible
     if (fractionCountPossible > prescaleValues[len - 1]) {
         *positionIndex = -1;
     }
-    
+
     // otherwise choose lowest prescale value
     unsigned char i = 0;
-    for (i = 0; i < len; i++){
+    for (i = 0; i < len; i++) {
         if (fractionCountPossible < prescaleValues[i]) {
             *positionIndex = i;
             break;
         }
     }
-    
+
     int prescaleValue = prescaleValues[i];
     *reqCount = (int) (timerMaxCount / prescaleValue * fractionCountPossible);
 }

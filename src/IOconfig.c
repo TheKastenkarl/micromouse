@@ -1,6 +1,11 @@
 #include "xc.h"
 #include "IOconfig.h"
 
+// Configure IO.
+
+/**
+ * Map remappable pins to peripherals.
+ */
 void setupRemappable() {
     __builtin_write_OSCCONL(OSCCON & 0xbf); // clear bit 6 (unlock, they are usually write protected)
 
@@ -23,10 +28,16 @@ void setupRemappable() {
     for (i = 0; i < 30000; i++);
 }
 
+/**
+ * Setup analog pins.
+ */
 void setupAnalog() {
     AD1PCFGL = 0b1111111111101100; // AN0, AN1, AN4 are analog inputs
 }
 
+/**
+ * Setup digital pins.
+ */
 void setupDigital() {
     // LEDs
     LED0_TRIS = 0;

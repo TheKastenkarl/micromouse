@@ -9,12 +9,22 @@
 #include "IOconfig.h"
 // #include "IOconfigDevBoard.h"
 
-// max durations for a given prescale value:
-// 1: 2.45 ms
-// 8: 19.66 ms
-// 64: 157.28 ms
-// 256: 629.14 ms
+// Timer module.
+//
+// Main functionality is set in the timer interrupt. 
 
+/**
+ * Init Timer 1. Also sets the best possible prescale value.
+ * 
+ * Note: max durations for a given prescale value:
+ *  1: 2.45 ms
+ *  8: 19.66 ms
+ *  64: 157.28 ms
+ *  256: 629.14 ms
+ * 
+ * @param periodMs: Desired period in ms.
+ * @return: 0 if period is possible, -1 if not.
+ */
 int initTimer1(float periodMs) {
     T1CONbits.TON = 0; // initially off
     T1CONbits.TCS = 0; // use internal clock for counting
@@ -67,6 +77,11 @@ void stopTimer1(void) {
     T1CONbits.TON = 0; // turn off
 }
 
+/**
+ * Virtual timer to exceed the maximum period of the timer (629.14 ms).
+ * @param actionEveryXCalls: After how many calls to execute the action.
+ *  Leads to a multiple of timer period times.
+ */
 void virtualTimer(int actionEveryXCalls) {
     static int i = 0;
 
@@ -79,7 +94,9 @@ void virtualTimer(int actionEveryXCalls) {
     }
 }
 
-// Timer 1 interrupt
+/**
+ * Timer 1 interrupt
+ */
 void __attribute__((__interrupt__, auto_psv)) _T1Interrupt(void) {
     IFS0bits.T1IF = 0; // reset Timer 1 interrupt flag 
 

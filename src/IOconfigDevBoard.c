@@ -1,6 +1,8 @@
 #include "xc.h"
 #include "IOconfigDevBoard.h"
 
+// Configure IO, but for development board.
+
 void setupIO() {
     // ---- PIN MAPPING ---- //
     // before we map, we need to unlock

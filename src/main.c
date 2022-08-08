@@ -67,6 +67,7 @@ void setup() {
     setupPWM(0.05); // 0.05 ms = 20 kHz
     setupADC1();
     initDmaChannel4();
+    
     startADC1();
     startTimer1();
 }

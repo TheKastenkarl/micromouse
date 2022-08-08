@@ -19,7 +19,7 @@
 #define LEDON 0
 #define LEDOFF 1
 
-void setupIODev();
+void setupIO();
 
 #endif	/* IOCONFIGDEVBOARD_H */
 

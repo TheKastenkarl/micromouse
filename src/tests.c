@@ -5,7 +5,8 @@
 #include <stdio.h>
 #include "motorEncoders.h"
 #include "dma.h"
-#include "IOconfig.h" // "IOconfigDevBoard.h"
+#include "IOconfig.h" 
+// #include "IOconfigDevBoard.h"
 
 void sleep(long operations) {
     long i = 0;
@@ -14,17 +15,17 @@ void sleep(long operations) {
     }
 }
 
-void testButtonAndLed(unsigned char buttonID, unsigned char ledID) {
-    volatile uint16_t buttons[2] = {BTN1, BTN2};
-    volatile uint16_t leds[3] = {LED0, LED1, LED2};
-
-    volatile uint16_t button = buttons[buttonID];
-    volatile uint16_t led = leds[ledID];
-
-    if (button == BTN_PRESSED) {
-        led = LEDON;
+void testButtonAndLed() {
+    if (BTN1 == BTN_PRESSED) {
+        LED0 = LEDON;
     } else {
-        led = LEDOFF;
+        LED0 = LEDOFF;
+    }
+    
+    if (BTN2 == BTN_PRESSED) {
+        LED1 = LEDON;
+    } else {
+        LED1 = LEDOFF;
     }
 }
 

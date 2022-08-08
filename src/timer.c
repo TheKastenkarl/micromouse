@@ -6,6 +6,8 @@
 #include <stdio.h>
 #include "serialComms.h"
 #include "tests.h"
+#include "IOconfig.h"
+// #include "IOconfigDevBoard.h"
 
 // max durations for a given prescale value:
 // 1: 2.45 ms
@@ -72,7 +74,8 @@ void virtualTimer(int actionEveryXCalls) {
     if (i == actionEveryXCalls) {
         i = 0;
 
-        testEncoder(0);
+        // LED0 = ~LED0;
+        // testEncoder(0);
     }
 }
 

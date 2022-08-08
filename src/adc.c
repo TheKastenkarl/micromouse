@@ -33,8 +33,8 @@ void setupADC1() {
     AD1CON2bits.CSCNA = 1;    // enable analog input SCAN on channel 0
     AD1CON2bits.CHPS = 0b11;  // important for 10 bit mode, unimplemented in 12-bit mode
     //AD1CON2bits.BUFS = x;     // indicates which buffer is currently written (only if BUFM=1)
-    AD1CON2bits.SMPI = 1;     // !!!CHANGE HERE!!! Selects Increment Rate for DMA Addresses bits or number of sample/conversion operations per interrupt
-                              // update, now only set to 1 because we scan 2 channels (franz: set to "number of selected channels in AD1CSSL - 1")
+    AD1CON2bits.SMPI = 2;     // !!!CHANGE HERE!!! Selects Increment Rate for DMA Addresses bits or number of sample/conversion operations per interrupt
+                              // update, now only set to 2 because we scan 3 channels (franz: set to "number of selected channels in AD1CSSL - 1")
     AD1CON2bits.BUFM = 0;     // always fill buffer starting at address 0x00
     AD1CON2bits.ALTS = 0;     // always use channel A and do not alternate
 

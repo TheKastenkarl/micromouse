@@ -38,8 +38,8 @@
 /// Include headers
 
 #include "xc.h"
-// #include "IOconfig.h"
-#include "IOconfigDevBoard.h"
+#include "IOconfig.h"
+// #include "IOconfigDevBoard.h"
 #include "osciallator.h"
 #include "pwm.h"
 #include "timer.h"
@@ -53,13 +53,12 @@
 
 void setup() {
     setupOscillator();
-    // setupIO();
-    setupIODev(); // configures inputs and outputs
+    setupIO();
 
     // all LEDs off by default
-    // LED0 = LEDOFF;
-    // LED1 = LEDOFF;
-    // LED2 = LEDOFF;
+    LED0 = LEDOFF;
+    LED1 = LEDOFF;
+    LED2 = LEDOFF;
 
     initTimer1(100); // 100 ms timer
     initQEI1(0); // left motor encoder
@@ -69,15 +68,17 @@ void setup() {
     setupADC1();
     initDmaChannel4();
     startADC1();
-    // startTimer1();
+    startTimer1();
 }
 
 void loop() {
     while (1) {
-        testBluetoothUART();
+        // testButtonAndLed(1, 0);
+        // testIR(2);
+        // testBluetoothUART();
         // testMotor(0);
         // runMotor(1.0, 0, 0);
-        // testEncoder(0);
+        testEncoder(0);
     }
 }
 

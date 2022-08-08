@@ -1,12 +1,10 @@
-
 #include <xc.h>
 #include "motorEncoders.h"
+#include <math.h>
 
 long g_counts[] = {0, 0}; // absolute position
 int g_deltaCountsSinceLastCall[] = {0, 0}; // velocity
 long g_rotationCounts[] = {0, 0}; // full rotation counts, helper variable
-
-#include <math.h>
 
 //****************************************************************INITIALISE QEI************************
 

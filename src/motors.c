@@ -1,7 +1,7 @@
 #include "xc.h"
 #include "motors.h"
-// #include "IOconfig.h"
-#include "IOconfigDevBoard.h"
+#include "IOconfig.h"
+// #include "IOconfigDevBoard.h"
 #include "pwm.h"
 #include "utils.h"
 

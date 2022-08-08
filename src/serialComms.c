@@ -1,5 +1,6 @@
 #include <xc.h>
-#include "IOconfigDevBoard.h"
+#include "IOconfig.h"
+// #include "IOconfigDevBoard.h"
 #include <stdbool.h>
 #include "serialComms.h"
 #include <math.h>
@@ -17,7 +18,8 @@ bool g_isBusy = false; // global variable to indicate that we are waiting to sen
  * @return value for BRG register
  */
 unsigned char getBRG(unsigned short baudrate, float fCycle) {
-    return round(fCycle / (16 * baudrate) - 1);
+    unsigned char r = round(fCycle / (16. * baudrate) - 1);
+    return r;
 }
 
 /**
@@ -31,7 +33,7 @@ void setupUART1(unsigned short baudrate) {
 
     // baudrate related
     U1MODEbits.ABAUD = 0; // no auto baud rate detection
-    U1BRG = getBRG(baudrate, INTERNAL_OSC_FREQ_HZ); // 173 for 9600
+    U1BRG = getBRG(9600, INTERNAL_OSC_FREQ_HZ); // 173 for 9600
     U1MODEbits.BRGH = 0; // No High Speed Mode
 
     // others

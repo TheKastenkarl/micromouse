@@ -51,35 +51,54 @@
 #include "tests.h"
 #include "utils.h"
 
-void setup() {
-    setupOscillator();
-    setupIO();
-
-    // all LEDs off by default
+void defaultState() {
+    runMotor(0.0, 0, 0);
+    runMotor(0.0, 1, 0);
+    
     LED0 = LEDOFF;
     LED1 = LEDOFF;
     LED2 = LEDOFF;
+}
 
-    initTimer1(100); // 100 ms timer
+void setupMotors() {
     initQEI1(0); // left motor encoder
     initQEI2(0); // right motor encoder
-    setupUART1(BAUDRATE);
     setupPWM(0.05); // 0.05 ms = 20 kHz
+}
+
+void setupIRSensors() {
     setupADC1();
     initDmaChannel4();
-    
     startADC1();
+}
+
+void setupBluetooth() {
+    setupUART1(BAUDRATE);
+}
+
+void setupTimer() {
+    initTimer1(100); // 100 ms timer
     startTimer1();
+}
+
+void setup() {
+    setupOscillator();
+    setupIO();
+    setupTimer();
+    setupBluetooth();
+    setupIRSensors();
+    setupMotors();
+    
+    defaultState();
 }
 
 void loop() {
     while (1) {
         // testButtonAndLed(1, 0);
-        // testIR(2);
         // testBluetoothUART();
+        // testIR(1);
         // testMotor(0);
-        // runMotor(1.0, 0, 0);
-        testEncoder(0);
+        // testEncoder(1);
     }
 }
 

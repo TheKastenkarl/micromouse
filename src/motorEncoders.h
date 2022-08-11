@@ -19,8 +19,8 @@ float convertCountsToWheelRots(long counts);
 extern long g_counts[2];
 extern int g_deltaCountsSinceLastCall[2];
 
-#define GET_ENCODER_1(RIGHT_ENCODER_POSITION_VALUE) (RIGHT_ENCODER_POSITION_VALUE = g_rotationCounts[0] + POS1CNT)
-#define GET_ENCODER_2(LEFT_ENCODER_POSITION_VALUE) (LEFT_ENCODER_POSITION_VALUE = g_rotationCounts[1] + POS2CNT)
+#define GET_ENCODER_0(LEFT_ENCODER_POSITION_VALUE) (LEFT_ENCODER_POSITION_VALUE = g_rotationCounts[0] + POS1CNT)
+#define GET_ENCODER_1(RIGHT_ENCODER_POSITION_VALUE) (RIGHT_ENCODER_POSITION_VALUE = g_rotationCounts[1] + POS2CNT)
 
 // All below include slack, i.e measured in real environment
 #define COUNTS_PER_WHEELROTATION (16 * 4 * 33)

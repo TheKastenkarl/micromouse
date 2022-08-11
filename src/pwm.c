@@ -44,6 +44,7 @@ int setupPWM(float PWMPeriodMs) {
     P1TCONbits.PTCKPS = P1TCONbits_PTCKPS[positionIndex]; // Sets prescaler
     P1TPER = basePeriodCount;
     PWM1CON1bits.PMOD1 = 1; // set PWM unit 1 to independent mode
+    PWM1CON1bits.PMOD2 = 1; // set PWM unit 2 to independent mode
 
     PWM1CON1bits.PEN1H = 0; // disable  PWM driver
     PWM1CON1bits.PEN2H = 0; // disable PWM driver

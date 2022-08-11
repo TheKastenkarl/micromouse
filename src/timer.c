@@ -89,7 +89,7 @@ void virtualTimer(int actionEveryXCalls) {
     if (i == actionEveryXCalls) {
         i = 0;
 
-        // LED0 = ~LED0;
+        LED0 = ~LED0;
         // testEncoder(0);
     }
 }

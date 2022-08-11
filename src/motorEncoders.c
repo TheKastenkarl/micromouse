@@ -21,7 +21,7 @@ long g_rotationCounts[] = {0, 0}; // full rotation counts, helper variable
 void initQEI1(unsigned int startPos) {
     QEI1CONbits.QEISIDL = 1; // discontinue module operation in idle mode
     QEI1CONbits.QEIM = 0b111; // Quadrature Encoder Interface enabled (x4mode) with position counter reset by match (MAX1CNT)
-    QEI1CONbits.SWPAB = 0; // Phase A and B not swapped
+    QEI1CONbits.SWPAB = 1; // Phase A and B swapped
     QEI1CONbits.PCDOUT = 0; // disable position counter direction pin
     QEI1CONbits.TQGATE = 0; // timer gated time acc disabled
     QEI1CONbits.POSRES = 0; // index does not reset position counter
@@ -44,7 +44,7 @@ void initQEI1(unsigned int startPos) {
 void initQEI2(unsigned int startPos) {
     QEI2CONbits.QEISIDL = 1; // discontinue module operation in idle mode
     QEI2CONbits.QEIM = 0b111; // Quadrature Encoder Interface enabled (x4mode) with position counter reset by match (MAX1CNT)
-    QEI2CONbits.SWPAB = 1; // Phase A and B  swapped
+    QEI2CONbits.SWPAB = 0; // Phase A and B not swapped
     QEI2CONbits.PCDOUT = 0; // disable position counter direction pin
     QEI2CONbits.TQGATE = 0; // timer gated time acc disabled
     QEI2CONbits.POSRES = 0; // index does not reset position counter
@@ -105,11 +105,11 @@ void updatePositionCount(unsigned char encoderNumber) {
     _NSTDIS = 1;
     switch (encoderNumber) {
         case 0:
-            GET_ENCODER_1(g_counts[encoderNumber]);
+            GET_ENCODER_0(g_counts[encoderNumber]);
             break;
 
         case 1:
-            GET_ENCODER_2(g_counts[encoderNumber]);
+            GET_ENCODER_1(g_counts[encoderNumber]);
             break;
     }
     _NSTDIS = 0;

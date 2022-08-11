@@ -12,10 +12,10 @@ void setupRemappable() {
     // INPUT: Adress Peripheral, write input pin
     // see table 11-1 in datasheet to check peripheral codes 
     RPINR18bits.U1RXR = 9; // RP9 -> UART1 RX
-    RPINR14bits.QEA1R = 24; // RP24 -> QEA Encoder 1
-    RPINR14bits.QEB1R = 25; // RP25 -> QEB Encoder 1
-    RPINR16bits.QEA2R = 24; // RP24 -> QEA Encoder 1
-    RPINR16bits.QEB2R = 25; // RP25 -> QEB Encoder 1
+    RPINR14bits.QEA1R = 24; // RP24 -> QEA Encoder Left
+    RPINR14bits.QEB1R = 25; // RP25 -> QEB Encoder Left
+    RPINR16bits.QEA2R = 19; // RP24 -> QEA Encoder Right
+    RPINR16bits.QEB2R = 20; // RP25 -> QEB Encoder Right
 
     // OUTPUT: Adress Pin, write peripheral
     // see table 11-2 in datasheet to check peripheral codes 

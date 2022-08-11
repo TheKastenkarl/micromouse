@@ -20,7 +20,8 @@
  */
 float cleanDc(float dc) {
     // map [0; 1] -> [MIN, MAX]
-    return convertRanges(0, 1, MIN_DC, MAX_DC, dc);
+    float dc_cleaned = convertRanges(0, 1, MIN_DC, MAX_DC, dc);
+    return dc_cleaned;
 }
 
 /**
@@ -53,11 +54,11 @@ void stopMotor(unsigned char motorId, unsigned char isFastStopMode) {
  */
 void forwardMotor(float dc, unsigned char motorId) {
     if (motorId == 0) {
-        M1_PLUS_EN = 1;
-        M1_MINUS_EN = 0;
+        M1_PLUS_EN = 0;
+        M1_MINUS_EN = 1;
     } else if (motorId == 1) {
-        M2_PLUS_EN = 0;
-        M2_MINUS_EN = 1;
+        M2_PLUS_EN = 1;
+        M2_MINUS_EN = 0;
     }
 
     setPWMDutyCycle(cleanDc(dc), motorId);
@@ -71,11 +72,11 @@ void forwardMotor(float dc, unsigned char motorId) {
  */
 void backwardMotor(float dc, unsigned char motorId) {
     if (motorId == 0) {
-        M1_PLUS_EN = 0;
-        M1_MINUS_EN = 1;
+        M1_PLUS_EN = 1;
+        M1_MINUS_EN = 0;
     } else if (motorId == 1) {
-        M2_PLUS_EN = 1;
-        M2_MINUS_EN = 0;
+        M2_PLUS_EN = 0;
+        M2_MINUS_EN = 1;
     }
 
     setPWMDutyCycle(dc, motorId);
@@ -87,7 +88,8 @@ void backwardMotor(float dc, unsigned char motorId) {
  * @param dc: duty cycle between [-1; 1] as a fraction, where negative values
  *  tell the corresponding wheel to turn backwards
  * @param motorId: 0 for M1 (left), 1 for M2 (right)
- * @param isFastStopMode: If to stop the motor fast when dc == 0
+ * @param isFastStopMode: If to stop the motor fast when dc 
+void == 0
  */
 void runMotor(float dc, unsigned char motorId, unsigned char isFastStopMode) {
     if (dc == 0) {

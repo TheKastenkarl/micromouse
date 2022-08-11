@@ -68,7 +68,11 @@ void testMotor(unsigned char motorID) {
     char msg[15];
     sprintf(msg, "motor %d", motorID);
     sendUART1(msg, 1);
+    runMotor(-0.5, motorID, 0);
+    sleep(sleepTime);
     runMotor(-1.0, motorID, 0);
+    sleep(sleepTime);
+    runMotor(0.5, motorID, 0);
     sleep(sleepTime);
     runMotor(1.0, motorID, 0);
     sleep(sleepTime);

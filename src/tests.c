@@ -6,6 +6,7 @@
 #include "motorEncoders.h"
 #include "dma.h"
 #include "IOconfig.h" 
+#include "irSensors.h"
 // #include "IOconfigDevBoard.h"
 
 // Test module.
@@ -13,7 +14,7 @@
 // Module to test peripherals
 
 /**
- * Simulate sleep
+ * Simulate sleep.
  * 
  * @param operations: Number of operations to sleep.
  */
@@ -44,21 +45,24 @@ void testButtonAndLed() {
 }
 
 /**
- * Test IR sensors
+ * Test IR sensors.
  * 
  * @param irID: ID of IR sensor to test.
  *  0 for left, 1 for right, 2 for front.
+ * @param updateFrac: Value between 0-1 indicates how much to trust new value.
  */
-void testIR(unsigned char irID) {
+void testIR(unsigned char irID, float updateFrac) {
+    typedef float (*f)(float);
+    f func[3] = {&getLeftIR, &getRightIR, &getFrontIR};
     char *irNames[] = {"left", "right", "front"};
-    unsigned int irValues[] = {IR_LEFT, IR_RIGHT, IR_FRONT};
+
     char msg[20];
-    sprintf(msg, "IR %s : %u", irNames[irID], irValues[irID]);
+    sprintf(msg, "IR %s : %.2f", irNames[irID], (double)func[irID](updateFrac));
     sendUART1(msg, 1);
 }
 
 /**
- * Test motor
+ * Test motor.
  * 
  * @param motorID: ID of motor to test.
  *  0 for left, 1 for right.
@@ -93,7 +97,7 @@ void testBluetoothUART() {
 }
 
 /**
- * Test motor encoder
+ * Test motor encoder.
  * 
  * @param motorID: Encoder ID to test.
  *  0 for left, 1 for right.

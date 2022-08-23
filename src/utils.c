@@ -71,3 +71,17 @@ void getPositionSmallestPossiblePrescaler(
     int prescaleValue = prescaleValues[i];
     *reqCount = (int) (timerMaxCount / prescaleValue * fractionCountPossible);
 }
+
+/**
+ * Calculates an exponential moving average of the form:
+ * 
+ * v_k = (1 - updateFrac) * oldVal + updateFrac * newVal
+ * 
+ * @param oldVal: Old value at the last timestep.
+ * @param newVal: New value at current timestep before filtering.
+ * @param updateFrac: Fraction that tells how much to consider the new value.
+ * @return Value at current timestep after filtering.
+ */
+float expMovingAvg(float oldVal, float newVal, float updateFrac) {
+    return (1. - updateFrac) * oldVal + updateFrac * newVal;
+}

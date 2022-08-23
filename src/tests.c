@@ -1,5 +1,4 @@
 #include "xc.h"
-#include "tests.h"
 #include "serialComms.h"
 #include "motors.h"
 #include <stdio.h>

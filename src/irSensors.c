@@ -1,5 +1,3 @@
-#include "irSensors.h"
-#include "IOconfig.h"
 #include "utils.h"
 #include "dma.h"
 

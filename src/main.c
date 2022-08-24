@@ -96,9 +96,11 @@ void loop() {
     while (1) {
         // testButtonAndLed(1, 0);
         // testBluetoothUART();
-        // testIR(1, 1.);
-        testMotor(1);
-        // testEncoder(1);
+        testIR(1, 1.);
+        // testMotor(1);
+        // testMotor(0);
+        // testEncoder(0);
+        // sleep(2000000);
     }
 }
 

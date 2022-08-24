@@ -7,6 +7,7 @@
  * Read left IR value and filter with exp. moving average.
  * 
  * @param updateFrac: Value between 0-1 indicates how much to trust new value.
+ *  Choose 1.0 to disregard old values.
  * @return left IR value after applying the filter.
  */
 float getLeftIR(float updateFrac) {
@@ -19,6 +20,7 @@ float getLeftIR(float updateFrac) {
  * Read right IR value and filter with exp. moving average.
  * 
  * @param updateFrac: Value between 0-1 indicates how much to trust new value.
+ *  Choose 1.0 to disregard old values.
  * @return right IR value after applying the filter.
  */
 float getRightIR(float updateFrac) {
@@ -31,6 +33,7 @@ float getRightIR(float updateFrac) {
  * Read front IR value and filter with exp. moving average.
  * 
  * @param updateFrac: Value between 0-1 indicates how much to trust new value.
+ *  Choose 1.0 to disregard old values.
  * @return front IR value after applying the filter.
  */
 float getFrontIR(float updateFrac) {

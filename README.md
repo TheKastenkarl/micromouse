@@ -9,12 +9,13 @@ Content overview:
 
 ### PCB
 
-List of used Eagle libraries:
+List of external Eagle libraries:
 
-| Name  | Internal?         |
-|-------|-------------------|
-| [microchip-dspic33fjxxmc](http://eagle.autodesk.com/eagle/libraries?utf8=%E2%9C%93&q%5Btitle_or_author_or_description_cont%5D=dsPIC33FJ64MC&button=) | No             |
-| SparkFun Capacitors | Yes |
-| SparkFun Connectors | Yes |
-| SparkFun LEDs       | Yes |
-| SparkFun Resistors  | Yes |
+| Name  | Usage |
+|-------|-------|
+| [microchip-dspic33fjxxmc](http://eagle.autodesk.com/eagle/libraries?utf8=%E2%9C%93&q%5Btitle_or_author_or_description_cont%5D=dsPIC33FJ64MC&button=) | Microcontroller DSPIC33FJ64MC804 |
+| [Eagle_WCAP-ATG5 (rev21a).lbr](https://www.we-online.com/catalog/en/DESIGNKIT_860022) | Electrolytic Capacitors |
+| [Eagle_WE-TIS (rev22a).lbr](https://www.we-online.com/catalog/en/WE-TIS) | Inductances |
+| [Eagle_WE-XTAL (rev21c).lbr](https://www.we-online.com/catalog/en/WE-XTAL) | Oscillator Quartz Crystal |
+| [SamacSys_Parts.lbr](https://github.com/vincent290587/EAGLE/blob/master/SamacSys/SamacSys_Parts.lbr) | Power Switch |
+ 

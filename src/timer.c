@@ -8,6 +8,7 @@
 #include "tests.h"
 #include "IOconfig.h"
 #include "controller.h"
+#include <stdbool.h>
 
 // #include "IOconfigDevBoard.h"
 
@@ -91,9 +92,12 @@ void virtualTimer(int actionEveryXCalls) {
     if (i == actionEveryXCalls) {
         i = 0;
 
-        LED0 = ~LED0;
+        
         // testEncoder(0);
-        testControl();
+        testControl(5.0f);
+        
+
+        
     }
 }
 

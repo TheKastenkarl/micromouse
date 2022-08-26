@@ -7,6 +7,8 @@
 #include "IOconfig.h" 
 #include "irSensors.h"
 #include "controller.h"
+#include <stdbool.h>
+
 // #include "IOconfigDevBoard.h"
 
 // Test module.
@@ -127,7 +129,8 @@ void testEncoder(unsigned char motorID) {
         sendUART1(sendData[i], 1);
     }
 }
-void testControl()
+
+void testControl(float target)
 {   
     char motorID = 0;
     updateEncoderStates(motorID);
@@ -146,18 +149,15 @@ void testControl()
     // read motor encoder values and send via UART
     long positionInCounts_1 = g_counts[motorID1];
     float positionInRad_1 = convertCountsToRad(positionInCounts_1);
-    float positionInWheelRots_1 = convertCountsToWheelRots(positionInCounts_1);
     int velocityInCountsPerSample_1 = g_deltaCountsSinceLastCall[motorID1];
     float velocityInRadPerSample_1 = convertCountsToRad(velocityInCountsPerSample_1);
-    float velocityInWheelRotsPerSample_1 = convertCountsToWheelRots(velocityInCountsPerSample_1);
-
     
-    float deltaT = 0.05f;
-    //float motorDutyCycle = posControl(-10.0f,  positionInRad,  deltaT,  velocityInRadPerSample);
-    controlLoop(30.0F,0.0F,positionInRad_0,0.0F,deltaT,velocityInRadPerSample_1,velocityInRadPerSample_0);
+	controlLoop(16.5F,0.0F,positionInRad_0,0.0F,velocityInRadPerSample_1,velocityInRadPerSample_0);
+    //turnLeft(velocityInRadPerSample_1,velocityInRadPerSample_0);
+
     runMotor(differentialWheels.dutyCycle_Right, motorID1, 0);
     runMotor(differentialWheels.dutyCycle_Left, motorID, 0);
-
+    
 
     char sendData[2][100];
 

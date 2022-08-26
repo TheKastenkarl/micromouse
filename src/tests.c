@@ -6,6 +6,7 @@
 #include "dma.h"
 #include "IOconfig.h" 
 #include "irSensors.h"
+#include "controller.h"
 // #include "IOconfigDevBoard.h"
 
 // Test module.
@@ -123,6 +124,46 @@ void testEncoder(unsigned char motorID) {
 
     int i;
     for (i = 0; i < 7; i++) {
+        sendUART1(sendData[i], 1);
+    }
+}
+void testControl()
+{   
+    char motorID = 0;
+    updateEncoderStates(motorID);
+
+    // read motor encoder values and send via UART
+    long positionInCounts_0 = g_counts[motorID];
+    float positionInRad_0 = convertCountsToRad(positionInCounts_0);
+    float positionInWheelRots_0 = convertCountsToWheelRots(positionInCounts_0);
+    int velocityInCountsPerSample_0 = g_deltaCountsSinceLastCall[motorID];
+    float velocityInRadPerSample_0 = convertCountsToRad(velocityInCountsPerSample_0);
+    float velocityInWheelRotsPerSample_0 = convertCountsToWheelRots(velocityInCountsPerSample_0);
+    
+    char motorID1=1;
+    updateEncoderStates(motorID1);
+
+    // read motor encoder values and send via UART
+    long positionInCounts_1 = g_counts[motorID1];
+    float positionInRad_1 = convertCountsToRad(positionInCounts_1);
+    float positionInWheelRots_1 = convertCountsToWheelRots(positionInCounts_1);
+    int velocityInCountsPerSample_1 = g_deltaCountsSinceLastCall[motorID1];
+    float velocityInRadPerSample_1 = convertCountsToRad(velocityInCountsPerSample_1);
+    float velocityInWheelRotsPerSample_1 = convertCountsToWheelRots(velocityInCountsPerSample_1);
+
+    
+    float deltaT = 0.05f;
+    //float motorDutyCycle = posControl(-10.0f,  positionInRad,  deltaT,  velocityInRadPerSample);
+    controlLoop(30.0F,0.0F,positionInRad_0,0.0F,deltaT,velocityInRadPerSample_1,velocityInRadPerSample_0);
+    runMotor(differentialWheels.dutyCycle_Right, motorID1, 0);
+    runMotor(differentialWheels.dutyCycle_Left, motorID, 0);
+
+
+    char sendData[2][100];
+
+    sprintf(sendData[1], "pos rad: %.2f", (double) positionInRad_0);
+    int i;
+    for (i = 0; i < 2; i++) {
         sendUART1(sendData[i], 1);
     }
 }

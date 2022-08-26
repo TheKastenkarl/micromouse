@@ -4,7 +4,7 @@
 #pragma config BWRP = WRPROTECT_OFF     // Boot Segment Write Protect (Boot Segment may be written)
 #pragma config BSS = NO_FLASH           // Boot Segment Program Flash Code Protection (No Boot program Flash segment)
 
-// FGS
+// FGSd
 #pragma config GWRP = OFF               // General Code Segment Write Protect (User program memory is not write-protected)
 #pragma config GSS = OFF                // General Segment Code Protection (User program memory is not code-protected)
 
@@ -77,7 +77,7 @@ void setupBluetooth() {
 }
 
 void setupTimer() {
-    initTimer1(100); // 100 ms timer
+    initTimer1(50); // 100 ms timer
     startTimer1();
 }
 
@@ -96,7 +96,7 @@ void loop() {
     while (1) {
         // testButtonAndLed(1, 0);
         // testBluetoothUART();
-        testIR(1, 1.);
+        // testIR(1, 1.);
         // testMotor(1);
         // testMotor(0);
         // testEncoder(0);

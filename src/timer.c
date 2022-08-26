@@ -7,6 +7,8 @@
 #include "serialComms.h"
 #include "tests.h"
 #include "IOconfig.h"
+#include "controller.h"
+
 // #include "IOconfigDevBoard.h"
 
 // Timer module.
@@ -91,6 +93,7 @@ void virtualTimer(int actionEveryXCalls) {
 
         LED0 = ~LED0;
         // testEncoder(0);
+        testControl();
     }
 }
 
@@ -104,5 +107,5 @@ void __attribute__((__interrupt__, auto_psv)) _T1Interrupt(void) {
     // updateEncoderStates(1);
     // controlStep();
 
-    virtualTimer(10); // 10 * T_Interrupt = 1 s
+    virtualTimer(1); // 10 * T_Interrupt = 1 s
 }

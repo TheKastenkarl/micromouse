@@ -6,6 +6,16 @@
 #include "dma.h"
 #include "IOconfig.h" 
 #include "irSensors.h"
+#include "controller.h"
+#include <stdbool.h>
+#include "controller.h"
+
+#define TURN_90 1.57f
+
+float target_1;
+bool first_entry_1;
+
+
 // #include "IOconfigDevBoard.h"
 
 // Test module.
@@ -125,4 +135,122 @@ void testEncoder(unsigned char motorID) {
     for (i = 0; i < 7; i++) {
         sendUART1(sendData[i], 1);
     }
+}
+
+void testControl(float target)
+{   
+    char motorID = 0;
+    updateEncoderStates(motorID);
+
+    // read motor encoder values and send via UART
+    long positionInCounts_0 = g_counts[motorID];
+    float positionInRad_0 = convertCountsToRad(positionInCounts_0);
+    float positionInWheelRots_0 = convertCountsToWheelRots(positionInCounts_0);
+    int velocityInCountsPerSample_0 = g_deltaCountsSinceLastCall[motorID];
+    float velocityInRadPerSample_0 = convertCountsToRad(velocityInCountsPerSample_0);
+    float velocityInWheelRotsPerSample_0 = convertCountsToWheelRots(velocityInCountsPerSample_0);
+    
+    char motorID1=1;
+    updateEncoderStates(motorID1);
+
+    // read motor encoder values and send via UART
+    long positionInCounts_1 = g_counts[motorID1];
+    float positionInRad_1 = convertCountsToRad(positionInCounts_1);
+    int velocityInCountsPerSample_1 = g_deltaCountsSinceLastCall[motorID1];
+    float velocityInRadPerSample_1 = convertCountsToRad(velocityInCountsPerSample_1);
+    
+	controlLoop(target,0.0F,positionInRad_0,0.0F,velocityInRadPerSample_1,velocityInRadPerSample_0);
+    //turnLeft(velocityInRadPerSample_1,velocityInRadPerSample_0);
+
+    runMotor(differentialWheels.dutyCycle_Right, motorID1, 0);
+    runMotor(differentialWheels.dutyCycle_Left, motorID, 0);
+    if ((target-positionInRad_0)<0.05f)
+            {   
+                LED0 = 0;
+            }
+    
+
+    char sendData[2][100];
+
+    sprintf(sendData[1], "pos rad: %.2f", (double) positionInRad_0);
+    int i;
+    for (i = 0; i < 2; i++) {
+        sendUART1(sendData[i], 1);
+    }
+}
+
+bool moveForward(float inc) // inc equal 6.5 for one cell
+{	
+    char motorID = 0;
+    updateEncoderStates(motorID);
+
+    // read motor encoder values and send via UART
+    long positionInCounts_0 = g_counts[motorID];
+    float positionInRad_0 = convertCountsToRad(positionInCounts_0);
+    int velocityInCountsPerSample_0 = g_deltaCountsSinceLastCall[motorID];
+    float velocityInRadPerSample_0 = convertCountsToRad(velocityInCountsPerSample_0);
+    
+    char motorID1=1;
+    updateEncoderStates(motorID1);
+
+    // read motor encoder values and send via UART
+    long positionInCounts_1 = g_counts[motorID1];
+    float positionInRad_1 = convertCountsToRad(positionInCounts_1);
+    int velocityInCountsPerSample_1 = g_deltaCountsSinceLastCall[motorID1];
+    float velocityInRadPerSample_1 = convertCountsToRad(velocityInCountsPerSample_1);
+    
+    if (first_entry_1==false)
+    {
+        target_1=positionInRad_0+inc;
+        first_entry_1=true;
+    }
+
+	bool cond =controlLoop(target_1,0.0F,positionInRad_0,0.0F,velocityInRadPerSample_1,velocityInRadPerSample_0);
+    runMotor(differentialWheels.dutyCycle_Right, motorID1, 0);
+    runMotor(differentialWheels.dutyCycle_Left, motorID, 0);
+    if (cond)
+    {            
+        first_entry_1=false;
+        return true; 
+    }
+    else
+    {   
+        return false;
+    }
+}
+
+bool TurnLeft(void)
+{	
+    char motorID = 0;
+    updateEncoderStates(motorID);
+
+    // read motor encoder values and send via UART
+    long positionInCounts_0 = g_counts[motorID];
+    float positionInRad_0 = convertCountsToRad(positionInCounts_0);
+    int velocityInCountsPerSample_0 = g_deltaCountsSinceLastCall[motorID];
+    float velocityInRadPerSample_0 = convertCountsToRad(velocityInCountsPerSample_0);
+    
+    char motorID1=1;
+    updateEncoderStates(motorID1);
+
+    // read motor encoder values and send via UART
+    long positionInCounts_1 = g_counts[motorID1];
+    float positionInRad_1 = convertCountsToRad(positionInCounts_1);
+    int velocityInCountsPerSample_1 = g_deltaCountsSinceLastCall[motorID1];
+    float velocityInRadPerSample_1 = convertCountsToRad(velocityInCountsPerSample_1);
+    
+    bool cond=turnLeft(velocityInRadPerSample_1,velocityInRadPerSample_0);
+    runMotor(differentialWheels.dutyCycle_Right, motorID1, 0);
+    runMotor(differentialWheels.dutyCycle_Left, motorID, 0);
+    
+    if (cond)
+    {            
+        
+        return true;  
+    }
+    else
+    {   
+        return false;
+    }  
+    
 }

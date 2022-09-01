@@ -77,7 +77,7 @@ void setupBluetooth() {
 }
 
 void setupTimer() {
-    initTimer1(100); // 100 ms timer
+    initTimer1(50); // 50 ms timer
     startTimer1();
 }
 
@@ -96,7 +96,7 @@ void loop() {
     while (1) {
         // testButtonAndLed(1, 0);
         // testBluetoothUART();
-        testIR(1, 1.);
+        // testIR(1, 1.);
         // testMotor(1);
         // testMotor(0);
         // testEncoder(0);

@@ -2,7 +2,22 @@
 #include "robot.h"
 #include "maze.h"
 #include "API.h"
+#include <stdbool.h>
+#include "controller.h"
+#include "motorEncoders.h"
+#include "irSensors.h"
+#include "motors.h"
+#include "robot.h"
 
+
+
+#define ONE_CELL_DISTANCE_RAD 6.5F
+#define IS_WALL_THRESHOLD 1200.0F // based on 5-5.5 cm 
+#define TARGET_DISTANCE_TO_WALL_LEFT 1800.0F
+#define TARGET_DISTANCE_TO_WALL_RIGHT 1800.0F
+
+float target;
+bool first_entry;
 /**
  * Initilizes the position and orientation of the robot.
  * Assumption: Robot starts in the bottom left corner facing north.
@@ -26,7 +41,10 @@ int is_wall_front() {
 #if SIMULATION
     return API_wallFront();
 #else
-    // TODO: Add low-level function of micromouse here
+    if (getFrontIR(1.0F)>IS_WALL_THRESHOLD)
+        return 1.0;
+    else
+        return 0.0;
 #endif
 }
 
@@ -40,7 +58,10 @@ int is_wall_right() {
 #if SIMULATION
     return API_wallRight();
 #else
-    // TODO: Add low-level function of micromouse here
+    if (getRightIR(1.0F)>IS_WALL_THRESHOLD)
+        return 1.0;
+    else
+        return 0.0;
 #endif
 }
 
@@ -54,7 +75,10 @@ int is_wall_left() {
 #if SIMULATION
     return API_wallLeft();
 #else
-    // TODO: Add low-level function of micromouse here
+    if (getLeftIR(1.0F)>IS_WALL_THRESHOLD)
+        return 1.0;
+    else
+        return 0.0;
 #endif
 }
 
@@ -133,7 +157,46 @@ void move_forward(Robot* robot, const int distance) {
         API_moveForward();
     }
 #else
-    // TODO: Add low-level function of micromouse here
+    
+    updateStates();
+    
+    if (first_entry==false)
+    {
+        target=positionInRad_L + ONE_CELL_DISTANCE_RAD*(float)distance;
+        first_entry=true;
+    }
+    
+    float target_distance_to_wall;
+    float distance_to_wall;
+    
+    if (is_wall_left())
+    {
+        distance_to_wall = getLeftIR(1.0F);
+        target_distance_to_wall = TARGET_DISTANCE_TO_WALL_LEFT;
+    }
+    else if (is_wall_right())
+    {
+        distance_to_wall = getRightIR(1.0F);
+        target_distance_to_wall = TARGET_DISTANCE_TO_WALL_RIGHT;
+    }
+    else
+    {
+        distance_to_wall = 0.0F;
+        target_distance_to_wall = 0.0F;
+    }
+       
+
+	bool isFinished = controlLoop(target,target_distance_to_wall,positionInRad_L,distance_to_wall,velocityInRadPerSample_R,velocityInRadPerSample_L);
+    runMotor(differentialWheels.dutyCycle_Right, 1, 0);
+    runMotor(differentialWheels.dutyCycle_Left, 0, 0);
+//    if (isFinished)
+//    {            
+//        first_entry=false;
+//        return true;  
+//    }
+//    else 
+//        return false;
+
 #endif
 }
 
@@ -152,7 +215,17 @@ void turn_right(Robot* robot) {
 #if SIMULATION
     API_turnRight();
 #else
-    // TODO: Add low-level function of micromouse here
+    
+    updateStates();
+    
+    bool isFinished = turnRight(velocityInRadPerSample_R,velocityInRadPerSample_L);
+    runMotor(differentialWheels.dutyCycle_Right, 1, 0);
+    runMotor(differentialWheels.dutyCycle_Left, 0, 0); 
+//    if (isFinished)
+//        return true;  
+//    else
+//        return false;
+    
 #endif
 }
 
@@ -171,7 +244,17 @@ void turn_left(Robot* robot) {
 #if SIMULATION
     API_turnLeft();
 #else
-    // TODO: Add low-level function of micromouse here
+    
+    updateStates();
+    
+    bool isFinished = turnLeft(velocityInRadPerSample_R,velocityInRadPerSample_L);
+    runMotor(differentialWheels.dutyCycle_Right, 1, 0);
+    runMotor(differentialWheels.dutyCycle_Left, 0, 0); 
+//    if (isFinished)
+//        return true;  
+//    else
+//        return false;
+    
 #endif
 }
 

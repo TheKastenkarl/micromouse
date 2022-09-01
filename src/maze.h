@@ -8,7 +8,7 @@
 #define MAZE_SIZE 16 
 
 // Define if simulation or real robot is used
-#define SIMULATION 1
+#define SIMULATION 1 
 
 // Define if in simulation visualization should be used
 #define VISUALIZATION 1

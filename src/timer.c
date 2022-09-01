@@ -7,6 +7,11 @@
 #include "serialComms.h"
 #include "tests.h"
 #include "IOconfig.h"
+#include "controller.h"
+#include <stdbool.h>
+
+int x;
+int counter;
 // #include "IOconfigDevBoard.h"
 
 // Timer module.
@@ -77,6 +82,18 @@ void stopTimer1(void) {
     T1CONbits.TON = 0; // turn off
 }
 
+bool delay(){
+    if (counter>100)
+        return true;
+    else
+    {
+        counter=counter+1;
+        return false;
+    }
+    
+    
+}
+
 /**
  * Virtual timer to exceed the maximum period of the timer (629.14 ms).
  * @param actionEveryXCalls: After how many calls to execute the action.
@@ -89,8 +106,53 @@ void virtualTimer(int actionEveryXCalls) {
     if (i == actionEveryXCalls) {
         i = 0;
 
-        LED0 = ~LED0;
+        
         // testEncoder(0);
+        //testControl(50.0f);
+       
+        
+//        if (x==0 && delay())
+//        {
+//            if (moveForward(6.5F) )
+//            {
+//                    x=x+1;
+//                    counter=0;
+//                    LED0=0;
+//            }
+//        }
+//        
+//        if (x==1 && delay())
+//        {   
+//            LED0=1;
+//            if (moveForward(6.5F))
+//            {       
+//                    counter=0;
+//
+//                    x=x+1;
+//                    LED0=0;
+//            }
+//        }
+//        
+//        if (x==2 && delay())
+//        {
+//            LED0=1;
+//            if (TurnLeft() )
+//            {       counter=0;
+//                    x=x+1;
+//                    LED0=0;
+//            }
+//        }
+//        
+//        if (x==3 && delay())
+//        {
+//            LED0=1;
+//            if (moveForward(6.5F))
+//            {       counter=0;
+//                    x=x+1;
+//                    LED0=0;
+//            }
+//        }
+//            
     }
 }
 
@@ -104,5 +166,5 @@ void __attribute__((__interrupt__, auto_psv)) _T1Interrupt(void) {
     // updateEncoderStates(1);
     // controlStep();
 
-    virtualTimer(10); // 10 * T_Interrupt = 1 s
+    virtualTimer(1); // 10 * T_Interrupt = 1 s
 }

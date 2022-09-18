@@ -13,6 +13,7 @@
 #include "tests.h"
 #include "IOconfig.h" 
 #include "irSensors.h"
+#include "motors.h"
 
 /* DEFINES */
 #define SPEED_CONTROL_TP 20.0f
@@ -293,16 +294,16 @@ void TurnAction(int direction) // 1 for Left and -1 for Right
     }    
 }
 
-int is_wall_right_ctrl() {
+bool is_wall_right_ctrl() {
     if (getRightIR(1.0F)>IS_WALL_THRESHOLD_CONTROL)
-        return 1;
+        return true;
     else
-        return 0;
+        return false;
 }
 
-int is_wall_left_ctrl() {
+bool is_wall_left_ctrl() {
     if (getLeftIR(1.0F)>IS_WALL_THRESHOLD_CONTROL)
-        return 1;
+        return true;
     else
-        return 0;
+        return false;
 }

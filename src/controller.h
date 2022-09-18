@@ -32,6 +32,8 @@ extern void Forward(float target);
 extern void Move_Forward(int cells); 
 extern void TurnMotion(float cmd);
 extern void TurnAction(int direction);
+bool is_wall_right_ctrl();
+bool is_wall_left_ctrl();
 
 #endif	/* CONTROLLER_H */
 

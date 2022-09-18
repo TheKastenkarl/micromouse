@@ -12,12 +12,8 @@
 
 
 #define ONE_CELL_DISTANCE_RAD 6.5F
-#define IS_WALL_THRESHOLD 1200.0F // based on 5-5.5 cm 
-#define TARGET_DISTANCE_TO_WALL_LEFT 1800.0F
-#define TARGET_DISTANCE_TO_WALL_RIGHT 1800.0F
+#define IS_WALL_THRESHOLD 500.0F
 
-float target;
-bool first_entry;
 /**
  * Initilizes the position and orientation of the robot.
  * Assumption: Robot starts in the bottom left corner facing north.
@@ -157,46 +153,7 @@ void move_forward(Robot* robot, const int distance) {
         API_moveForward();
     }
 #else
-    
-    updateStates();
-    
-    if (first_entry==false)
-    {
-        target=positionInRad_L + ONE_CELL_DISTANCE_RAD*(float)distance;
-        first_entry=true;
-    }
-    
-    float target_distance_to_wall;
-    float distance_to_wall;
-    
-    if (is_wall_left())
-    {
-        distance_to_wall = getLeftIR(1.0F);
-        target_distance_to_wall = TARGET_DISTANCE_TO_WALL_LEFT;
-    }
-    else if (is_wall_right())
-    {
-        distance_to_wall = getRightIR(1.0F);
-        target_distance_to_wall = TARGET_DISTANCE_TO_WALL_RIGHT;
-    }
-    else
-    {
-        distance_to_wall = 0.0F;
-        target_distance_to_wall = 0.0F;
-    }
-       
-
-	bool isFinished = controlLoop(target,target_distance_to_wall,positionInRad_L,distance_to_wall,velocityInRadPerSample_R,velocityInRadPerSample_L);
-    runMotor(differentialWheels.dutyCycle_Right, 1, 0);
-    runMotor(differentialWheels.dutyCycle_Left, 0, 0);
-//    if (isFinished)
-//    {            
-//        first_entry=false;
-//        return true;  
-//    }
-//    else 
-//        return false;
-
+   Move_Forward(distance);
 #endif
 }
 
@@ -215,17 +172,7 @@ void turn_right(Robot* robot) {
 #if SIMULATION
     API_turnRight();
 #else
-    
-    updateStates();
-    
-    bool isFinished = turnRight(velocityInRadPerSample_R,velocityInRadPerSample_L);
-    runMotor(differentialWheels.dutyCycle_Right, 1, 0);
-    runMotor(differentialWheels.dutyCycle_Left, 0, 0); 
-//    if (isFinished)
-//        return true;  
-//    else
-//        return false;
-    
+    TurnAction(-1);
 #endif
 }
 
@@ -244,17 +191,7 @@ void turn_left(Robot* robot) {
 #if SIMULATION
     API_turnLeft();
 #else
-    
-    updateStates();
-    
-    bool isFinished = turnLeft(velocityInRadPerSample_R,velocityInRadPerSample_L);
-    runMotor(differentialWheels.dutyCycle_Right, 1, 0);
-    runMotor(differentialWheels.dutyCycle_Left, 0, 0); 
-//    if (isFinished)
-//        return true;  
-//    else
-//        return false;
-    
+    TurnAction(1);
 #endif
 }
 

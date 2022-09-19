@@ -155,6 +155,8 @@ void explore_and_exploit() {
     exploration_dfs(&robot, maze);
     move_to_cells(&robot, maze, goal_cells_ids, EAST);
     move_to_cell(&robot, maze, 0, NORTH);
+    move_to_cell(&robot, maze, 48, SOUTH);
+    move_to_cell(&robot, maze, 13+12*16, NORTH);
 }
 
 /**
@@ -292,7 +294,6 @@ int move_to_cells(Robot* robot, Cell maze[MAZE_SIZE][MAZE_SIZE], int goal_cells_
  * @return: 1 if path is found, else -1.
  */
 int move_to_cell(Robot* robot, Cell maze[MAZE_SIZE][MAZE_SIZE], const int goal_cell_id, const int goal_cell_orientation) {
-    int goal_cells_ids[4] = {0};
-    goal_cells_ids[0] = goal_cell_id;
+    int goal_cells_ids[4] = {goal_cell_id, -1, -1, -1};
     return move_to_cells(robot, maze, goal_cells_ids, goal_cell_orientation);
 }

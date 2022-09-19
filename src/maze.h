@@ -5,13 +5,13 @@
 #include "array.h"
 
 // Number of columns (= number of rows) of maze
-#define MAZE_SIZE 16 
+#define MAZE_SIZE 6
 
 // Define if simulation or real robot is used
-#define SIMULATION 1 
+#define SIMULATION 0
 
 // Define if in simulation visualization should be used
-#define VISUALIZATION 1
+#define VISUALIZATION 0
 
 typedef struct Cell {
     int walls; // West (0b0001), North (0b0010), East (0b0100), South (0b1000)

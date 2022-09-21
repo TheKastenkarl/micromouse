@@ -1,4 +1,4 @@
-/* PROJECT INCLUDE FILES */
+  /* PROJECT INCLUDE FILES */
 
 #include "controller.h"
 
@@ -19,8 +19,8 @@
 #define SPEED_CONTROL_TP 20.0f
 #define SPPED_CONTROL_INV_TJ 1.0f
 #define POSITION_X_CONTROL_KP 0.010f
-#define POSITION_Y_CONTROL_KP_HIGH_VEL 0.1f
-#define THETA_CONTROL_KP_HIGH_VEL 0.4f
+#define POSITION_Y_CONTROL_KP_HIGH_VEL 0.05f
+#define THETA_CONTROL_KP_HIGH_VEL 0.01f
 #define POSITION_Y_CONTROL_KP_LOW_VEL 0.001f
 #define THETA_CONTROL_KP_LOW_VEL 0.8f
 #define DUTY_CYCLE_MIN_MOVEMENT 0.0f
@@ -31,7 +31,7 @@
 #define SAMPLE_TIME 0.05F
 
 // Mid lvl fncs defines
-#define ONE_CELL_DISTANCE_RAD 5.5F
+#define ONE_CELL_DISTANCE_RAD 5.9F
 #define IS_WALL_THRESHOLD_CONTROL 1500.0F
 #define TARGET_DISTANCE_TO_WALL_LEFT 1800.0F
 #define TARGET_DISTANCE_TO_WALL_RIGHT 1800.0F
@@ -63,7 +63,7 @@ float speedControl(float velX_cmd, float velX_est, bool applyLim)
 {	
     float lim;
     if (applyLim)
-        lim=0.0035f;
+        lim=0.007f;
     else
         lim=0.01f;
     
@@ -212,8 +212,8 @@ void Forward(float target)
             direction = 1;
         }
         
-        if ((target_distance_to_wall)-(distance_to_wall)<50.0F)
-            target_distance_to_wall=distance_to_wall;
+        if ((target_distance_to_wall)-(distance_to_wall)<0.0F)
+            distance_to_wall=-2*distance_to_wall;
 
         isFinished = controlLoop(target,target_distance_to_wall,positionInRad_L,distance_to_wall,velocityInRadPerSample_R,velocityInRadPerSample_L,turnCount, direction);
         runMotor(differentialWheels.dutyCycle_Right, 1, 0);

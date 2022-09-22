@@ -110,7 +110,63 @@ void loop() {
 int main() {
     setup();
     //loop();
-    explore_and_exploit();
+    //explore_and_exploit();
     //wall_follow();
+    Move_Forward(1);
+    Move_Forward(1);
+    Move_Forward(1);
+    Move_Forward(1);
+    Move_Forward(1);
+
+    TurnAction(-1); // right
+    Move_Forward(1);
+    Move_Forward(1);
+    Move_Forward(1);
+    Move_Forward(1);
+    Move_Forward(1);
+
+    TurnAction(-1); // right
+    Move_Forward(1);
+    Move_Forward(1);
+    Move_Forward(1);
+    Move_Forward(1);
+    Move_Forward(1);
+
+    TurnAction(-1); // right
+    Move_Forward(1);
+    Move_Forward(1);
+    Move_Forward(1);
+    Move_Forward(1);
+
+    TurnAction(-1); // right
+    Move_Forward(1);
+    Move_Forward(1);
+    Move_Forward(1);
+    Move_Forward(1);
+
+    TurnAction(-1); // right
+    Move_Forward(1);
+    Move_Forward(1);
+    Move_Forward(1);
+
+    TurnAction(-1); // right
+    Move_Forward(1);
+    Move_Forward(1);
+    Move_Forward(1);
+
+    TurnAction(-1); // right
+    Move_Forward(1);
+    Move_Forward(1);
+
+    TurnAction(-1); // right
+    Move_Forward(1);
+    Move_Forward(1);
+
+    TurnAction(-1); // right
+    Move_Forward(1);
+
+    TurnAction(-1); // right
+    Move_Forward(1);
+
     return 0;
 }

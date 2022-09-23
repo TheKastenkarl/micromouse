@@ -109,9 +109,6 @@ void loop() {
 }
 
 int main() {
-#if !SIMULATION
-    sendUART1("START MAIN", 1);
-#endif
     setup();
     //loop();
     sleep(5 * 4000000); // around 10 sec

@@ -14,7 +14,7 @@
 #define VISUALIZATION 0
 
 typedef struct Cell {
-    int walls; // West (0b0001), North (0b0010), East (0b0100), South (0b1000)
+    int walls; // West (0b0001), North (0b0010), East (0b0100), South (0b1000), combine them with bitwise OR
     int visited;
     int predecessor_cell_id;
 } Cell;

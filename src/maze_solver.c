@@ -192,6 +192,8 @@ void explore_and_exploit() {
 #endif
     exploration_dfs(&robot, maze); // explore maze and return to start cell
 
+    log_cell_walls(maze);
+
 #if !SIMULATION
     sendUART1("START EXPLOITATION", 1);
 #endif

@@ -90,6 +90,7 @@ void setup() {
     setupBluetooth();
     setupIRSensors();
     setupMotors();
+    setupUART1(BAUDRATE);
     
     defaultState();
 }

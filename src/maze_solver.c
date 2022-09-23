@@ -3,6 +3,10 @@
 #include "maze_solver.h"
 #include "queue.h"
 #include "API.h"
+#if !SIMULATION
+#include "serialComms.h"
+#endif
+
 
 /**
  * Logs the current position of the robot, the walls at the current position
@@ -25,6 +29,20 @@ void log_position_walls_predecessor(Robot* const robot, Cell maze[MAZE_SIZE][MAZ
     sprintf(str, "%d", get_cell(maze, robot->position)->walls);
     API_log(str);
     API_log("-------------------");
+}
+#else
+void log_position_walls_predecessor(Robot* const robot, Cell maze[MAZE_SIZE][MAZE_SIZE]){
+    char str[10];
+    sendUART1("- Position: ", 1);
+    sprintf(str, "%d", robot->position);
+    sendUART1(str, 1); 
+    sendUART1("- Predecessor: ", 1);
+    sprintf(str, "%d", get_cell(maze, robot->position)->predecessor_cell_id);
+    sendUART1(str, 1);
+    sendUART1("- Walls: ", 1);
+    sprintf(str, "%d", get_cell(maze, robot->position)->walls);
+    sendUART1(str, 1);
+    sendUART1("-------------------", 1);
 }
 #endif
 
@@ -49,9 +67,7 @@ void exploration_dfs(Robot* robot, Cell maze[MAZE_SIZE][MAZE_SIZE]) {
     do {
         update_cell(robot, maze, predecessor_cell_id);
         predecessor_cell_id = robot->position;
-#if SIMULATION
         log_position_walls_predecessor(robot, maze);
-#endif
 #if SIMULATION && VISUALIZATION
         mark_cell(robot->position);
 #endif
@@ -71,7 +87,9 @@ void exploration_dfs(Robot* robot, Cell maze[MAZE_SIZE][MAZE_SIZE]) {
         }
     }
     while (robot->position != starting_position);
-
+#if !SIMULATION
+    sendUART1("FINISHED EXPLORATION", 1);
+#endif
 #if SIMULATION && VISUALIZATION
     mark_cell(robot->position);
 #endif
@@ -155,8 +173,6 @@ void explore_and_exploit() {
     exploration_dfs(&robot, maze);
     move_to_cells(&robot, maze, goal_cells_ids, EAST);
     move_to_cell(&robot, maze, 0, NORTH);
-    move_to_cell(&robot, maze, 48, SOUTH);
-    move_to_cell(&robot, maze, 13+12*16, NORTH);
 }
 
 /**

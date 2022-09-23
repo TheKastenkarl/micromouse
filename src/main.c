@@ -109,9 +109,9 @@ void loop() {
 }
 
 int main() {
-
     setup();
     //loop();
+    sleep(5 * 4000000);
     explore_and_exploit();
     //wall_follow();
     return 0;

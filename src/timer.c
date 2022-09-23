@@ -94,17 +94,17 @@ void virtualTimer(int actionEveryXCalls) {
     {
         i = 0;
         
-        if (x==0)
-        {
-            
-            Move_Forward(1);
-            Move_Forward(1);
-            Move_Forward(1);
-            Move_Forward(1);
-            Move_Forward(1);
-
-            x=x+1;
-        }
+        //if (x==0)
+        //{
+        //    
+        //    Move_Forward(1);
+        //    Move_Forward(1);
+        //    Move_Forward(1);
+        //    Move_Forward(1);
+        //    Move_Forward(1);
+        //
+        //    x=x+1;
+        //}
     }
 }
 

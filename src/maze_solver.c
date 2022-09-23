@@ -61,6 +61,9 @@ void log_position_walls_predecessor(Robot* const robot, Cell maze[MAZE_SIZE][MAZ
  * @param maze: Pointer to the maze.
  */
 void exploration_dfs(Robot* robot, Cell maze[MAZE_SIZE][MAZE_SIZE]) {
+#if !SIMULATION
+    sendUART1("START EXPLORATION", 1);
+#endif
     int starting_position = robot->position;
     int starting_orientation = robot->orientation;
     int predecessor_cell_id = -1;
@@ -87,15 +90,16 @@ void exploration_dfs(Robot* robot, Cell maze[MAZE_SIZE][MAZE_SIZE]) {
         }
     }
     while (robot->position != starting_position);
-#if !SIMULATION
-    sendUART1("FINISHED EXPLORATION", 1);
-#endif
+
 #if SIMULATION && VISUALIZATION
     mark_cell(robot->position);
 #endif
 
     // Turn robot such that it has the same orientation like at the beginning
     turn_to_orientation(robot, starting_orientation);
+#if !SIMULATION
+    sendUART1("FINISHED EXPLORATION", 1);
+#endif
 }
 
 /**
@@ -170,9 +174,21 @@ void explore_and_exploit() {
     init_maze(maze);
     calc_goal_cells_ids(goal_cells_ids);
 
+#if !SIMULATION
+    sendUART1("BEFORE EXPLORATION", 1);
+#endif
     exploration_dfs(&robot, maze);
+#if !SIMULATION
+    sendUART1("BETWEEN EXPLORE AND EXPLOIT", 1);
+#endif
     move_to_cells(&robot, maze, goal_cells_ids, EAST);
+#if !SIMULATION
+    sendUART1("EXPLOITATION: GO BACK TO START", 1);
+#endif
     move_to_cell(&robot, maze, 0, NORTH);
+#if !SIMULATION
+    sendUART1("COMPLETELY FINSHED WITH EVERYTHING", 1);
+#endif
 }
 
 /**
@@ -272,6 +288,9 @@ int is_present(const int element, int* arr, const int arr_length) {
  * @return: 1 if path is found, else -1.
  */
 int move_to_cells(Robot* robot, Cell maze[MAZE_SIZE][MAZE_SIZE], int goal_cells_ids[4], const int goal_cell_orientation) {
+#if !SIMULATION
+    sendUART1("START MOVE_TO_CELLS", 1);
+#endif
     int success;
     Array cell_sequence;
     Array orientation_sequence;
@@ -295,6 +314,9 @@ int move_to_cells(Robot* robot, Cell maze[MAZE_SIZE][MAZE_SIZE], int goal_cells_
     free_array(&cell_sequence);
 
     turn_to_orientation(robot, goal_cell_orientation);
+#if !SIMULATION
+    sendUART1("FINISH MOVE_TO_CELLS", 1);
+#endif
     return 1;
 }
 

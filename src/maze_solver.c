@@ -3,10 +3,28 @@
 #include "maze_solver.h"
 #include "queue.h"
 #include "API.h"
+
 #if !SIMULATION
 #include "serialComms.h"
 #endif
 
+#if !SIMULATION
+void log_cell_walls(Cell maze[MAZE_SIZE][MAZE_SIZE]){
+    sendUART1("MAZE:", 1);
+    char str[20];
+    for (int i = 0; i < MAZE_SIZE; ++i) {
+        for (int j = 0; j < MAZE_SIZE; ++j) {
+            sendUART1("Cell ID (row, column):", 1);
+            sprintf(str, "%d", i);
+            sprintf(str, "%d", j);
+            sendUART1("Cell walls:", 1);
+            sprintf(str, "%d", maze[i][j].walls);
+            sendUART1(str, 1);
+            sendUART1("-------------------", 1);
+        }
+    }
+}
+#endif
 
 /**
  * Logs the current position of the robot, the walls at the current position
@@ -47,22 +65,6 @@ void log_position_walls_predecessor(Robot* const robot, Cell maze[MAZE_SIZE][MAZ
 #endif
 
 /**
- * Logs the elements of the provided array to UART.
- * 
- * @param arr: Array of which the elements should be printed.
- */
-#if !SIMULATION
-void log_array(Array* arr){
-    sendUART1("The entries of the array are:", 1);
-    char str[10];
-    for (int i = 0; i < arr->size; ++i) {
-        sprintf(str, "%d", arr->array[i]);
-        sendUART1(str, 1);
-    }
-}
-#endif
-
-/**
  * The provided robot explores the provided maze with a depth-first-search:
  * - drive forward, if there is no wall and the cell has not been visited yet
  * - drive left, if there is no wall and the cell has not been visited yet
@@ -77,9 +79,6 @@ void log_array(Array* arr){
  * @param maze: Pointer to the maze.
  */
 void exploration_dfs(Robot* robot, Cell maze[MAZE_SIZE][MAZE_SIZE]) {
-#if !SIMULATION
-    sendUART1("START EXPLORATION", 1);
-#endif
     int starting_position = robot->position;
     int starting_orientation = robot->orientation;
     int predecessor_cell_id = -1;
@@ -113,9 +112,6 @@ void exploration_dfs(Robot* robot, Cell maze[MAZE_SIZE][MAZE_SIZE]) {
 
     // Turn robot such that it has the same orientation like at the beginning
     turn_to_orientation(robot, starting_orientation);
-#if !SIMULATION
-    sendUART1("FINISHED EXPLORATION", 1);
-#endif
 }
 
 /**
@@ -140,27 +136,13 @@ int shortest_path_bfs(const int start_cell_id, Cell maze[MAZE_SIZE][MAZE_SIZE], 
     int goal_cell;
     int goal_found = 0;
 
-#if !SIMULATION
-        sendUART1("start_cell_id:", 1);
-        char str[10];
-        sprintf(str, "%d", start_cell_id);
-        sendUART1(str, 1);
-#endif
-
     node_t* head = NULL;
     enqueue(&head, start_cell_id);
 
     // Step 1: Find the shortest path to goal with a bfs and store for every cell the predecessor cell
     while (!goal_found) {
         current_cell_id = dequeue(&head);
-
-#if !SIMULATION
-        sendUART1("current_cell_id:", 1);
-        char str[10];
-        sprintf(str, "%d", current_cell_id);
-        sendUART1(str, 1);
-#endif
-
+        // if current_cell_id == -1, then the queue is empty
         if (current_cell_id == -1) {
             return -1; // failure, goal not found
         }
@@ -180,12 +162,6 @@ int shortest_path_bfs(const int start_cell_id, Cell maze[MAZE_SIZE][MAZE_SIZE], 
                     break;
                 }
                 enqueue(&head, neighbor_cell_id);
-#if !SIMULATION
-                sendUART1("neighbor_cell_id:", 1);
-                char str[10];
-                sprintf(str, "%d", neighbor_cell_id);
-                sendUART1(str, 1);
-#endif
             }
         }
     }
@@ -200,7 +176,7 @@ int shortest_path_bfs(const int start_cell_id, Cell maze[MAZE_SIZE][MAZE_SIZE], 
  * start to goal.
  * Assumption: Mouse starts in the bottom left corner (cell id = 0) facing north.
  * Important: With the microchip compiler you have to allocate heap memory in the project properties
- *            (https://microchipdeveloper.com/mplabx:creating-a-heap)
+ *            (https://microchipdeveloper.com/mplabx:creating-a-heap). Use for example 4096 bytes.
  */
 void explore_and_exploit() {
     Robot robot;
@@ -212,19 +188,17 @@ void explore_and_exploit() {
     calc_goal_cells_ids(goal_cells_ids);
 
 #if !SIMULATION
-    sendUART1("BEFORE EXPLORATION", 1);
+    sendUART1("START EXPLORATION", 1);
 #endif
-    exploration_dfs(&robot, maze);
+    exploration_dfs(&robot, maze); // explore maze and return to start cell
+
 #if !SIMULATION
-    sendUART1("BETWEEN EXPLORE AND EXPLOIT", 1);
+    sendUART1("START EXPLOITATION", 1);
 #endif
-    move_to_cells(&robot, maze, goal_cells_ids, EAST);
+    move_to_cells(&robot, maze, goal_cells_ids, EAST); // move to goal cell
+    move_to_cell(&robot, maze, 0, NORTH); // move to start cell
 #if !SIMULATION
-    sendUART1("EXPLOITATION: GO BACK TO START", 1);
-#endif
-    move_to_cell(&robot, maze, 0, NORTH);
-#if !SIMULATION
-    sendUART1("COMPLETELY FINSHED WITH EVERYTHING", 1);
+    sendUART1("FINISHED", 1);
 #endif
 }
 
@@ -325,65 +299,31 @@ int is_present(const int element, int* arr, const int arr_length) {
  * @return: 1 if path is found, else -1.
  */
 int move_to_cells(Robot* robot, Cell maze[MAZE_SIZE][MAZE_SIZE], int goal_cells_ids[4], const int goal_cell_orientation) {
-#if !SIMULATION
-    sendUART1("START MOVE_TO_CELLS", 1);
-#endif
     int success;
     Array cell_sequence;
     Array orientation_sequence;
 
-#if !SIMULATION
-    sendUART1("FINISHED ARRAY DECLARATION", 1);
-#endif
-
     init_array(&cell_sequence, 4 * MAZE_SIZE);
     init_array(&orientation_sequence, 4 * MAZE_SIZE);
 
-#if !SIMULATION
-    sendUART1("FINISHED ARRAY INITIALIZATION", 1);
-#endif
-
     unvisit_all_cells(maze);
 
-#if !SIMULATION
-    sendUART1("FINISHED unvisit_all_cells", 1);
-#endif
-
     success = shortest_path_bfs(robot->position, maze, goal_cells_ids, &cell_sequence);
-#if !SIMULATION
-    sendUART1("FINISHED shortest_path_bfs", 1);
-#endif
     if (success == -1) {
-#if !SIMULATION
-        sendUART1("FAILURE OF shortest_path_bfs", 1);
-#endif
         return -1;
     }
-#if !SIMULATION
-    sendUART1("FINISHED if success", 1);
-#endif
 #if SIMULATION && VISUALIZATION
     visualize_cell_sequence(&cell_sequence);
 #endif
+
     reconstruct_orientation_sequence_from_cell_sequence(maze, &cell_sequence, &orientation_sequence);
-
-#if !SIMULATION
-    sendUART1("FINISHED reconstruct_orientation_sequence_from_cell_sequence", 1);
-#endif
-
     generate_actions_from_orientation_sequence(robot, &orientation_sequence);
-
-#if !SIMULATION
-    sendUART1("FINISHED generate_actions_from_orientation_sequence", 1);
-#endif
 
     free_array(&orientation_sequence);
     free_array(&cell_sequence);
 
     turn_to_orientation(robot, goal_cell_orientation);
-#if !SIMULATION
-    sendUART1("FINISH MOVE_TO_CELLS", 1);
-#endif
+
     return 1;
 }
 

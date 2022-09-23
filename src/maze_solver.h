@@ -5,6 +5,11 @@
 #include "maze.h"
 #include "array.h"
 
+/**
+ * Important: With the microchip compiler you have to allocate heap memory in the project properties
+ *            (https://microchipdeveloper.com/mplabx:creating-a-heap). Use for example 4096 bytes.
+ */
+
 #if SIMULATION
 void log_position_walls_predecessor(Robot* const robot, Cell maze[MAZE_SIZE][MAZE_SIZE]);
 #endif

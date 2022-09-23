@@ -33,16 +33,32 @@ void log_position_walls_predecessor(Robot* const robot, Cell maze[MAZE_SIZE][MAZ
 #else
 void log_position_walls_predecessor(Robot* const robot, Cell maze[MAZE_SIZE][MAZE_SIZE]){
     char str[10];
-    sendUART1("- Position: ", 1);
+    sendUART1("Position:", 1);
     sprintf(str, "%d", robot->position);
     sendUART1(str, 1); 
-    sendUART1("- Predecessor: ", 1);
+    sendUART1("Predecessor:", 1);
     sprintf(str, "%d", get_cell(maze, robot->position)->predecessor_cell_id);
     sendUART1(str, 1);
-    sendUART1("- Walls: ", 1);
+    sendUART1("Walls:", 1);
     sprintf(str, "%d", get_cell(maze, robot->position)->walls);
     sendUART1(str, 1);
     sendUART1("-------------------", 1);
+}
+#endif
+
+/**
+ * Logs the elements of the provided array to UART.
+ * 
+ * @param arr: Array of which the elements should be printed.
+ */
+#if !SIMULATION
+void log_array(Array* arr){
+    sendUART1("The entries of the array are:", 1);
+    char str[10];
+    for (int i = 0; i < arr->size; ++i) {
+        sprintf(str, "%d", arr->array[i]);
+        sendUART1(str, 1);
+    }
 }
 #endif
 
@@ -124,12 +140,27 @@ int shortest_path_bfs(const int start_cell_id, Cell maze[MAZE_SIZE][MAZE_SIZE], 
     int goal_cell;
     int goal_found = 0;
 
+#if !SIMULATION
+        sendUART1("start_cell_id:", 1);
+        char str[10];
+        sprintf(str, "%d", start_cell_id);
+        sendUART1(str, 1);
+#endif
+
     node_t* head = NULL;
     enqueue(&head, start_cell_id);
 
     // Step 1: Find the shortest path to goal with a bfs and store for every cell the predecessor cell
     while (!goal_found) {
         current_cell_id = dequeue(&head);
+
+#if !SIMULATION
+        sendUART1("current_cell_id:", 1);
+        char str[10];
+        sprintf(str, "%d", current_cell_id);
+        sendUART1(str, 1);
+#endif
+
         if (current_cell_id == -1) {
             return -1; // failure, goal not found
         }
@@ -149,6 +180,12 @@ int shortest_path_bfs(const int start_cell_id, Cell maze[MAZE_SIZE][MAZE_SIZE], 
                     break;
                 }
                 enqueue(&head, neighbor_cell_id);
+#if !SIMULATION
+                sendUART1("neighbor_cell_id:", 1);
+                char str[10];
+                sprintf(str, "%d", neighbor_cell_id);
+                sendUART1(str, 1);
+#endif
             }
         }
     }

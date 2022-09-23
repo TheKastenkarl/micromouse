@@ -96,14 +96,9 @@ void virtualTimer(int actionEveryXCalls) {
         
         //if (x==0)
         //{
-        //    
-        //    Move_Forward(1);
-        //    Move_Forward(1);
-        //    Move_Forward(1);
-        //    Move_Forward(1);
-        //    Move_Forward(1);
+        //  explore_and_exploit();
         //
-        //    x=x+1;
+        //  x=x+1;
         //}
     }
 }

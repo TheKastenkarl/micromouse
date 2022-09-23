@@ -295,21 +295,51 @@ int move_to_cells(Robot* robot, Cell maze[MAZE_SIZE][MAZE_SIZE], int goal_cells_
     Array cell_sequence;
     Array orientation_sequence;
 
+#if !SIMULATION
+    sendUART1("FINISHED ARRAY DECLARATION", 1);
+#endif
+
     init_array(&cell_sequence, 4 * MAZE_SIZE);
     init_array(&orientation_sequence, 4 * MAZE_SIZE);
 
+#if !SIMULATION
+    sendUART1("FINISHED ARRAY INITIALIZATION", 1);
+#endif
+
     unvisit_all_cells(maze);
 
+#if !SIMULATION
+    sendUART1("FINISHED unvisit_all_cells", 1);
+#endif
+
     success = shortest_path_bfs(robot->position, maze, goal_cells_ids, &cell_sequence);
+#if !SIMULATION
+    sendUART1("FINISHED shortest_path_bfs", 1);
+#endif
     if (success == -1) {
+#if !SIMULATION
+        sendUART1("FAILURE OF shortest_path_bfs", 1);
+#endif
         return -1;
     }
+#if !SIMULATION
+    sendUART1("FINISHED if success", 1);
+#endif
 #if SIMULATION && VISUALIZATION
     visualize_cell_sequence(&cell_sequence);
 #endif
     reconstruct_orientation_sequence_from_cell_sequence(maze, &cell_sequence, &orientation_sequence);
 
+#if !SIMULATION
+    sendUART1("FINISHED reconstruct_orientation_sequence_from_cell_sequence", 1);
+#endif
+
     generate_actions_from_orientation_sequence(robot, &orientation_sequence);
+
+#if !SIMULATION
+    sendUART1("FINISHED generate_actions_from_orientation_sequence", 1);
+#endif
+
     free_array(&orientation_sequence);
     free_array(&cell_sequence);
 

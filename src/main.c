@@ -108,11 +108,13 @@ void loop() {
     }
 }
 
+#if !SIMULATION
 int main() {
     setup();
     //loop();
-    sleep(5 * 4000000); // around 10 sec
+    sleep(5 * 4000000); // wait for around 10 sec
     explore_and_exploit();
     //wall_follow();
     return 0;
 }
+#endif

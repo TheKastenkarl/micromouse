@@ -39,6 +39,8 @@ int get_cell_id_in_orientation(const int cell_id, Cell maze[MAZE_SIZE][MAZE_SIZE
 
 int get_cell_id_in_direction(const int current_orientation, const int cell_id, Cell maze[MAZE_SIZE][MAZE_SIZE], const int direction);
 
+void log_cell_walls(Cell maze[MAZE_SIZE][MAZE_SIZE]);
+
 #if SIMULATION && VISUALIZATION
 void visualize_cell_sequence(Array* cell_sequence);
 #endif

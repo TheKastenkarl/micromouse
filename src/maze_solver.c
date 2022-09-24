@@ -9,51 +9,6 @@
 #endif
 
 /**
- * Logs for every cell of the maze the position of the walls (in integer format).
- * Works both in simulation and on actual robot (UART).
- * West (0b0001), North (0b0010), East (0b0100), South (0b1000), combine them with bitwise OR.
- * 
- * @param maze: Pointer to the maze.
- */
-#if SIMULATION
-void log_cell_walls(Cell maze[MAZE_SIZE][MAZE_SIZE]){
-    API_log("MAZE:");
-    char str[10];
-    for (int i = 0; i < MAZE_SIZE; ++i) {
-        for (int j = 0; j < MAZE_SIZE; ++j) {
-            API_log("Cell ID (row, column):");
-            sprintf(str, "%d", i);
-            API_log(str);
-            sprintf(str, "%d", j);
-            API_log(str);
-            API_log("Cell walls:");
-            sprintf(str, "%d", maze[i][j].walls);
-            API_log(str);
-            API_log("-------------------");
-        }
-    }
-}
-#else
-void log_cell_walls(Cell maze[MAZE_SIZE][MAZE_SIZE]){
-    sendUART1("MAZE:", 1);
-    char str[10];
-    for (int i = 0; i < MAZE_SIZE; ++i) {
-        for (int j = 0; j < MAZE_SIZE; ++j) {
-            sendUART1("Cell ID (row, column):", 1);
-            sprintf(str, "%d", i);
-            sendUART1(str, 1);
-            sprintf(str, "%d", j);
-            sendUART1(str, 1);
-            sendUART1("Cell walls:", 1);
-            sprintf(str, "%d", maze[i][j].walls);
-            sendUART1(str, 1);
-            sendUART1("-------------------", 1);
-        }
-    }
-}
-#endif
-
-/**
  * Logs the current position of the robot, the walls at the current position
  * and the predecessor cell of the current cell.
  * Only for simulation environment.
@@ -219,7 +174,7 @@ void explore_and_exploit() {
 #endif
     exploration_dfs(&robot, maze); // explore maze and return to start cell
 
-    log_cell_walls(maze);
+    //log_cell_walls(maze);
 
 #if !SIMULATION
     sendUART1("START EXPLOITATION", 1);

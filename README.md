@@ -7,7 +7,7 @@ Content overview:
 - `pcb/`: Schematics and board layout designed in [Autodesk Eagle](https://www.autodesk.com/products/eagle/overview?term=1-YEAR&tab=subscription).
 - `cad/`: 3D printed CAD parts including sensor and motor mountings.
 
-### PCB
+## PCB
 
 List of external Eagle libraries:
 
@@ -19,3 +19,15 @@ List of external Eagle libraries:
 | [Eagle_WE-XTAL (rev21c).lbr](https://www.we-online.com/catalog/en/WE-XTAL) | Oscillator Quartz Crystal |
 | [SamacSys_Parts.lbr](https://github.com/vincent290587/EAGLE/blob/master/SamacSys/SamacSys_Parts.lbr) | Power Switch |
  
+## Instructions for high-level maze solver
+### 1) Allocate heap memory.
+With the microchip compiler you have to allocate heap memory in the project properties ([tutorial from Microchip](https://microchipdeveloper.com/mplabx:creating-a-heap)). Use for example 4096 bytes.
+### 2) If necesarry, adapt the settings of the high-level maze solver in `src/settings.h`.
+- MAZE_SIZE: Number of columns (= number of rows) of maze.
+- SIMULATION: Defines if simulation or real robot is used (used simulation: [mms by mackorone](https://github.com/mackorone/mms)).
+- VISUALIZATION: Defines if in simulation visualization should be used.
+### 3) Only if you use the simulation: Rename main files.
+Rename `main.c` to `main_not_used.c` (or any other name) and rename `main_simulation.c` to `main.c`.
+### 4) Start high-level maze solver.
+- For simulation: Compile code and then follow the instructions of [mms by mackorone](https://github.com/mackorone/mms).
+- For real-world Micromouse: Flash the compiled code onto the Micromouse robot and put the Micromouse into the starting position (bottom left corner of the maze, i.e. you have to place the mouse in one of the corners such that there is an outer wall of the maze on the left side of the mouse). Then turn the Micromouse on. After 10 seconds, it will automatically start exploring. After the exploration phase, it calculates and executes the shortest path from the starting cell to the center of the maze.

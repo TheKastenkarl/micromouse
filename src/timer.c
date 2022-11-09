@@ -9,7 +9,6 @@
 #include "IOconfig.h"
 #include "controller.h"
 #include <stdbool.h>
-// #include "IOconfigDevBoard.h"
 
 int x;
 
@@ -82,36 +81,16 @@ void stopTimer1(void) {
 }
 
 /**
- * Virtual timer to exceed the maximum period of the timer (629.14 ms).
- * @param actionEveryXCalls: After how many calls to execute the action.
- *  Leads to a multiple of timer period times.
- */
-void virtualTimer(int actionEveryXCalls) {
-    static int i = 0;
-
-    i++;
-    if (i == actionEveryXCalls) 
-    {
-        i = 0;
-        
-        //if (x==0)
-        //{
-        //  explore_and_exploit();
-        //
-        //  x=x+1;
-        //}
-    }
-}
-
-/**
  * Timer 1 interrupt
  */
 void __attribute__((__interrupt__, auto_psv)) _T1Interrupt(void) {
     IFS0bits.T1IF = 0; // reset Timer 1 interrupt flag 
 
-    // updateEncoderStates(0);
-    // updateEncoderStates(1);
-    // controlStep();
-
-    virtualTimer(1); // 10 * T_Interrupt = 1 s
+    if (instruction == 0)
+        low_level_Forward();
+    else  //if (instruction == 1)
+        low_level_Turn();
+//    else
+//        front_wall_corr();
+//   front_wall_corr();
 }

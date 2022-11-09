@@ -12,7 +12,6 @@
 #include "irSensors.h"
 #endif
 
-#define ONE_CELL_DISTANCE_RAD 6.5F
 #define IS_WALL_THRESHOLD 500.0F
 
 /**
@@ -154,7 +153,7 @@ void move_forward(Robot* robot, const int distance) {
         API_moveForward();
     }
 #else
-    Move_Forward(distance);
+    mid_Level_Forward(distance);
 #endif
 }
 
@@ -173,7 +172,7 @@ void turn_right(Robot* robot) {
 #if SIMULATION
     API_turnRight();
 #else
-    TurnAction(-1);
+    mid_Level_Turn(-1);
 #endif
 }
 
@@ -192,7 +191,7 @@ void turn_left(Robot* robot) {
 #if SIMULATION
     API_turnLeft();
 #else
-    TurnAction(1);
+    mid_Level_Turn(1);
 #endif
 }
 

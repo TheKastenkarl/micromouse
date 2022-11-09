@@ -52,6 +52,8 @@
 #include "utils.h"
 #include "robot.h"
 #include "maze_solver.h"
+#include "controller.h"
+
 
 void defaultState() {
     runMotor(0.0, 0, 0);
@@ -97,14 +99,16 @@ void setup() {
 
 void loop() {
     while (1) {
-        //testButtonAndLed(1, 0);
+        // testButtonAndLed(1, 0);
         //testBluetoothUART();
         //testIR(1, 1.0F);
         //testIR(0, 1.0F);
-        //testMotor(1);
-        //testMotor(0);
-        //testEncoder(0);
-        //sleep(2000000);
+        // testMotor(1);
+        // testMotor(0);
+        // testEncoder(0);
+        // sleep(2000000);
+        
+
     }
 }
 
@@ -114,7 +118,8 @@ int main() {
     //loop();
     sleep(5 * 4000000); // wait for around 10 sec
     explore_and_exploit();
-    //wall_follow();
+    wall_follow();
+    //mid_Level_Forward(1);
     return 0;
 }
 #endif

@@ -14,27 +14,34 @@
 #include "IOconfig.h" 
 #include "irSensors.h"
 #include "motors.h"
+#include "robot.h"
 
 /* DEFINES */
-#define SPEED_CONTROL_TP 20.0f
+#define SPEED_CONTROL_TP 2.0f
+#define SPEED_CONTROL_TP_ADJUST 0.7f
+
 #define SPPED_CONTROL_INV_TJ 1.0f
-#define POSITION_X_CONTROL_KP 0.010f
-#define POSITION_Y_CONTROL_KP_HIGH_VEL 0.05f
-#define THETA_CONTROL_KP_HIGH_VEL 0.01f
-#define POSITION_Y_CONTROL_KP_LOW_VEL 0.001f
-#define THETA_CONTROL_KP_LOW_VEL 0.8f
+
+#define POSITION_X_CONTROL_KP_FORWARD 0.2f
+#define POSITION_X_CONTROL_KP_ADJUST 0.2f
+#define THETA_CONTROL_KP 5.0f
+
+#define WALL_KP 0.1F
+
 #define DUTY_CYCLE_MIN_MOVEMENT 0.0f
-#define DUTY_CYCLE_THRESHOLD 0.3f
-#define BASELINE 0.15f
+#define DUTY_CYCLE_THRESHOLD 0.6f
+
+#define BASELINE 0.16f
 #define TURN_90 1.57f
 #define ALPHA_FILTER 0.7f
 #define SAMPLE_TIME 0.05F
 
-// Mid lvl fncs defines
-#define ONE_CELL_DISTANCE_RAD 6.1F
-#define IS_WALL_THRESHOLD_CONTROL 1500.0F
-#define TARGET_DISTANCE_TO_WALL_LEFT 1800.0F
-#define TARGET_DISTANCE_TO_WALL_RIGHT 1800.0F
+
+#define VEL_BASE_LIM 0.2F
+#define VEL_WALL_LIM 0.03F
+
+#define ONE_CELL_DISTANCE_RAD 5.9F
+#define FOLLOW_WALL_THRESHOLD 1300.0F
 
 /* LOCAL DATA DEFINITIONS */
 float antiWindupFB;
@@ -48,6 +55,7 @@ float current_theta;
 bool theta_init;
 int turnCount;
 int delayCounter;
+float theta_estimation;
 
 /* GLOBAL DATA DEFINITIONS */
 differentialDrive differentialWheels;
@@ -55,27 +63,41 @@ float positionInRad_L;
 float velocityInRadPerSample_L;
 float positionInRad_R;
 float velocityInRadPerSample_R;
+float target_forward;
+float target_turn;
+int instruction;
 
 
 /* FUNCTION BODIES */
 
-float speedControl(float velX_cmd, float velX_est, bool applyLim)
-{	
+float speedControl(float velX_cmd, float velX_est, bool applyLim, bool adjust)
+{	    
+    float Kp_Speed;
+    if (adjust==false)
+        Kp_Speed= SPEED_CONTROL_TP;
+    else
+        Kp_Speed= SPEED_CONTROL_TP_ADJUST;
+    
     float lim;
     if (applyLim)
-        lim=0.007f;
+        lim=0.1f;
     else
-        lim=0.01f;
+    {
+        if (adjust==false)
+            lim=0.3f;
+        else
+            lim=0.1f;
+    }
     
     if (velX_cmd>lim)
-    velX_cmd=lim;
+        velX_cmd=lim;
 
     if (velX_cmd<-lim)
-    velX_cmd=-lim;
+        velX_cmd=-lim;
     
 	velX_est_Filtered = ALPHA_FILTER * (velX_est - velX_est_Filtered) + velX_est_Filtered;
 	float velError = velX_cmd-velX_est_Filtered;
-	float velError_TP = velError * SPEED_CONTROL_TP;
+	float velError_TP = velError * Kp_Speed;
 	float velError_TP_J = velError_TP * SPPED_CONTROL_INV_TJ;
 	float velError_Windup = velError_TP_J + antiWindupFB;
 	velErrorIntegral = velErrorIntegral + velError_Windup * SAMPLE_TIME;
@@ -98,9 +120,9 @@ float speedControl(float velX_cmd, float velX_est, bool applyLim)
     return dutyCycle_Sat;
 }
 
-static float positionXControl(float posX_cmd, float posX_est)
+static float positionXControl(float posX_cmd, float posX_est, float Kp)
 {   
-	return POSITION_X_CONTROL_KP * (posX_cmd - posX_est);
+	return Kp * (posX_cmd - posX_est);
 }
 
 static float thetaControl(float theta_cmd, float theta_est, float KP)
@@ -116,8 +138,8 @@ static float positionYControl(float posY_cmd, float posY_est, float KP)
 static differentialDrive differentialVelocity(float velAbs, float omega)
 {
 	differentialDrive wheelVelocity_L_R;
-	wheelVelocity_L_R.Vel_Right = (2.0f*velAbs + omega*BASELINE)/2.0f;
-	wheelVelocity_L_R.Vel_Left  = (2.0f*velAbs - omega*BASELINE)/2.0f;
+	wheelVelocity_L_R.Vel_Right = (2.0f*velAbs + omega)/2.0f;
+	wheelVelocity_L_R.Vel_Left  = (2.0f*velAbs - omega)/2.0f;
 	return wheelVelocity_L_R;
 }
 
@@ -128,18 +150,53 @@ float estimateTheta(float vel_R_est, float vel_L_est)
 	return thetaDiffIntegral/BASELINE;
 }
 
-bool controlLoop(float posX_cmd, float posY_cmd, float posX_est, float posY_est, float vel_R_est, float vel_L_est, int turnCount, int direction)
+bool controlLoop(float posX_cmd, float posY_cmd, float posX_est, float posY_est, float vel_R_est, float vel_L_est, bool adjust, int direction)
 {
-	float velAbs    = positionXControl(posX_cmd, posX_est);
-    float KP_Pos_Y  = POSITION_Y_CONTROL_KP_HIGH_VEL;
-    float KP_Theta  = THETA_CONTROL_KP_HIGH_VEL;
- 
-	float theta_cmd = positionYControl(posY_cmd, posY_est,KP_Pos_Y*direction);
-	float theta_est = estimateTheta(vel_R_est, vel_L_est);
-	float omega_cmd = thetaControl(theta_cmd+(float)turnCount*1.57F, theta_est, KP_Theta);
-	differentialWheels = differentialVelocity(velAbs, omega_cmd);
-	differentialWheels.dutyCycle_Right   = speedControl(differentialWheels.Vel_Right, vel_R_est, true);
-	differentialWheels.dutyCycle_Left    = speedControl(differentialWheels.Vel_Left, vel_L_est, true);
+    float Kp_Pos_X;
+    if (adjust==false)
+        Kp_Pos_X = POSITION_X_CONTROL_KP_FORWARD;
+    else
+        Kp_Pos_X = POSITION_X_CONTROL_KP_ADJUST;
+    
+    if (adjust==true && abs(posX_cmd - posX_est)<50.0f)
+        posX_cmd=posX_est;
+            
+	float velAbs    = positionXControl(posX_cmd, posX_est, Kp_Pos_X);
+    float distance_to_wall_Left;
+    float distance_to_wall_Right;
+    float Vel_wall;
+    
+    if (velAbs>VEL_BASE_LIM)
+        velAbs=VEL_BASE_LIM;
+    if (velAbs<-VEL_BASE_LIM)
+        velAbs=-VEL_BASE_LIM;
+    
+    if (is_wall_left() && is_wall_right())
+    {
+        distance_to_wall_Left  = getLeftIR(1.0F);
+        distance_to_wall_Right = getRightIR(1.0F);
+        Vel_wall = WALL_KP * (distance_to_wall_Left-distance_to_wall_Right);
+    }
+    else if(is_wall_left())
+    {
+        distance_to_wall_Left  = getLeftIR(1.0F);
+        Vel_wall = WALL_KP * (distance_to_wall_Left-FOLLOW_WALL_THRESHOLD);
+    }
+    else if(is_wall_right())
+    {
+        distance_to_wall_Right  = getRightIR(1.0F);
+        Vel_wall = WALL_KP * (FOLLOW_WALL_THRESHOLD-distance_to_wall_Right);
+    }
+
+    if (Vel_wall>VEL_WALL_LIM)
+        Vel_wall=VEL_WALL_LIM;
+
+    if (Vel_wall<-VEL_WALL_LIM)
+        Vel_wall=-VEL_WALL_LIM;
+	
+	differentialWheels = differentialVelocity(velAbs, 0);
+	differentialWheels.dutyCycle_Right   = speedControl(velAbs - Vel_wall, vel_R_est, false, adjust);
+	differentialWheels.dutyCycle_Left    = speedControl(velAbs + Vel_wall, vel_L_est, false, adjust);
     
    char sendData[2][100];
         sprintf(sendData[1], "pos: %.2f", differentialWheels.dutyCycle_Right);
@@ -173,137 +230,75 @@ void updateStates()
     velocityInRadPerSample_R = convertCountsToRad(velocityInCountsPerSample_R);
 }
 
-bool maintainPosOrient(int timeDelay){
-    if (delayCounter>timeDelay)
-        return true;
-    else
+void mid_Level_Forward(int cells)
+{           
+    LED0=1;
+    instruction = 0;
+    target_forward = positionInRad_L+(float)cells*ONE_CELL_DISTANCE_RAD;
+    bool terminate = false;
+    
+    while (terminate==false)
     {
-        delayCounter=delayCounter+1;
-        return false;
+        if (abs(target_forward-positionInRad_L)<0.05f)
+        {   
+            if(is_wall_front())
+                sleep(1500000);
+            else
+                sleep(1500000);
+            terminate = true;
+            LED0=0;
+        }
     }
 }
 
-void Forward(float target)
+void low_level_Forward()
 {
-    bool isFinished=false;
-    float target_distance_to_wall;
-    float distance_to_wall;
-    LED1=~LED1;
-    while(isFinished==false)
-    {   
         updateStates();
-        int direction;
-        if (is_wall_left_ctrl())
-        {
-            distance_to_wall = getLeftIR(1.0F);
-            target_distance_to_wall = TARGET_DISTANCE_TO_WALL_LEFT;
-            direction = -1;
-        }
-        else if (is_wall_right_ctrl())
-        {
-            distance_to_wall = getRightIR(1.0F);
-            target_distance_to_wall = TARGET_DISTANCE_TO_WALL_RIGHT;
-            direction = 1;
-        }
-        else
-        {
-            distance_to_wall = 0.0F;
-            target_distance_to_wall = 0.0F;
-            direction = 1;
-        }
-        
-        if ((target_distance_to_wall)-(distance_to_wall)<0.0F)
-            distance_to_wall=-2*distance_to_wall;
-
-        isFinished = controlLoop(target,target_distance_to_wall,positionInRad_L,distance_to_wall,velocityInRadPerSample_R,velocityInRadPerSample_L,turnCount, direction);
+        controlLoop(target_forward,0,positionInRad_L,0,velocityInRadPerSample_R,velocityInRadPerSample_L,false,0);
         runMotor(differentialWheels.dutyCycle_Right, 1, 0);
         runMotor(differentialWheels.dutyCycle_Left, 0, 0);
-        
-    }
+
 }
 
-void Move_Forward(int cells)
+void low_level_Turn()
 {   
     updateStates();
-    float target = positionInRad_L+(float)cells*ONE_CELL_DISTANCE_RAD;
-    bool terminate=false;
-    delayCounter = 0;
-    while (terminate==false)
-    {
-        
-        Forward(target);
-        LED0=0;
-        if (maintainPosOrient(1000))
-        {
-            runMotor(0, 1, 0);
-            runMotor(0, 0, 0);
-            terminate = true;
-            LED0=1;
-        }
-    }
-}
-
-bool turnLeftRight(float cmd, float vel_R_est, float vel_L_est)
-{
-    float theta_est = estimateTheta(vel_R_est, vel_L_est);
-    float omega_cmd = thetaControl(cmd, theta_est,THETA_CONTROL_KP_LOW_VEL);
+    theta_estimation = estimateTheta(velocityInRadPerSample_R, velocityInRadPerSample_L);
+    float omega_cmd = thetaControl(target_turn, theta_estimation,THETA_CONTROL_KP);
 	differentialWheels = differentialVelocity(0.0f, omega_cmd);
-	differentialWheels.dutyCycle_Right   = speedControl(differentialWheels.Vel_Right, vel_R_est, false);
-	differentialWheels.dutyCycle_Left    = speedControl(differentialWheels.Vel_Left, vel_L_est, false);
-    
-    if (abs(cmd-theta_est)<0.01f)
-        return true;
-    else
-        return false;
+	differentialWheels.dutyCycle_Right   = speedControl(differentialWheels.Vel_Right, velocityInRadPerSample_R, true, false);
+	differentialWheels.dutyCycle_Left    = speedControl(differentialWheels.Vel_Left, velocityInRadPerSample_L, true, false);
+    runMotor(differentialWheels.dutyCycle_Right, 1, 0);
+    runMotor(differentialWheels.dutyCycle_Left, 0, 0);
 }
 
-void TurnMotion(float cmd) // 1 for Left and -1 for Right
-{       
-    bool isFinished=false;
-    while(isFinished==false)
-    {   
-        updateStates();
-        isFinished=turnLeftRight(cmd, velocityInRadPerSample_R, velocityInRadPerSample_L);
-        runMotor(differentialWheels.dutyCycle_Right, 1, 0);
-        runMotor(differentialWheels.dutyCycle_Left, 0, 0);
+void mid_Level_Turn(int direction)
+{   
+    if(is_wall_front())
+    {
+        instruction = -1;
     }
-}
-
-void TurnAction(int direction) // 1 for Left and -1 for Right
-{
-    updateStates();
-    float current_theta = estimateTheta(velocityInRadPerSample_R, velocityInRadPerSample_L);
-    float target = direction*TURN_90+current_theta;
-    turnCount =turnCount+direction;
+    //sleep(10000000);
+    LED1=1;
+    instruction = 1;
+    target_turn = direction*TURN_90+theta_estimation;
     bool terminate=false;
-    delayCounter = 0;
     
     while (terminate==false)
     {
-        
-        TurnMotion(target);
-        LED0=0;
-        if (maintainPosOrient(5000))
-        {
-            runMotor(0, 1, 0);
-            runMotor(0, 0, 0);
+        if (direction*(target_turn-theta_estimation)<0.005f)
+        {    
+            sleep(2000000);
             terminate = true;
-            LED0=1;
+            LED1=0;
         }
-
-    }    
+    }
 }
 
-bool is_wall_right_ctrl() {
-    if (getRightIR(1.0F)>IS_WALL_THRESHOLD_CONTROL)
-        return true;
-    else
-        return false;
-}
-
-bool is_wall_left_ctrl() {
-    if (getLeftIR(1.0F)>IS_WALL_THRESHOLD_CONTROL)
-        return true;
-    else
-        return false;
+bool front_wall_corr()
+{   
+    updateStates();
+    controlLoop(1700.0F,0,getFrontIR(1.0F),0,velocityInRadPerSample_R,velocityInRadPerSample_L,true,0);
+    runMotor(differentialWheels.dutyCycle_Right, 1, 0);
+    runMotor(differentialWheels.dutyCycle_Left, 0, 0);
 }

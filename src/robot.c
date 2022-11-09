@@ -3,15 +3,15 @@
 #include "maze.h"
 #include "API.h"
 #include <stdbool.h>
-#include "controller.h"
-#include "motorEncoders.h"
-#include "irSensors.h"
 #include "motors.h"
 #include "robot.h"
 
+#if !SIMULATION
+#include "controller.h"
+#include "motorEncoders.h"
+#include "irSensors.h"
+#endif
 
-
-#define ONE_CELL_DISTANCE_RAD 6.5F
 #define IS_WALL_THRESHOLD 500.0F
 
 /**
@@ -37,10 +37,10 @@ int is_wall_front() {
 #if SIMULATION
     return API_wallFront();
 #else
-    if (getFrontIR(1.0F)>IS_WALL_THRESHOLD)
-        return 1.0;
+    if (getFrontIR(1.0F) > IS_WALL_THRESHOLD)
+        return 1;
     else
-        return 0.0;
+        return 0;
 #endif
 }
 
@@ -54,10 +54,10 @@ int is_wall_right() {
 #if SIMULATION
     return API_wallRight();
 #else
-    if (getRightIR(1.0F)>IS_WALL_THRESHOLD)
-        return 1.0;
+    if (getRightIR(1.0F) > IS_WALL_THRESHOLD)
+        return 1;
     else
-        return 0.0;
+        return 0;
 #endif
 }
 
@@ -71,10 +71,10 @@ int is_wall_left() {
 #if SIMULATION
     return API_wallLeft();
 #else
-    if (getLeftIR(1.0F)>IS_WALL_THRESHOLD)
-        return 1.0;
+    if (getLeftIR(1.0F) > IS_WALL_THRESHOLD)
+        return 1;
     else
-        return 0.0;
+        return 0;
 #endif
 }
 
@@ -153,7 +153,7 @@ void move_forward(Robot* robot, const int distance) {
         API_moveForward();
     }
 #else
-   Move_Forward(distance);
+    mid_Level_Forward(distance);
 #endif
 }
 
@@ -172,7 +172,7 @@ void turn_right(Robot* robot) {
 #if SIMULATION
     API_turnRight();
 #else
-    TurnAction(-1);
+    mid_Level_Turn(-1);
 #endif
 }
 
@@ -191,7 +191,7 @@ void turn_left(Robot* robot) {
 #if SIMULATION
     API_turnLeft();
 #else
-    TurnAction(1);
+    mid_Level_Turn(1);
 #endif
 }
 

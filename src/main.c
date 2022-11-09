@@ -51,6 +51,9 @@
 #include "tests.h"
 #include "utils.h"
 #include "robot.h"
+#include "maze_solver.h"
+#include "controller.h"
+
 
 void defaultState() {
     runMotor(0.0, 0, 0);
@@ -110,6 +113,9 @@ void loop() {
 
 int main() {
     setup();
-    loop();
+    //loop();
+    explore_and_exploit();
+    wall_follow();
+    //mid_Level_Forward(1);
     return 0;
 }

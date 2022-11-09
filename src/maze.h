@@ -3,18 +3,10 @@
 
 #include "robot.h"
 #include "array.h"
-
-// Number of columns (= number of rows) of maze
-#define MAZE_SIZE 6
-
-// Define if simulation or real robot is used
-#define SIMULATION 0
-
-// Define if in simulation visualization should be used
-#define VISUALIZATION 0
+#include "settings.h"
 
 typedef struct Cell {
-    int walls; // West (0b0001), North (0b0010), East (0b0100), South (0b1000)
+    int walls; // West (0b0001), North (0b0010), East (0b0100), South (0b1000), combine them with bitwise OR
     int visited;
     int predecessor_cell_id;
 } Cell;
@@ -38,6 +30,8 @@ int get_orientation_to_neighbor_cell(const int cell_id, const int neighboring_ce
 int get_cell_id_in_orientation(const int cell_id, Cell maze[MAZE_SIZE][MAZE_SIZE], const int orientation);
 
 int get_cell_id_in_direction(const int current_orientation, const int cell_id, Cell maze[MAZE_SIZE][MAZE_SIZE], const int direction);
+
+void log_cell_walls(Cell maze[MAZE_SIZE][MAZE_SIZE]);
 
 #if SIMULATION && VISUALIZATION
 void visualize_cell_sequence(Array* cell_sequence);

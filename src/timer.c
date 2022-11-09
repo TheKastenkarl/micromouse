@@ -81,11 +81,6 @@ void stopTimer1(void) {
 }
 
 /**
- * Virtual timer to exceed the maximum period of the timer (629.14 ms).
- * @param actionEveryXCalls: After how many calls to execute the action.
- *  Leads to a multiple of timer period times.
- */
-/**
  * Timer 1 interrupt
  */
 void __attribute__((__interrupt__, auto_psv)) _T1Interrupt(void) {

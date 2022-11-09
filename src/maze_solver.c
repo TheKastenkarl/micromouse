@@ -4,6 +4,10 @@
 #include "queue.h"
 #include "API.h"
 
+#if !SIMULATION
+#include "serialComms.h"
+#endif
+
 /**
  * Logs the current position of the robot, the walls at the current position
  * and the predecessor cell of the current cell.
@@ -25,6 +29,20 @@ void log_position_walls_predecessor(Robot* const robot, Cell maze[MAZE_SIZE][MAZ
     sprintf(str, "%d", get_cell(maze, robot->position)->walls);
     API_log(str);
     API_log("-------------------");
+}
+#else
+void log_position_walls_predecessor(Robot* const robot, Cell maze[MAZE_SIZE][MAZE_SIZE]){
+    char str[10];
+    sendUART1("Position:", 1);
+    sprintf(str, "%d", robot->position);
+    sendUART1(str, 1); 
+    sendUART1("Predecessor:", 1);
+    sprintf(str, "%d", get_cell(maze, robot->position)->predecessor_cell_id);
+    sendUART1(str, 1);
+    sendUART1("Walls:", 1);
+    sprintf(str, "%d", get_cell(maze, robot->position)->walls);
+    sendUART1(str, 1);
+    sendUART1("-------------------", 1);
 }
 #endif
 
@@ -49,9 +67,7 @@ void exploration_dfs(Robot* robot, Cell maze[MAZE_SIZE][MAZE_SIZE]) {
     do {
         update_cell(robot, maze, predecessor_cell_id);
         predecessor_cell_id = robot->position;
-#if SIMULATION
         log_position_walls_predecessor(robot, maze);
-#endif
 #if SIMULATION && VISUALIZATION
         mark_cell(robot->position);
 #endif
@@ -108,6 +124,7 @@ int shortest_path_bfs(const int start_cell_id, Cell maze[MAZE_SIZE][MAZE_SIZE], 
     // Step 1: Find the shortest path to goal with a bfs and store for every cell the predecessor cell
     while (!goal_found) {
         current_cell_id = dequeue(&head);
+        // if current_cell_id == -1, then the queue is empty
         if (current_cell_id == -1) {
             return -1; // failure, goal not found
         }
@@ -141,7 +158,7 @@ int shortest_path_bfs(const int start_cell_id, Cell maze[MAZE_SIZE][MAZE_SIZE], 
  * start to goal.
  * Assumption: Mouse starts in the bottom left corner (cell id = 0) facing north.
  * Important: With the microchip compiler you have to allocate heap memory in the project properties
- *            (https://microchipdeveloper.com/mplabx:creating-a-heap)
+ *            (https://microchipdeveloper.com/mplabx:creating-a-heap). Use for example 4096 bytes.
  */
 void explore_and_exploit() {
     Robot robot;
@@ -152,11 +169,21 @@ void explore_and_exploit() {
     init_maze(maze);
     calc_goal_cells_ids(goal_cells_ids);
 
-    exploration_dfs(&robot, maze);
-    move_to_cells(&robot, maze, goal_cells_ids, EAST);
-    move_to_cell(&robot, maze, 0, NORTH);
-    move_to_cell(&robot, maze, 48, SOUTH);
-    move_to_cell(&robot, maze, 13+12*16, NORTH);
+#if !SIMULATION
+    sendUART1("START EXPLORATION", 1);
+#endif
+    exploration_dfs(&robot, maze); // explore maze and return to start cell
+
+    //log_cell_walls(maze);
+
+#if !SIMULATION
+    sendUART1("START EXPLOITATION", 1);
+#endif
+    move_to_cells(&robot, maze, goal_cells_ids, EAST); // move to goal cell
+    move_to_cell(&robot, maze, 0, NORTH); // move to start cell
+#if !SIMULATION
+    sendUART1("FINISHED", 1);
+#endif
 }
 
 /**
@@ -272,13 +299,15 @@ int move_to_cells(Robot* robot, Cell maze[MAZE_SIZE][MAZE_SIZE], int goal_cells_
 #if SIMULATION && VISUALIZATION
     visualize_cell_sequence(&cell_sequence);
 #endif
-    reconstruct_orientation_sequence_from_cell_sequence(maze, &cell_sequence, &orientation_sequence);
 
+    reconstruct_orientation_sequence_from_cell_sequence(maze, &cell_sequence, &orientation_sequence);
     generate_actions_from_orientation_sequence(robot, &orientation_sequence);
+
     free_array(&orientation_sequence);
     free_array(&cell_sequence);
 
     turn_to_orientation(robot, goal_cell_orientation);
+
     return 1;
 }
 

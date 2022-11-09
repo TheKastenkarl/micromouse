@@ -92,6 +92,7 @@ void setup() {
     setupBluetooth();
     setupIRSensors();
     setupMotors();
+    setupUART1(BAUDRATE);
     
     defaultState();
 }
@@ -111,11 +112,14 @@ void loop() {
     }
 }
 
+#if !SIMULATION
 int main() {
     setup();
     //loop();
+    sleep(5 * 4000000); // wait for around 10 sec
     explore_and_exploit();
     wall_follow();
     //mid_Level_Forward(1);
     return 0;
 }
+#endif

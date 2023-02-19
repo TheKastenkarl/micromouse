@@ -31,3 +31,13 @@ Rename `main.c` to `main_not_used.c` (or any other name) and rename `main_simula
 ### 4) Start high-level maze solver.
 - For simulation: Compile code and then follow the instructions of [mms by mackorone](https://github.com/mackorone/mms).
 - For real-world Micromouse: Flash the compiled code onto the Micromouse robot and put the Micromouse into the starting position (bottom left corner of the maze, i.e. you have to place the mouse in one of the corners such that there is an outer wall of the maze on the left side of the mouse). Then turn the Micromouse on. After 10 seconds, it will automatically start exploring. After the exploration phase, it calculates and executes the shortest path from the starting cell to the center of the maze.
+
+## Some impressions
+Finished Micromouse: <br/>
+![Finished Micromouse](images_and_videos/finished_micromouse.jpg) <br/>
+
+6 x 6 maze to test the Micromouse: <br/>
+![Maze for testing](images_and_videos/testing_maze.jpg) <br/>
+
+Testing the high-level maze solver in simulation: <br/>
+![High-level simulation](images_and_videos/high_level_simulation.gif) <br/>
